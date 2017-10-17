@@ -1,5 +1,3 @@
-[![](http://i.imgur.com/iuTrwv9.png)][playstore]
-
 <img src="screenshots/demo.gif" width="320" align="right" hspace="20">
 
 [![](https://img.shields.io/circleci/project/vickychijwani/quill.svg)](https://circleci.com/gh/vickychijwani/quill)
@@ -8,7 +6,7 @@
 [![Join the chat on Gitter](https://badges.gitter.im/vickychijwani/quill.svg)](https://gitter.im/vickychijwani/quill?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![](https://img.shields.io/github/tag/vickychijwani/quill.svg)
 
-Quill is the beautiful Android app for your [Ghost](https://ghost.org) blog. Get it [here on the Google Play Store][playstore].
+The official Ghost Android application. Get it [here on the Google Play Store][playstore].
 
 <a href='https://play.google.com/store/apps/details?id=me.vickychijwani.spectre&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width='300px'/></a>
 
@@ -18,17 +16,17 @@ Quill is the beautiful Android app for your [Ghost](https://ghost.org) blog. Get
 - **Markdown editing with preview** - swipe to switch between editing and previewing
 - **100% Markdown compatibility with Ghost** - go ahead and use footnotes and code blocks like you're used to
 - Works with **[Ghost Pro](https://ghost.org/pricing/)** (ghost.io) as well as **self-hosted blogs**
-- **Offline mode**: Quill is designed to work 100% offline: just sync when you're connected later! Ideal for writing on the go
+- **Offline mode**: Ghost Android is designed to work 100% offline: just sync when you're connected later! Ideal for writing on the go
 - **Attach tags and a cover image** - upload images from your phone or a web link
-- **[Conflict handling][conflict-ui]** - when a blog post is edited simultaneously from the app and elsewhere (e.g., via Ghost web), Quill will detect the conflict and show you a nice UI to decide what to do - so you never lose your hard work!
+- **[Conflict handling][conflict-ui]** - a simple UI to help decide what to do next when a post is edited from two places at once
 
 ### Bug reports? Feature requests?
 
 [File an issue](/CONTRIBUTING.md)
 
-### Help translate Quill
+### Help translate Ghost
 
-If you'd like to see support for your language in Quill, you can easily [contribute translations on Weblate][weblate]. _This requires no setup and no knowledge of Android development_, just keep in mind a few simple rules:
+If you'd like to see support for your language in Ghost, you can easily [contribute translations on Weblate][weblate]. _This requires no setup and no knowledge of Android development_, just keep in mind a few simple rules:
 
 - Many strings have [placeholders](http://envyandroid.com/android-string-xml-resource-formatting/) like "%s", "%d", "%2$s", etc. - keep these intact because other numbers and strings are inserted into these placeholders
 - Single and double quotes need to be preceded with a backslash character (\' and \" respectively)

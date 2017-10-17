@@ -15,7 +15,7 @@
 
        npm run build
 
-4. Copy the generated file from the build/ folder to quill/app/src/main/assets/
+4. Copy the generated file from the build/ folder to ghost-android/app/src/main/assets/
 
 5. The next build of the app will pick up the converter
 
@@ -36,4 +36,4 @@
 
        npm run build
 
-5. Copy the generated file from the build/ folder to quill/app/src/main/assets/
+5. Copy the generated file from the build/ folder to ghost-android/app/src/main/assets/

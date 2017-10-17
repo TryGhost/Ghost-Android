@@ -15,12 +15,12 @@ import me.vickychijwani.spectre.util.AppUtils;
 
 public class AboutActivity extends BaseActivity {
 
-    public static final String URL_GITHUB_CONTRIBUTING = "https://github.com/vickychijwani/quill/blob/master/CONTRIBUTING.md#reporting-bugs";
+    public static final String URL_GITHUB_CONTRIBUTING = "https://github.com/tryghost/ghost-android/blob/master/CONTRIBUTING.md#reporting-bugs";
     public static final String URL_TRANSLATE = "https://hosted.weblate.org/engage/quill/en/";
-    public static final String URL_MY_WEBSITE = "http://vickychijwani.me";
-    public static final String URL_TWITTER_PROFILE = "https://twitter.com/vickychijwani";
-    public static final String URL_GITHUB_REPO = "https://github.com/vickychijwani/quill";
-    public static final String URL_GITHUB_PROFILE = "https://github.com/vickychijwani";
+    public static final String URL_MY_WEBSITE = "http://ghost.org";
+    public static final String URL_TWITTER_PROFILE = "https://twitter.com/tryghost";
+    public static final String URL_GITHUB_REPO = "https://github.com/tryghost/ghost-android";
+    public static final String URL_GITHUB_PROFILE = "https://github.com/tryghost";
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.about_version) TextView mVersionView;
