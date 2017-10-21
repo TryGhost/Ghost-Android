@@ -32,12 +32,6 @@ android {
 
         // enable support for vector drawables on API < 21
         vectorDrawables.useSupportLibrary = true
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-            }
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -129,7 +123,8 @@ dependencies {
     compile "com.tsengvn:typekit:1.0.1"
 
     // misc
-    compile "com.jakewharton:butterknife:7.0.1"
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
     compile("com.crashlytics.sdk.android:crashlytics:2.6.2@aar") {
         transitive = true
     }
