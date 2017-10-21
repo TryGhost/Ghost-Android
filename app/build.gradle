@@ -1,37 +1,22 @@
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
         maven { url 'https://maven.fabric.io/public' }
     }
-
     dependencies {
+        classpath 'io.realm:realm-gradle-plugin:2.3.1'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
-        // The Fabric Gradle plugin uses an open ended version to react
-        // quickly to Android tooling updates
-        //noinspection GradleDynamicVersion
         classpath 'io.fabric.tools:gradle:1.+'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
     }
 }
+
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
 apply plugin: 'com.jakewharton.hugo'
-
-repositories {
-    mavenCentral()
-    maven { url 'https://maven.fabric.io/public' }
-    maven { url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo' }
-}
-
-// don't lint for every build (run it manually when you want it to run)
-tasks.whenTaskAdded { task ->
-    if (task.name.equals('lint')) {
-        task.enabled = false
-    }
-}
-
 
 android {
     compileSdkVersion 25
@@ -39,10 +24,11 @@ android {
 
     defaultConfig {
         applicationId 'me.vickychijwani.spectre'
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1_005_006      // 3 digits each for major, minor, patch
-        versionName '1.5.6'
+        versionCode 2_01_01_00      // 2 digits each for major, minor, patch, build number
+                                    // example: 2.0.0-beta1 => 2_00_00_00, 2.0.0 => 2_00_00_01
+        versionName '2.1.1'
 
         // enable support for vector drawables on API < 21
         vectorDrawables.useSupportLibrary = true
@@ -81,10 +67,17 @@ android {
     }
 }
 
+// don't lint for every build (run it manually when you want it to run)
+tasks.whenTaskAdded { task ->
+    if (task.name == 'lint') {
+        task.enabled = false
+    }
+}
+
 // Fabric / Crashlytics keys are mandatory for release builds
 task checkFabricPropertiesExists << {
     if (!file('fabric.properties').exists()) {
-        throw new GradleException('Missing fabric.properties file for Fabric / Crashlytics!')
+        throw new FileNotFoundException('Missing fabric.properties file for Fabric / Crashlytics!')
     }
 }
 
@@ -94,21 +87,30 @@ tasks.whenTaskAdded { task ->
     }
 }
 
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo' }
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     // reactive extensions (rx)
-    compile "io.reactivex.rxjava2:rxjava:2.0.6"
+    compile "io.reactivex.rxjava2:rxjava:2.1.4"
     compile "io.reactivex.rxjava2:rxandroid:2.0.1"
 
     // networking / communication / data storage
-    compile("com.squareup.retrofit2:retrofit:2.1.0") {
+    compile("com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion") {
         exclude module: "okhttp"
     }
-    compile "com.squareup.retrofit2:converter-gson:2.1.0"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
     compile "com.squareup.picasso:picasso:2.5.2"
     compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
-    compile "com.squareup:otto:1.3.6"
+    compile "com.squareup:otto:1.3.8"
 
     // UI
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
@@ -117,11 +119,11 @@ dependencies {
     compile "com.android.support:design:$rootProject.ext.supportLibVersion"
     compile "com.android.support:percent:$rootProject.ext.supportLibVersion"
     compile "com.android.support:customtabs:$rootProject.ext.supportLibVersion"
-    compile "org.ocpsoft.prettytime:prettytime:4.0.0.Final"
+    compile "org.ocpsoft.prettytime:prettytime:4.0.1.Final"
     compile "com.tsengvn:typekit:1.0.1"
 
     // misc
-    compile "com.jakewharton:butterknife:7.0.0"
+    compile "com.jakewharton:butterknife:7.0.1"
     compile("com.crashlytics.sdk.android:crashlytics:2.6.2@aar") {
         transitive = true
     }
@@ -130,23 +132,27 @@ dependencies {
     }
     compile "com.github.hotchemi:permissionsdispatcher:$rootProject.ext.permissionsDispatcherVersion"
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.ext.permissionsDispatcherVersion"
-    compile "com.github.slugify:slugify:2.1.3"
+    compile "com.github.slugify:slugify:2.1.9"
+    compile "com.jakewharton.timber:timber:4.5.1"
 
     // debug
-    debugCompile "com.squareup.leakcanary:leakcanary-android:1.5"
+    debugCompile "nl.littlerobots.rxlint:rxlint:+"
+    debugCompile "com.squareup.leakcanary:leakcanary-android:1.5.4"
     debugCompile "com.jakewharton.scalpel:scalpel:1.1.2"
     debugCompile "io.palaima.debugdrawer:debugdrawer:0.7.0"
     debugCompile "io.palaima.debugdrawer:debugdrawer-commons:$rootProject.ext.debugdrawerVersion"
     debugCompile "io.palaima.debugdrawer:debugdrawer-okhttp3:$rootProject.ext.debugdrawerVersion"
     debugCompile "io.palaima.debugdrawer:debugdrawer-picasso:$rootProject.ext.debugdrawerVersion"
     debugCompile "io.palaima.debugdrawer:debugdrawer-scalpel:$rootProject.ext.debugdrawerVersion"
-    debugCompile "com.facebook.stetho:stetho:1.4.2"
-    debugCompile "com.facebook.stetho:stetho-okhttp3:1.4.2"
+    debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
+    debugCompile "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
     debugCompile "com.uphyca:stetho_realm:2.0.0"
 
     // test
     testCompile "junit:junit:4.12"
     testCompile "org.hamcrest:hamcrest-library:1.3"
-    testCompile "org.json:json:20140107"    // don't depend on Android's JSONObject: http://stackoverflow.com/a/30759769/504611
+    testCompile "org.mockito:mockito-core:2.10.+"
+    testCompile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
+    testCompile "org.json:json:20170516"    // don't depend on Android's JSONObject: http://stackoverflow.com/a/30759769/504611
     testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okhttpVersion"
 }

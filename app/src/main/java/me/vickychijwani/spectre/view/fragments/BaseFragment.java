@@ -1,6 +1,8 @@
 package me.vickychijwani.spectre.view.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import butterknife.ButterKnife;
 import me.vickychijwani.spectre.SpectreApplication;
 import me.vickychijwani.spectre.event.BusProvider;
 
+@SuppressWarnings("WeakerAccess")
 public abstract class BaseFragment extends Fragment {
 
     private static final String TAG = "BaseFragment";
@@ -42,13 +45,13 @@ public abstract class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onStart()");
+        getBus().register(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onResume()");
-        getBus().register(this);
     }
 
     @Override
@@ -67,13 +70,13 @@ public abstract class BaseFragment extends Fragment {
     public void onPause() {
         super.onPause();
         Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onPause()");
-        getBus().unregister(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
         Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onStop()");
+        getBus().unregister(this);
     }
 
     @Override
@@ -98,6 +101,10 @@ public abstract class BaseFragment extends Fragment {
      */
     public boolean onBackPressed() {
         return false;
+    }
+
+    protected void openUrl(String url) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
 }
