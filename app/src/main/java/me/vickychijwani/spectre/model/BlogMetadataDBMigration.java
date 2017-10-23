@@ -25,6 +25,9 @@ public class BlogMetadataDBMigration implements RealmMigration {
         RealmSchema schema = realm.getSchema();
         Crashlytics.log(Log.INFO, TAG, "MIGRATING DATABASE from v" + oldVersion + " to v" + newVersion);
 
+        // NOTE: schema versions 0, 1, 2 and 3 are not possible because this app was released AFTER
+        // we hit schema version 4. The old migration code is kept around for reference.
+
         if (oldVersion == 0) {
             if (schema.get("Post").isNullable("slug")) {
                 // get rid of null-valued slugs, if any exist
@@ -105,7 +108,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
             // Ghost 1.0 upgrade, drop all data
             Crashlytics.log(Log.WARN, TAG, "DROPPING ALL DATA");
             final SpectreApplication app = SpectreApplication.getInstance();
-            app.setOldRealmSchemaVersion(3);
+//            app.setOldRealmSchemaVersion(3);
 
             // clear logged in state
             AppState.getInstance(app).setBoolean(AppState.Key.LOGGED_IN, false);

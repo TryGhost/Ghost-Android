@@ -6,4 +6,4 @@
 - Describe your issue in as much detail as possible.
 - Always include these details in bug reports: app version, Android version, device name. **Reports without these details may be ignored.**
 
-**[VIEW OR CREATE ISSUES HERE](https://github.com/vickychijwani/quill/issues)**
+**[VIEW OR CREATE ISSUES HERE](https://github.com/TryGhost/Ghost-Android/issues)**

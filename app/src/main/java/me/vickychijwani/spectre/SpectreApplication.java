@@ -22,7 +22,6 @@ import io.fabric.sdk.android.Fabric;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.exceptions.RealmMigrationNeededException;
 import me.vickychijwani.spectre.analytics.AnalyticsService;
 import me.vickychijwani.spectre.auth.LoginOrchestrator;
 import me.vickychijwani.spectre.error.UncaughtRxException;
@@ -53,7 +52,6 @@ public class SpectreApplication extends Application {
 
     // FIXME hacks
     private LoginOrchestrator.HACKListener mHACKListener;
-    private int mHACKOldSchemaVersion = -1;
 
     @Override
     public void onCreate() {
@@ -85,10 +83,6 @@ public class SpectreApplication extends Application {
         mAnalyticsService.start();
     }
 
-    public void setOldRealmSchemaVersion(int oldSchemaVersion) {
-        mHACKOldSchemaVersion = oldSchemaVersion;
-    }
-
     private void setupMetadataRealm() {
         final int METADATA_DB_SCHEMA_VERSION = 4;
         Realm.init(this);
@@ -98,19 +92,6 @@ public class SpectreApplication extends Application {
                 .migration(new BlogMetadataDBMigration())
                 .build();
         Realm.setDefaultConfiguration(config);
-
-        // open the Realm to check if a migration is needed
-        try {
-            Realm realm = Realm.getDefaultInstance();
-            realm.close();
-        } catch (RealmMigrationNeededException e) {
-            // delete existing Realm if we're below v4
-            if (mHACKOldSchemaVersion >= 0 && mHACKOldSchemaVersion < 4) {
-                Realm.deleteRealm(config);
-                mHACKOldSchemaVersion = -1;
-            }
-        }
-
         AnalyticsService.logMetadataDbSchemaVersion(String.valueOf(METADATA_DB_SCHEMA_VERSION));
     }
 

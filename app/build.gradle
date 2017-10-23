@@ -20,15 +20,15 @@ apply plugin: 'com.jakewharton.hugo'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId 'org.ghost.android'
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 2_02_01_00      // 2 digits each for major, minor, patch, build number
+        versionCode 1_00_00_00      // 2 digits each for major, minor, patch, build number
                                     // example: 2.0.0-beta1 => 2_00_00_00, 2.0.0 => 2_00_00_01
-        versionName '2.2.1'
+        versionName '1.0.0'
 
         // enable support for vector drawables on API < 21
         vectorDrawables.useSupportLibrary = true

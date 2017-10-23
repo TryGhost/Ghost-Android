@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,7 +23,6 @@ public class AboutActivity extends BaseActivity {
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.about_version) TextView mVersionView;
-    @BindView(R.id.about_icon_credits) TextView mIconCreditsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +36,6 @@ public class AboutActivity extends BaseActivity {
 
         String version = AppUtils.getAppVersion(this);
         mVersionView.setText(version);
-
-        mIconCreditsView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @OnClick(R.id.about_open_source_libs)

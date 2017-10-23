@@ -377,8 +377,7 @@ public class NetworkService implements
                     storeEtag(response.headers(), ETag.TYPE_ALL_POSTS);
 
                     // if this user is only an author, filter out posts they're not authorized to access
-                    // FIXME if the last POSTS_FETCH_LIMIT number of posts are not owned by this author,
-                    // FIXME we'll end up with no posts displayed in the UI!
+                    // FIXME use GET posts/?filter=author_id:1 instead, similar to Ghost-Admin filters
                     RealmResults<User> users = mRealm.where(User.class).findAll();
                     if (users.size() > 0) {
                         User user = users.first();
@@ -394,9 +393,9 @@ public class NetworkService implements
                         }
                     }
 
-                    // delete posts that are no longer present on the server
-                    // this assumes that postList.posts is a list of ALL posts on the server
-                    // FIXME time complexity is quadratic in the number of posts!
+                    // delete local copies of posts that are no longer within the POSTS_FETCH_LIMIT
+                    // FIXME if there are any locally-edited posts at this point that were pushed
+                    // FIXME beyond POSTS_FETCH_LIMIT, their local copies will also be deleted!
                     Iterable<Post> deletedPosts = Observable.fromIterable(mRealm.where(Post.class).findAll())
                             .filter(cached -> ! postList.contains(cached.getId()))
                             .blockingIterable();

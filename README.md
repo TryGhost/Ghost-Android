@@ -8,7 +8,7 @@
 
 The official Ghost Android application. Get it [here on the Google Play Store][playstore].
 
-<a href='https://play.google.com/store/apps/details?id=me.vickychijwani.spectre&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width='300px'/></a>
+<a href='https://play.google.com/store/apps/details?id=org.ghost.android&utm_source=github&utm_campaign=readme&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 
 ### Features
 

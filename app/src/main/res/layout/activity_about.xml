@@ -275,19 +275,6 @@
 
             </android.support.v7.widget.CardView>
 
-
-            <!-- icon credits -->
-            <TextView
-                android:id="@+id/about_icon_credits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_large"
-                android:layout_marginBottom="@dimen/padding_large"
-                android:gravity="center_horizontal"
-                android:text="@string/about_icon_credits"
-                android:textAppearance="@style/TextAppearance.XSmall.Dim"
-                />
-
         </LinearLayout>
 
     </ScrollView>
