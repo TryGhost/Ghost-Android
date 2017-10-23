@@ -1,9 +1,9 @@
 {
-  "name": "quill-markdown",
-  "description": "Builds the Markdown-to-HTML converter used by Quill",
+  "name": "ghost-android-markdown",
+  "description": "Builds the Markdown-to-HTML converter used by Ghost Android",
   "repository": {
     "type": "git",
-    "url": "git://github.com/vickychijwani/quill.git"
+    "url": "git@github.com:TryGhost/Ghost-Android.git"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack --optimize-minimize"

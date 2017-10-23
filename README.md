@@ -1,14 +1,11 @@
 <img src="screenshots/demo.gif" width="320" align="right" hspace="20">
 
 [![](https://img.shields.io/circleci/project/vickychijwani/quill.svg)](https://circleci.com/gh/vickychijwani/quill)
-[![Translate on Weblate](https://hosted.weblate.org/widgets/quill/en/shields-badge.svg)](https://hosted.weblate.org/engage/quill/en/?utm_source=widget)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Quill-green.svg?style=true)](https://android-arsenal.com/details/3/3729)
-[![Join the chat on Gitter](https://badges.gitter.im/vickychijwani/quill.svg)](https://gitter.im/vickychijwani/quill?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-![](https://img.shields.io/github/tag/vickychijwani/quill.svg)
+[![Translate on Weblate](https://hosted.weblate.org/widgets/quill/-/svg-badge.svg)](https://hosted.weblate.org/engage/quill/en/?utm_source=widget)
 
 The official Ghost Android application. Get it [here on the Google Play Store][playstore].
 
-<a href='https://play.google.com/store/apps/details?id=org.ghost.android&utm_source=github&utm_campaign=readme&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=org.ghost.android&utm_source=github&utm_campaign=readme&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width='300px'/></a>
 
 ### Features
 
@@ -24,9 +21,9 @@ The official Ghost Android application. Get it [here on the Google Play Store][p
 
 [File an issue](/CONTRIBUTING.md)
 
-### Help translate Ghost
+### Help translate Ghost Android
 
-If you'd like to see support for your language in Ghost, you can easily [contribute translations on Weblate][weblate]. _This requires no setup and no knowledge of Android development_, just keep in mind a few simple rules:
+If you'd like to see support for your language in Ghost Android, you can easily [contribute translations on Weblate][weblate]. _This requires no setup and no knowledge of Android development_, just keep in mind a few simple rules:
 
 - Many strings have [placeholders](http://envyandroid.com/android-string-xml-resource-formatting/) like "%s", "%d", "%2$s", etc. - keep these intact because other numbers and strings are inserted into these placeholders
 - Single and double quotes need to be preceded with a backslash character (\' and \" respectively)
@@ -53,6 +50,6 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [@cristears](https://hosted.weblate.org/user/cristears/) (Korean translation)
 
 
-[playstore]: https://play.google.com/store/apps/details?id=me.vickychijwani.spectre
+[playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
 [weblate]: https://hosted.weblate.org/engage/quill/en/
 [conflict-ui]: https://github.com/vickychijwani/quill/issues/144#issuecomment-264991612
