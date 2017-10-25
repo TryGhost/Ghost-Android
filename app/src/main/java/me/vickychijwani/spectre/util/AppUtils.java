@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.text.Html;
@@ -18,7 +17,6 @@ import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -26,48 +24,10 @@ import java.util.Locale;
 
 import me.vickychijwani.spectre.R;
 import me.vickychijwani.spectre.util.functions.Action1;
-import me.vickychijwani.spectre.view.BaseActivity;
 
 public class AppUtils {
 
     private static final String TAG = AppUtils.class.getSimpleName();
-
-    public static void emailFeedbackToDeveloper(@NonNull BaseActivity activity) {
-        String subject = activity.getString(R.string.feedback_email_subject,
-                activity.getString(R.string.app_name));
-        String body = "App version: " + getAppVersion(activity) + "\n" +
-                "Android API version: " + Build.VERSION.SDK_INT + "\n" +
-                "Ghost version: <include if relevant>" + "\n" +
-                "\n";
-        emailDeveloper(activity, subject, body);
-    }
-
-    public static void emailLoginIssueToDeveloper(@NonNull BaseActivity activity) {
-        String subject = activity.getString(R.string.login_help_email_subject,
-                activity.getString(R.string.app_name));
-        String body = "App version: " + getAppVersion(activity) + "\n" +
-                "Android API version: " + Build.VERSION.SDK_INT + "\n" +
-                "Ghost version: <include if relevant>" + "\n" +
-                "\n" +
-                "<Describe your issue here>\n";
-        emailDeveloper(activity, subject, body);
-    }
-
-    private static void emailDeveloper(@NonNull BaseActivity activity, @NonNull String subject,
-                                       @NonNull String body) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "vickychijwani@gmail.com" });
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, body);
-
-        if (intent.resolveActivity(activity.getPackageManager()) != null) {
-            activity.startActivity(intent);
-        } else {
-            Toast.makeText(activity, R.string.intent_no_apps, Toast.LENGTH_LONG)
-                    .show();
-        }
-    }
 
     @NonNull
     public static String getAppVersion(@NonNull Context context) {

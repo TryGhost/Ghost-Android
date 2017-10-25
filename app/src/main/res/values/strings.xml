@@ -26,7 +26,6 @@
     <string name="status_published_auto_saved">Changes auto-saved, not published yet</string>
     <string name="status_marked_for_deletion">Marked for deletion, waiting to go online…</string>
     <string name="status_marked_for_deletion_open_error">That post is marked for deletion, it cannot be opened</string>
-    <string name="send_feedback">Send Feedback…</string>
 
     <string name="preview">Preview</string>
     <string name="edit">Edit</string>

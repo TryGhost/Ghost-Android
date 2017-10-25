@@ -24,7 +24,6 @@
     <string name="status_published_auto_saved">Promjene auto-spremljene, nisu još objavljene</string>
     <string name="status_marked_for_deletion">Označeno za brisanje, čekam vezu na internet…</string>
     <string name="status_marked_for_deletion_open_error">Ovaj post je označen za brisanje, ne može biti otvoren</string>
-    <string name="send_feedback">Pošalji komentar…</string>
 
     <string name="preview">Pregled</string>
     <string name="edit">Izmijeni</string>

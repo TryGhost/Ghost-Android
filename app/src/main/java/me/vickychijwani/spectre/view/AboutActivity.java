@@ -16,10 +16,7 @@ public class AboutActivity extends BaseActivity {
 
     public static final String URL_GITHUB_CONTRIBUTING = "https://github.com/tryghost/ghost-android/blob/master/CONTRIBUTING.md#reporting-bugs";
     public static final String URL_TRANSLATE = "https://hosted.weblate.org/engage/quill/en/";
-    public static final String URL_MY_WEBSITE = "http://ghost.org";
-    public static final String URL_TWITTER_PROFILE = "https://twitter.com/tryghost";
-    public static final String URL_GITHUB_REPO = "https://github.com/tryghost/ghost-android";
-    public static final String URL_GITHUB_PROFILE = "https://github.com/tryghost";
+    public static final String URL_SLACK = "https://slack.ghost.org/";
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.about_version) TextView mVersionView;
@@ -44,26 +41,6 @@ public class AboutActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.about_me)
-    public void onAboutMeClicked(View v) {
-        openUrl(URL_GITHUB_PROFILE);
-    }
-
-    @OnClick(R.id.about_github)
-    public void onGithubClicked(View v) {
-        openUrl(URL_GITHUB_REPO);
-    }
-
-    @OnClick(R.id.about_twitter)
-    public void onTwitterClicked(View v) {
-        openUrl(URL_TWITTER_PROFILE);
-    }
-
-    @OnClick(R.id.about_website)
-    public void onWebsiteClicked(View v) {
-        openUrl(URL_MY_WEBSITE);
-    }
-
     @OnClick(R.id.about_report_bugs)
     public void onReportBugsClicked(View v) {
         openUrl(URL_GITHUB_CONTRIBUTING);
@@ -84,9 +61,9 @@ public class AboutActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.about_email_developer)
-    public void onEmailDeveloperClicked(View v) {
-        AppUtils.emailFeedbackToDeveloper(this);
+    @OnClick(R.id.about_help)
+    public void onHelpClicked(View v) {
+        openUrl(URL_SLACK);
     }
 
 }

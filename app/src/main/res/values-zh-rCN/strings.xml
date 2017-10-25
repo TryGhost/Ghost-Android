@@ -24,7 +24,6 @@
     <string name="status_published_auto_saved">更改已自动保存，尚未发布</string>
     <string name="status_marked_for_deletion">已标记删除，等待联网…</string>
     <string name="status_marked_for_deletion_open_error">这篇文章已被删除</string>
-    <string name="send_feedback">发送反馈…</string>
 
     <string name="preview">预览</string>
     <string name="edit">编辑</string>

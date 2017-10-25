@@ -24,7 +24,6 @@
     <string name="status_published_auto_saved">Changements sauvés automatiquement, pas encore publié</string>
     <string name="status_marked_for_deletion">Suppression en attente de connexion…</string>
     <string name="status_marked_for_deletion_open_error">Cet article est marqué pour être supprimé, il ne peut pas être ouvert</string>
-    <string name="send_feedback">Envoyer un commentaire…</string>
 
     <string name="preview">Aperçu</string>
     <string name="edit">Édition</string>

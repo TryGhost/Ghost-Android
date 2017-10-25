@@ -64,7 +64,6 @@ import me.vickychijwani.spectre.event.RefreshDataEvent;
 import me.vickychijwani.spectre.event.UserLoadedEvent;
 import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Setting;
-import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.DeviceUtils;
 import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.view.image.BorderedCircleTransformation;
@@ -250,9 +249,6 @@ public class PostListActivity extends BaseActivity {
                 return true;
             case R.id.action_refresh:
                 refreshData(false);
-                return true;
-            case R.id.action_feedback:
-                AppUtils.emailFeedbackToDeveloper(this);
                 return true;
             case R.id.action_about:
                 Intent aboutIntent = new Intent(this, AboutActivity.class);

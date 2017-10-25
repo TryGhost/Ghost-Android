@@ -21,7 +21,6 @@
     <string name="status_marked_for_deletion">삭제 예정됨, 온라인 상태 대기중…</string>
     <string name="status_scheduled">발행 대기중 - %s</string>
     <string name="status_marked_for_deletion_open_error">이 글은 삭제 예정되어 있으며 열 수 없습니다</string>
-    <string name="send_feedback">피드백 보내기…</string>
 
     <string name="preview">미리보기</string>
     <string name="edit">편집</string>

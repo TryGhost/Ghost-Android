@@ -25,6 +25,7 @@ import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.KeyboardUtils;
 import me.vickychijwani.spectre.util.Listenable;
 import me.vickychijwani.spectre.util.NetworkUtils;
+import me.vickychijwani.spectre.view.AboutActivity;
 import me.vickychijwani.spectre.view.LoginActivity;
 import timber.log.Timber;
 
@@ -61,8 +62,7 @@ public class PasswordAuthFragment extends BaseFragment implements
         final String loginHelpTip = mLoginHelpTipView.getText().toString();
         AppUtils.setHtmlWithLinkClickHandler(mLoginHelpTipView, loginHelpTip, (url) -> {
             if ("login-help".equals(url)) {
-                AppUtils.emailLoginIssueToDeveloper(
-                        (LoginActivity) PasswordAuthFragment.this.getActivity());
+                openUrl(AboutActivity.URL_SLACK);
             } else {
                 Timber.wtf("Unexpected URL = " + url);
             }

@@ -11,7 +11,6 @@
     <string name="logout">Esci</string>
     <string name="status_published">Pubblicato %s</string>
     <string name="status_draft">Bozza</string>
-    <string name="send_feedback">Invia feedback…</string>
 
     <string name="preview">Anteprima</string>
     <string name="edit">Modifica</string>

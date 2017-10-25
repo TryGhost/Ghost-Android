@@ -27,7 +27,6 @@
     <string name="status_published_auto_saved">Cambios auto-guardados, no publicados todavía</string>
     <string name="status_marked_for_deletion">Marcado para borrar, esperando a tener conexión…</string>
     <string name="status_marked_for_deletion_open_error">Este artículo ha sido marcado para ser borrado, no puede ser abierto</string>
-    <string name="send_feedback">Mandar Feedback…</string>
 
     <string name="preview">Previsualizar</string>
     <string name="edit">Editar</string>
