@@ -466,6 +466,13 @@ public class NetworkService implements
 
     @Subscribe
     public void onSyncPostsEvent(final SyncPostsEvent event) {
+        if (event.loadCachedData) {
+            LoadPostsEvent loadPostsEvent = new LoadPostsEvent(false);
+            mRefreshEventsQueue.add(loadPostsEvent);
+            getBus().post(loadPostsEvent);
+            refreshSucceeded(event);
+            return;
+        }
         // FIXME (1) this prevents e.g., double draft creation but it may prevent e.g. a post from
         // FIXME     being synced when it is triggered when a previous sync is in progress
         // FIXME (2) also ensure 2 sync requests with different values for forceNetworkCall do
@@ -473,13 +480,6 @@ public class NetworkService implements
         // FIXME     onSavePostEvent marked "synchack")
         // don't trigger another sync if it is already in progress
         if (mbSyncOnGoing) {
-            return;
-        }
-        if (event.loadCachedData) {
-            LoadPostsEvent loadPostsEvent = new LoadPostsEvent(false);
-            mRefreshEventsQueue.add(loadPostsEvent);
-            getBus().post(loadPostsEvent);
-            refreshSucceeded(event);
             return;
         }
 

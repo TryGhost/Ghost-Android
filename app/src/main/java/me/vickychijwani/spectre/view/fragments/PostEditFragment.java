@@ -55,6 +55,7 @@ import me.vickychijwani.spectre.model.entity.PendingAction;
 import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Tag;
 import me.vickychijwani.spectre.network.ApiFailure;
+import me.vickychijwani.spectre.network.GhostApiUtils;
 import me.vickychijwani.spectre.util.functions.Action1;
 import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.EditTextSelectionState;
@@ -548,6 +549,7 @@ public class PostEditFragment extends BaseFragment implements
                              @Nullable @Post.Status String newStatus) {
         mPost.setTitle(mPostTitleEditView.getText().toString());
         mPost.setMarkdown(mPostEditView.getText().toString());
+        mPost.setMobiledoc(GhostApiUtils.markdownToMobiledoc(mPost.getMarkdown()));
         mPost.setHtml(null);   // omit stale HTML from request body
         mPost.setTags(mPostSettingsManager.getTags());
         mPost.setCustomExcerpt(mPostSettingsManager.getCustomExcerpt());
