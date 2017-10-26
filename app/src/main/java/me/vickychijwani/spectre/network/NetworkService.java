@@ -709,8 +709,15 @@ public class NetworkService implements
             }
         }
 
-        // don't set updatedAt to enable easy conflict detection by comparing updatedAt values
-        //updatedPost.setUpdatedAt(new Date());              // mark as updated, to promote in sorted order
+        // At first glance, this might seem redundant: shouldn't the post being saved have the same
+        // timestamp as the one in the DB? Actually, no, not if a sync was in progress when the post
+        // was opened. This prevents spurious conflict detections caused by the following flow:
+        // post saved => sync started => post opened again => sync complete => post saved again
+        // NOTE: This logic does not harm conflict detection AS LONG AS THE POST IS SAVED BEFORE
+        // THE NEXT SYNC OCCURS.
+        if (realmPost.getUpdatedAt() != null && !realmPost.getUpdatedAt().equals(updatedPost.getUpdatedAt())) {
+            updatedPost.setUpdatedAt(realmPost.getUpdatedAt());
+        }
         createOrUpdateModel(updatedPost);                  // save the local post to db
 
         // must set PendingActions after other stuff, else the updated post's pending actions will
