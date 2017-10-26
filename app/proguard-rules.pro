@@ -58,8 +58,8 @@
 # Realm
 # proguard.txt included in library
 
-# Retrolambda
--dontwarn java.lang.invoke.*
+# ButterKnife
+# proguard.txt included in library
 
 # OkHttp
 -keepattributes Signature
