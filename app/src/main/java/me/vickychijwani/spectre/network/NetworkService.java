@@ -483,6 +483,9 @@ public class NetworkService implements
             return;
         }
 
+        // load cached data, to update the post list immediately when a conflict is resolved
+        getBus().post(new PostsLoadedEvent(getPostsSorted(), POSTS_FETCH_LIMIT));
+
         final List<Post> localDeletedPosts = copyPosts(mRealm.where(Post.class)
                 .equalTo("pendingActions.type", PendingAction.DELETE)
                 .findAll());
