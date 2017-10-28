@@ -8,7 +8,7 @@
     <string name="error_invalid_email">このメールアドレスは無効です</string>
     <string name="error_field_required">このフィールドは必須です</string>
 
-    <string name="no_such_blog">%s/ghost に Ghost admin がありません。</string>
+    <string name="no_such_blog">%s/ghost に Ghost admin がありません</string>
     <string name="login_unexpected_error">サインイン中に予期しないエラー。もう一度やり直してください。</string>
     <string name="login_connection_error">%s/ghost に接続できませんでした。もう一度やり直してください。</string>
     <string name="login_ssl_unsupported">あなたのブログは https:// (SSL) をサポートしていません</string>
@@ -113,5 +113,8 @@
     <string name="next">次</string>
 
     <string name="enable_permission_tip">アクセス許可をタップして、ストレージのアクセス許可を有効にします</string>
+
+    <string name="post_excerpt_hint">抜粋</string>
+    <string name="post_page_hint">この投稿をページにする</string>
 
     </resources>
