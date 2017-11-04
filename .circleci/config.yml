@@ -1,0 +1,51 @@
+# configuration pilfered from https://circleci.com/docs/2.0/language-android/
+version: 2
+
+jobs:
+  build:
+    environment:
+      TARGET_SDK_VERSION: 25
+
+    # https://circleci.com/docs/2.0/configuration-reference/#docker--machine-executor
+    docker:
+      - image: circleci/android:api-${TARGET_SDK_VERSION}-alpha
+      - image: ghost:1-alpine   # test against latest 1.x version of Ghost
+
+    steps:
+      # https://circleci.com/docs/2.0/configuration-reference/#checkout
+      - checkout
+
+      # https://circleci.com/docs/2.0/configuration-reference/#restore_cache
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+
+      # https://circleci.com/docs/2.0/configuration-reference/#save_cache
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+      - run:
+          name: Build Debug APK  # not a release build since Fabric API keys are not available in CI
+          command: ./gradlew assembleDebug -PdisablePreDex --console=plain
+
+      - run:
+          name: Setup Ghost
+          command: curl -vvvv --fail -d 'setup[0][name]=User' -d 'setup[0][email]=user@example.com' -d 'setup[0][password]=randomtestpwd' -d 'setup[0][blogTitle]=My Blog' http://localhost:2368/ghost/api/v0.1/authentication/setup/
+
+      - run:
+          name: Run tests
+          command: ./gradlew testDebug -PdisablePreDex --console=plain
+
+      # https://circleci.com/docs/2.0/configuration-reference/#store_artifacts
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+
+      # https://circleci.com/docs/2.0/configuration-reference/#store_test_results
+      - store_test_results:
+          path: app/build/test-results
