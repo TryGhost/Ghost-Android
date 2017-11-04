@@ -11,6 +11,8 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
 
@@ -87,71 +89,73 @@ tasks.whenTaskAdded { task ->
 
 repositories {
     mavenCentral()
-    maven { url 'https://maven.google.com' }
+    google()
     maven { url 'https://maven.fabric.io/public' }
     maven { url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo' }
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
     // reactive extensions (rx)
-    compile "io.reactivex.rxjava2:rxjava:2.1.4"
-    compile "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.1.4"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
 
     // networking / communication / data storage
-    compile("com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion") {
+    implementation("com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion") {
         exclude module: "okhttp"
     }
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
-    compile "com.squareup.picasso:picasso:2.5.2"
-    compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
-    compile "com.squareup:otto:1.3.8"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
+    implementation "com.squareup.picasso:picasso:2.5.2"
+    implementation "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
+    implementation "com.squareup:otto:1.3.8"
 
     // UI
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
-    compile "com.android.support:cardview-v7:$rootProject.ext.supportLibVersion"
-    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibVersion"
-    compile "com.android.support:design:$rootProject.ext.supportLibVersion"
-    compile "com.android.support:percent:$rootProject.ext.supportLibVersion"
-    compile "com.android.support:customtabs:$rootProject.ext.supportLibVersion"
-    compile "org.ocpsoft.prettytime:prettytime:4.0.1.Final"
-    compile "com.tsengvn:typekit:1.0.1"
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.ext.supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibVersion"
+    implementation "com.android.support:design:$rootProject.ext.supportLibVersion"
+    implementation "com.android.support:percent:$rootProject.ext.supportLibVersion"
+    implementation "com.android.support:customtabs:$rootProject.ext.supportLibVersion"
+    implementation "org.ocpsoft.prettytime:prettytime:4.0.1.Final"
+    implementation "com.tsengvn:typekit:1.0.1"
 
     // misc
-    compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
-    compile("com.crashlytics.sdk.android:crashlytics:2.6.2@aar") {
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
+    implementation("com.crashlytics.sdk.android:crashlytics:2.6.2@aar") {
         transitive = true
     }
-    compile("com.crashlytics.sdk.android:answers:1.3.7@aar") {
+    implementation("com.crashlytics.sdk.android:answers:1.3.7@aar") {
         transitive = true
     }
-    compile "com.github.hotchemi:permissionsdispatcher:$rootProject.ext.permissionsDispatcherVersion"
-    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.ext.permissionsDispatcherVersion"
-    compile "com.github.slugify:slugify:2.1.9"
-    compile "com.jakewharton.timber:timber:4.5.1"
+    implementation "com.github.hotchemi:permissionsdispatcher:$rootProject.ext.permissionsDispatcherVersion"
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.ext.permissionsDispatcherVersion"
+    implementation "com.github.slugify:slugify:2.1.9"
+    implementation "com.jakewharton.timber:timber:4.5.1"
 
     // debug
-    debugCompile "nl.littlerobots.rxlint:rxlint:+"
-    debugCompile "com.squareup.leakcanary:leakcanary-android:1.5.4"
-    debugCompile "com.jakewharton.scalpel:scalpel:1.1.2"
-    debugCompile "io.palaima.debugdrawer:debugdrawer:0.7.0"
-    debugCompile "io.palaima.debugdrawer:debugdrawer-commons:$rootProject.ext.debugdrawerVersion"
-    debugCompile "io.palaima.debugdrawer:debugdrawer-okhttp3:$rootProject.ext.debugdrawerVersion"
-    debugCompile "io.palaima.debugdrawer:debugdrawer-picasso:$rootProject.ext.debugdrawerVersion"
-    debugCompile "io.palaima.debugdrawer:debugdrawer-scalpel:$rootProject.ext.debugdrawerVersion"
-    debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
-    debugCompile "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
-    debugCompile "com.uphyca:stetho_realm:2.0.0"
+    debugImplementation "nl.littlerobots.rxlint:rxlint:+"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:1.5.4"
+    debugImplementation "com.jakewharton.scalpel:scalpel:1.1.2"
+    debugImplementation "io.palaima.debugdrawer:debugdrawer:0.7.0"
+    debugImplementation "io.palaima.debugdrawer:debugdrawer-commons:$rootProject.ext.debugdrawerVersion"
+    debugImplementation "io.palaima.debugdrawer:debugdrawer-okhttp3:$rootProject.ext.debugdrawerVersion"
+    debugImplementation "io.palaima.debugdrawer:debugdrawer-picasso:$rootProject.ext.debugdrawerVersion"
+    debugImplementation "io.palaima.debugdrawer:debugdrawer-scalpel:$rootProject.ext.debugdrawerVersion"
+    debugImplementation "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
+    debugImplementation "com.uphyca:stetho_realm:2.0.0"
 
     // test
-    testCompile "junit:junit:4.12"
-    testCompile "org.hamcrest:hamcrest-library:1.3"
-    testCompile "org.mockito:mockito-core:2.10.+"
-    testCompile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
-    testCompile "org.json:json:20170516"    // don't depend on Android's JSONObject: http://stackoverflow.com/a/30759769/504611
-    testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okhttpVersion"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.hamcrest:hamcrest-library:1.3"
+    testImplementation "org.mockito:mockito-core:2.10.+"
+    testImplementation "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
+    testImplementation "org.json:json:20170516"    // don't depend on Android's JSONObject: http://stackoverflow.com/a/30759769/504611
+    testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okhttpVersion"
 }
