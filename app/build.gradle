@@ -30,6 +30,9 @@ android {
 
         // enable support for vector drawables on API < 21
         vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testApplicationId 'org.ghost.android'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -158,4 +161,9 @@ dependencies {
     testImplementation "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
     testImplementation "org.json:json:20170516"    // don't depend on Android's JSONObject: http://stackoverflow.com/a/30759769/504611
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.ext.okhttpVersion"
+
+    androidTestImplementation "com.android.support.test:runner:$rootProject.ext.androidJunitRunnerVersion"
+    androidTestImplementation "com.android.support.test:rules:$rootProject.ext.androidJunitRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
 }
