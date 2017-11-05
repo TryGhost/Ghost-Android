@@ -38,8 +38,29 @@ jobs:
           command: curl -vvvv --fail -d 'setup[0][name]=User' -d 'setup[0][email]=user@example.com' -d 'setup[0][password]=randomtestpwd' -d 'setup[0][blogTitle]=My Blog' http://localhost:2368/ghost/api/v0.1/authentication/setup/
 
       - run:
-          name: Run tests
+          name: Run unit tests
           command: ./gradlew testDebug -PdisablePreDex --console=plain
+
+      - run:
+          name: Setup emulator
+          command: sdkmanager "system-images;android-${TARGET_SDK_VERSION};google_apis;x86_64" && echo "no" | avdmanager create avd -n test -k "system-images;android-${TARGET_SDK_VERSION};google_apis;x86_64"
+
+      - run:
+          name: Launch emulator
+          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-x86 -avd test -noaudio -no-boot-anim -no-window -accel on
+          background: true
+
+      - run:
+          name: Wait for emulator
+          command: |
+            circle-android wait-for-boot
+            # unlock the emulator screen
+            sleep 30
+            adb shell input keyevent 82
+
+      - run:
+          name: Run end-to-end tests
+          command: ./gradlew connectedAndroidTest -PdisablePreDex --console=plain
 
       # https://circleci.com/docs/2.0/configuration-reference/#store_artifacts
       - store_artifacts:
