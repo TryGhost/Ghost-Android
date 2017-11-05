@@ -47,13 +47,13 @@ class LoginOrchestratorTest {
         private fun makeOrchestrator(credSource: CredentialSource,
                                      credSink: CredentialSink,
                                      useGhostAuth: Boolean,
-                                     networkBehavior: NetworkBehavior = Helpers.idealNetworkBehavior): LoginOrchestrator {
+                                     networkBehavior: NetworkBehavior = Helpers.idealNetworkBehavior)
+                : LoginOrchestrator {
             val blogUrlValidator = BlogUrlValidator { Observable.just("http://$it") }
             val hackListener = mock(HACKListener::class.java)
-            val apiProviderFactory = MockApiProviderFactory(
-                    useGhostAuth, networkBehavior)
-            return LoginOrchestrator(blogUrlValidator, apiProviderFactory, credSource,
-                    credSink, hackListener)
+            val apiProviderFactory = MockApiProviderFactory(useGhostAuth, networkBehavior)
+            return LoginOrchestrator(blogUrlValidator, apiProviderFactory, credSource, credSink,
+                    hackListener)
         }
     }
 
@@ -94,7 +94,8 @@ class LoginOrchestratorTest {
 
         orchestrator.start(BLOG_URL_WITHOUT_PROTOCOL)
 
-        verify<Listener>(listener).onNetworkError(any<LoginOrchestrator.ErrorType>(), argThat(sameInstance(failingNetworkBehavior.failureException())))
+        verify<Listener>(listener).onNetworkError(any<LoginOrchestrator.ErrorType>(),
+                argThat(sameInstance(failingNetworkBehavior.failureException())))
     }
 
     @Test
@@ -181,7 +182,9 @@ class LoginOrchestratorTest {
         ), everyItem(`is`("https://my-blog.com")))
     }
 
-    private class MockApiProviderFactory(private val mUseGhostAuth: Boolean, private val mNetworkBehavior: NetworkBehavior) : ApiProviderFactory {
+    private class MockApiProviderFactory(private val mUseGhostAuth: Boolean,
+                                         private val mNetworkBehavior: NetworkBehavior)
+        : ApiProviderFactory {
 
         override fun create(blogUrl: String): ApiProvider {
             val retrofit = GhostApiUtils.getRetrofit(blogUrl, Helpers.prodHttpClient)

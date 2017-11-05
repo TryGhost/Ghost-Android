@@ -58,8 +58,8 @@ class GhostApiTest {
                 // abort. This is to avoid messing up a production blog (like my own) by mistake.
                 val DEFAULT_POST_COUNT = 7
                 if (posts.posts.isNotEmpty() && posts.posts.size != DEFAULT_POST_COUNT) {
-                    throw IllegalStateException("Aborting! Expected " + DEFAULT_POST_COUNT +
-                            " posts, found " + posts.posts.size)
+                    throw IllegalStateException("Aborting! Expected $DEFAULT_POST_COUNT posts, " +
+                            "found ${posts.posts.size}")
                 }
                 for (post in posts.posts) {
                     execute(API.deletePost(token.authHeader, post.id))
@@ -143,8 +143,7 @@ class GhostApiTest {
     fun test_getAuthToken_withRefreshToken() {
         doWithAuthToken({ expiredToken ->
             val clientSecret = clientSecret     // fetch the client secret only once
-            val credentials = RefreshReqBody(expiredToken.refreshToken,
-                    clientSecret)
+            val credentials = RefreshReqBody(expiredToken.refreshToken, clientSecret)
             val refreshedToken = execute(API.refreshAuthToken(credentials))
 
             assertThat(refreshedToken.tokenType, `is`("Bearer"))
@@ -211,8 +210,8 @@ class GhostApiTest {
                 assertThat(createdPost.slug, `is`(SLUGIFY.slugify(expectedPost.title)))
                 assertThat<String>(createdPost.status, `is`<String>(expectedPost.status))
                 assertThat<String>(createdPost.markdown, `is`<String>(expectedPost.markdown))
-                assertThat(createdPost.html, `is`("<div class=\"kg-card-markdown\"><p>"
-                        + expectedPost.markdown + "</p>\n</div>"))
+                assertThat(createdPost.html, `is`("<div class=\"kg-card-markdown\">" +
+                        "<p>${expectedPost.markdown}</p>\n</div>"))
                 assertThat<RealmList<Tag>>(createdPost.tags, `is`<RealmList<Tag>>(expectedPost.tags))
                 assertThat<String>(createdPost.customExcerpt, `is`<String>(expectedPost.customExcerpt))
                 assertThat<Boolean>(createdPost.isFeatured, `is`<Boolean>(expectedPost.isFeatured))
@@ -427,8 +426,7 @@ private fun createRandomPost(token: AuthToken, callback: (Post, Response<PostLis
         it.tags = RealmList()
         it.customExcerpt = markdown.substring(0, 100)
     }
-    val response = execute(GhostApiTest.API.createPost(token.authHeader,
-            PostStubList.from(newPost)))
+    val response = execute(GhostApiTest.API.createPost(token.authHeader, PostStubList.from(newPost)))
     val createdId = response.body()!!.posts[0].id
     val created = execute(GhostApiTest.API.getPost(token.authHeader, createdId)).body()!!.posts[0]
 

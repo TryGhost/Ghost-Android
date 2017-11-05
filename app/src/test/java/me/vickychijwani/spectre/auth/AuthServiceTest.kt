@@ -62,8 +62,7 @@ class AuthServiceTest {
 
     @Test
     fun refreshToken_expiredAccessAndRefreshToken() {
-        refreshToken("expired-access-token", "expired-refresh-token",
-                "auth-code")
+        refreshToken("expired-access-token", "expired-refresh-token", "auth-code")
 
         verify<CredentialSink>(credSink).setLoggedIn(BLOG_URL, true)
         verify<Listener>(listener).onNewAuthToken(argThat(hasProperty("accessToken",
@@ -77,8 +76,7 @@ class AuthServiceTest {
         val spy = spy(CredentialsExpiredEventListener())
         getBus().register(spy)
 
-        refreshToken("expired-access-token", "expired-refresh-token",
-                "expired-auth-code")
+        refreshToken("expired-access-token", "expired-refresh-token", "expired-auth-code")
 
         verify<CredentialSink>(credSink).deleteCredentials(BLOG_URL)
         verify(spy).onCredentialsExpiredEvent(any())
