@@ -28,4 +28,18 @@ public class BlogDBMigration implements RealmMigration {
         }
     }
 
+    // override equals and hashCode to prevent this error in e2e tests:
+    //   IllegalArgumentException: Configurations cannot be different if used to open the same file.
+    //   The most likely cause is that equals() and hashCode() are not overridden in the migration class
+    // see https://stackoverflow.com/a/36919305/504611 for more
+    @Override
+    public int hashCode() {
+        return 34578;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof BlogDBMigration);
+    }
+
 }

@@ -123,4 +123,18 @@ public class BlogMetadataDBMigration implements RealmMigration {
         // ONLY STORES THE *METADATA* FOR ALL CONNECTED BLOGS
     }
 
+    // override equals and hashCode to prevent this error in e2e tests:
+    //   IllegalArgumentException: Configurations cannot be different if used to open the same file.
+    //   The most likely cause is that equals() and hashCode() are not overridden in the migration class
+    // see https://stackoverflow.com/a/36919305/504611 for more
+    @Override
+    public int hashCode() {
+        return 98531;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof BlogMetadataDBMigration);
+    }
+
 }

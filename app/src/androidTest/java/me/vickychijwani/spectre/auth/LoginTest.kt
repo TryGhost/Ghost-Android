@@ -5,6 +5,8 @@ import android.content.ComponentName
 import android.content.Intent
 import android.support.test.InstrumentationRegistry.getTargetContext
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.IdlingRegistry
+import android.support.test.espresso.IdlingResource
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -16,21 +18,28 @@ import android.support.test.filters.LargeTest
 import android.support.test.runner.AndroidJUnit4
 import me.vickychijwani.spectre.R
 import me.vickychijwani.spectre.testing.ClearPreferencesRule
+import me.vickychijwani.spectre.testing.ViewNotVisibleIdlingResource
 import me.vickychijwani.spectre.view.LoginActivity
 import me.vickychijwani.spectre.view.PostListActivity
 import org.hamcrest.CoreMatchers.containsString
 import org.hamcrest.Matcher
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.reflect.KClass
 
 
-// Tests follow the Jake Wharton's Robot pattern explained here:
+// Tests follow Jake Wharton's Robot pattern explained here:
 // https://academy.realm.io/posts/kau-jake-wharton-testing-robots/
 
 @RunWith(AndroidJUnit4::class) @LargeTest
 class LoginTest {
+
+    private val TEST_BLOG = "10.0.2.2:2368"
+    private val TEST_USER = "user@example.com"
+    private val TEST_PWD = "randomtestpwd"
 
     @Rule @JvmField
     val mActivityRule = IntentsTestRule(LoginActivity::class.java)
@@ -38,13 +47,26 @@ class LoginTest {
     @Rule @JvmField
     val mPrefsRule = ClearPreferencesRule()
 
+    private lateinit var mProgressBarIdlingResource: IdlingResource
+
+    @Before
+    fun setup() {
+        mProgressBarIdlingResource = ViewNotVisibleIdlingResource(mActivityRule.activity, R.id.progress)
+        IdlingRegistry.getInstance().register(mProgressBarIdlingResource)
+    }
+
+    @After
+    fun teardown() {
+        IdlingRegistry.getInstance().unregister(mProgressBarIdlingResource)
+    }
+
     @Test
     fun successfulLogin() {
         startLogin {
-            blogAddress("10.0.2.2:2368")
+            blogAddress(TEST_BLOG)
         } connectToBlog {
-            email("user@example.com")
-            password("randomtestpwd")
+            email(TEST_USER)
+            password(TEST_PWD)
         } login {
             isLoggedIn()
         }
@@ -62,7 +84,7 @@ class LoginTest {
     @Test
     fun invalidEmail() {
         startLogin {
-            blogAddress("10.0.2.2:2368")
+            blogAddress(TEST_BLOG)
         } connectToBlog {
             email("invalid_email")
         } login {
@@ -73,7 +95,7 @@ class LoginTest {
     @Test
     fun nonExistentUser() {
         startLogin {
-            blogAddress("10.0.2.2:2368")
+            blogAddress(TEST_BLOG)
         } connectToBlog {
             email("nonexistent@example.com")
             password("doesnt_matter")
@@ -85,9 +107,9 @@ class LoginTest {
     @Test
     fun wrongPassword() {
         startLogin {
-            blogAddress("10.0.2.2:2368")
+            blogAddress(TEST_BLOG)
         } connectToBlog {
-            email("user@example.com")
+            email(TEST_USER)
             password("wrongpassword")
         } login {
             errorMatching("Your password is incorrect")
