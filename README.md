@@ -1,4 +1,4 @@
-<img src="screenshots/demo.gif" width="320" align="right" hspace="20">
+<img src="https://i.imgur.com/Z1BeA5c.gif" width="320" align="right" hspace="20">
 
 [![](https://img.shields.io/circleci/project/TryGhost/Ghost-Android.svg)](https://circleci.com/gh/TryGhost/Ghost-Android)
 [![Translate on Weblate](https://hosted.weblate.org/widgets/quill/-/svg-badge.svg)](https://hosted.weblate.org/engage/quill/en/?utm_source=widget)
