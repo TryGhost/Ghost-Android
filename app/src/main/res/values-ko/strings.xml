@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="prompt_blog_url">블로그 주소 (blog.example.com)</string>
+<resources><string name="prompt_blog_url">블로그 주소</string>
     <string name="prompt_email">이메일</string>
     <string name="prompt_password">비밀번호</string>
-    <string name="error_invalid_email">입력한 이메일 주소가 올바르지 않습니다.</string>
-    <string name="no_such_blog">%s/ghost에는 관리자가 존재하지 않습니다.</string>
+    <string name="error_invalid_email">입력한 이메일 주소가 올바르지 않습니다</string>
+    <string name="no_such_blog">%s/ghost에는 관리자가 존재하지 않습니다</string>
     <string name="login_unexpected_error">로그인 과정에서 예기치 않은 오류가 발생하였습니다. 다시 시도해주세요.</string>
     <string name="login_connection_error">%s/ghost에 연결할 수 없습니다. 다시 시도해주세요.</string>
-    <string name="login_ssl_unsupported">입력하신 블로그는 https:// (SSL)을 지원하지 않습니다. http://으로 바꿔서 다시 시도해주세요.</string>
+    <string name="login_ssl_unsupported">입력하신 블로그는 https:// (SSL)을 지원하지 않습니다</string>
     <string name="logout">로그아웃</string>
-    <string name="error_field_required">이 입력란은 필수 항목입니다.</string>
+    <string name="error_field_required">이 입력란은 필수 항목입니다</string>
 
-    <string name="credentials_expired">비밀번호를 최근에 변경하셨나요? 입력하신 비밀번호로 로그인할 수 없습니다.</string>
+    <string name="credentials_expired">자동 로그인에 실패하였습니다. 다시 로그인하세요</string>
     <string name="unsynced_changes_msg">지금 로그아웃하면 동기화되지 않은 변경 사항을 잃게 됩니다</string>
     <string name="status_draft">초안</string>
     <string name="status_published">%s 발행됨</string>
@@ -79,4 +79,32 @@
 
     <string name="action_sign_in">로그인</string>
 
-</resources>
+<string name="view_post_on_blog">웹으로 보기</string>
+    <string name="save_post_view">웹에서 보기</string>
+    <string name="save_scenario_unknown">저장되었습니다</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">바뀐 내용을 기기에 저장하였습니다</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">글을 갱신하였습니다</string>
+    <string name="save_scenario_auto_save_draft">초안을 저장하였습니다</string>
+    <string name="save_scenario_explicitly_save_draft">초안을 저장하였습니다</string>
+
+    <string name="post_title_hint">글의 제목을 입력하세요…</string>
+    <string name="post_image_hint">글 대표 이미지 삽입</string>
+    <string name="post_tags_hint">태그를 달아보세요…</string>
+    <string name="post_body_hint">여기에 글의 내용을 입력하세요…</string>
+    <string name="post_image_load_error">그림을 로드하는 중에 오류가 발생하였습니다</string>
+    <string name="post_page_hint">이 글을 페이지로 지정</string>
+
+    <string name="insert_image">그림 삽입</string>
+    <string name="insert_image_url">그림 URL 삽입</string>
+    <string name="image_url">그림 URL</string>
+    <string name="insert_image_upload">그림 업로드</string>
+    <string name="remove_image">이 그림 제거</string>
+    <string name="enable_permission_tip">앱 권한에서 저장공간 권한을 부여해주세요</string>
+
+    <string name="conflict_explanation"><b>\'%s\' 글에 편집 충돌이 발생했습니다.</b> 기기의 사본이 업로드되기 전에 서버에서 먼저 갱신되었습니다. 어느 사본을 유지하시겠습니까?</string>
+    <string name="conflict_choice_use_device_copy">기기에 저장된 사본 업로드</string>
+    <string name="conflict_choice_use_server_copy">서버에 저장된 사본 다운로드</string>
+    <string name="conflict_post_preview_title">글의 다음 사본이 유지될 것입니다:</string>
+    <string name="accept">승인</string>
+    <string name="draft">초안</string>
+    </resources>
