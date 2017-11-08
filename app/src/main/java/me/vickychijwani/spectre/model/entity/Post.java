@@ -36,8 +36,7 @@ public class Post implements RealmModel, Parcelable {
     public static final String CONFLICT_NONE = "conflict:none";
     public static final String CONFLICT_UNRESOLVED = "conflict:unresolved";
 
-    private static final String DEFAULT_TITLE = "(Untitled)";
-    public static final String DEFAULT_SLUG_PREFIX = "untitled";
+    public static final String DEFAULT_TITLE = "(Untitled)";
 
     @PrimaryKey
     private String id;
