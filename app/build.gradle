@@ -33,6 +33,9 @@ android {
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         testApplicationId 'org.ghost.android'
+        testInstrumentationRunnerArguments testBlog: System.getenv("TEST_BLOG") ?: '10.0.2.2:2368'
+        testInstrumentationRunnerArguments testUser: System.getenv("TEST_USER") ?: 'user@example.com'
+        testInstrumentationRunnerArguments testPwd: System.getenv("TEST_PWD") ?: 'randomtestpwd'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

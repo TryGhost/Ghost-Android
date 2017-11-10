@@ -38,13 +38,45 @@ jobs:
           command: curl -vvvv --fail -d 'setup[0][name]=User' -d 'setup[0][email]=user@example.com' -d 'setup[0][password]=randomtestpwd' -d 'setup[0][blogTitle]=My Blog' http://localhost:2368/ghost/api/v0.1/authentication/setup/
 
       - run:
-          name: Run tests
+          name: Run unit tests
           command: ./gradlew testDebug -PdisablePreDex --console=plain
+
+      - run:
+          name: Build Android Test APK
+          command: ./gradlew assembleAndroidTest -PdisablePreDex --console=plain
+
+      - run:
+          name: Setup for Firebase test lab
+          command: |
+            echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+            gcloud config set project ${GCLOUD_PROJECT_ID}
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+
+      - run:
+          name: Run end-to-end tests on Firebase Test Lab
+          command: |
+            MODEL=Nexus6
+            LANG=en
+            ORIENTATION=portrait
+            TEST_OUTPUT=$(gcloud firebase test android run \
+                --type instrumentation \
+                --app app/build/outputs/apk/debug/app-debug.apk \
+                --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
+                --device model=${MODEL},version=${TARGET_SDK_VERSION},locale=${LANG},orientation=${ORIENTATION} \
+                | tee /dev/tty)
+            GCS_BUCKET=$(echo "${OUTPUT}" | grep 'GCS bucket' | grep --only-matching 'test-lab.*/')
+            mkdir instrumentation_results
+            gsutil -m cp -r -U $(gsutil ls gs://${GCS_BUCKET}/${MODEL}-${TARGET_SDK_VERSION}-${LANG}-${ORIENTATION}) instrumentation_results | true
 
       # https://circleci.com/docs/2.0/configuration-reference/#store_artifacts
       - store_artifacts:
           path: app/build/reports
           destination: reports
+
+      # https://circleci.com/docs/2.0/configuration-reference/#store_artifacts
+      - store_artifacts:
+          path: instrumentation_results
+          destination: instrumentation_results
 
       # https://circleci.com/docs/2.0/configuration-reference/#store_test_results
       - store_test_results:

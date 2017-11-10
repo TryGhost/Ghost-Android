@@ -36,7 +36,8 @@ import org.junit.runner.RunWith
 class PostTest {
 
     companion object {
-        @ClassRule @JvmField val deleteDefaultPostsRule = DeleteDefaultPostsRule(TEST_BLOG_WITH_PROTOCOL)
+        @ClassRule @JvmField val deleteDefaultPostsRule = DeleteDefaultPostsRule(
+                TEST_BLOG_WITH_PROTOCOL, TEST_USER, TEST_PWD)
     }
 
     @Rule @JvmField val mActivityRule = IntentsTestRule(LoginActivity::class.java)

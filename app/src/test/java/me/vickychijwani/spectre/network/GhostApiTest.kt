@@ -43,7 +43,10 @@ class GhostApiTest {
 
     companion object {
         private val BLOG_URL = "http://localhost:2368/"
-        @ClassRule @JvmField val deleteDefaultPostsRule = DeleteDefaultPostsRule(BLOG_URL)
+        internal val TEST_USER = "user@example.com"
+        internal val TEST_PWD = "randomtestpwd"
+
+        @ClassRule @JvmField val deleteDefaultPostsRule = DeleteDefaultPostsRule(BLOG_URL, TEST_USER, TEST_PWD)
 
         private val httpClient = ProductionHttpClientFactory().create(null)
                 .newBuilder()
@@ -379,6 +382,9 @@ class GhostApiTest {
 
 
 // private helpers
+fun GhostApiService.doWithAuthToken(callback: (AuthToken) -> Unit) {
+    this.doWithAuthToken(GhostApiTest.TEST_USER, GhostApiTest.TEST_PWD, callback)
+}
 
 private fun GhostApiService.createRandomPost(token: AuthToken, callback: (Post, Response<PostList>, Post) -> Unit) {
     val title = getRandomString(20)

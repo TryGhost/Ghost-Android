@@ -4,16 +4,13 @@ import io.reactivex.Observable
 import me.vickychijwani.spectre.model.entity.AuthToken
 import me.vickychijwani.spectre.network.GhostApiService
 import me.vickychijwani.spectre.network.entity.*
-import org.hamcrest.Matchers
-import org.junit.Assert
+import org.hamcrest.Matchers.notNullValue
+import org.junit.Assert.assertThat
 import retrofit2.*
 
-val TEST_USER = "user@example.com"
-val TEST_PWD = "randomtestpwd"
-
 // extension functions for the GhostApiService
-fun GhostApiService.deleteDefaultPosts() {
-    this.doWithAuthToken { token ->
+fun GhostApiService.deleteDefaultPosts(user: String, password: String) {
+    this.doWithAuthToken(user, password) { token ->
         val posts = execute(this.getPosts(token.authHeader, "", 100)).body()!!
         // A default Ghost install has these many posts initially. If there are more than this,
         // abort. This is to avoid messing up a production blog (like my own) by mistake.
@@ -28,10 +25,10 @@ fun GhostApiService.deleteDefaultPosts() {
     }
 }
 
-fun GhostApiService.doWithAuthToken(callback: (AuthToken) -> Unit) {
+fun GhostApiService.doWithAuthToken(user: String, password: String, callback: (AuthToken) -> Unit) {
     val clientSecret = clientSecret     // fetch the client secret only once
-    Assert.assertThat(clientSecret, Matchers.notNullValue())
-    val credentials = AuthReqBody.fromPassword(clientSecret, TEST_USER, TEST_PWD)
+    assertThat(clientSecret, notNullValue())
+    val credentials = AuthReqBody.fromPassword(clientSecret, user, password)
     val token = execute(this.getAuthToken(credentials))
     try {
         callback(token)

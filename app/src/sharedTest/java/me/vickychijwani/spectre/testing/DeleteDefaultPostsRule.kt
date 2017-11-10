@@ -6,14 +6,16 @@ import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
-class DeleteDefaultPostsRule(private val blogUrl: String) : TestRule {
+class DeleteDefaultPostsRule(private val blogUrl: String,
+                             private val user: String,
+                             private val password: String) : TestRule {
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
                 val httpClient = ProductionHttpClientFactory().create(null)
                 val apiProvider = ProductionApiProvider(httpClient, blogUrl)
-                apiProvider.ghostApi.deleteDefaultPosts()
+                apiProvider.ghostApi.deleteDefaultPosts(user, password)
                 base.evaluate()
             }
         }

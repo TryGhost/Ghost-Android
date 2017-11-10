@@ -1,5 +1,6 @@
 package me.vickychijwani.spectre.testing
 
+import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.closeSoftKeyboard
@@ -14,8 +15,10 @@ import me.vickychijwani.spectre.view.PostListActivity
 import org.hamcrest.CoreMatchers.containsString
 
 
-val TEST_BLOG = "10.0.2.2:2368"
+val TEST_BLOG = InstrumentationRegistry.getArguments().getString("testBlog")!!
 val TEST_BLOG_WITH_PROTOCOL = "http://$TEST_BLOG"
+val TEST_USER = InstrumentationRegistry.getArguments().getString("testUser")!!
+val TEST_PWD = InstrumentationRegistry.getArguments().getString("testPwd")!!
 
 fun startLogin(func: BlogAddressRobot.() -> Unit) = BlogAddressRobot().apply { func() }
 
