@@ -1,11 +1,11 @@
 package me.vickychijwani.spectre.view
 
 import android.support.test.InstrumentationRegistry.getInstrumentation
+import android.support.test.espresso.*
 import android.support.test.espresso.Espresso.closeSoftKeyboard
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import android.support.test.espresso.Espresso.pressBack
-import android.support.test.espresso.IdlingRegistry
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.replaceText
 import android.support.test.espresso.action.ViewActions.swipeDown
@@ -35,14 +35,13 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class) @LargeTest
 class PostTest {
 
-    @Rule @JvmField
-    val mActivityRule = IntentsTestRule(LoginActivity::class.java)
+    companion object {
+        @ClassRule @JvmField val deleteDefaultPostsRule = DeleteDefaultPostsRule(TEST_BLOG_WITH_PROTOCOL)
+    }
 
-    @Rule @JvmField
-    val mPrefsRule = ClearPreferencesRule()
-
-    @Rule @JvmField
-    val mOkHttpIdlingResourceRule = OkHttpIdlingResourceRule()
+    @Rule @JvmField val mActivityRule = IntentsTestRule(LoginActivity::class.java)
+    @Rule @JvmField val mPrefsRule = ClearPreferencesRule()
+    @Rule @JvmField val mOkHttpIdlingResourceRule = OkHttpIdlingResourceRule()
 
     // login before each test; no need to log out because preferences are cleared after each test
     @Before
@@ -84,6 +83,17 @@ class PostTest {
         }.openPost(position = 0).deleteDraft {}
     }
 
+    @Ignore
+    @Test
+    fun editAndDeleteDraft() {
+        newPost {
+            editorTitle("Some title")
+            editorBody("Some body text")
+        }.deleteDraft {
+            doesNotHavePost("Some title", position = 0)
+        }
+    }
+
 }
 
 private fun newPost(func: PostViewRobot.() -> Unit): PostViewRobot {
@@ -104,8 +114,13 @@ private class PostListRobot {
     }
 
     fun doesNotHavePost(title: String, position: Int) {
-        onView(withRecyclerView(R.id.post_list).atPosition(position))
-                .check(matches(not(hasDescendant(withText(title)))))
+        try {
+            onView(withRecyclerView(R.id.post_list).atPosition(position))
+                    .check(matches(not(hasDescendant(withText(title)))))
+        } catch (_: NoMatchingViewException) {
+            // if the view at position was not found (e.g., in an empty RecyclerView), then
+            // the assertion "doesNotHavePost" still holds
+        }
     }
 
     fun openPost(position: Int): PostViewRobot {

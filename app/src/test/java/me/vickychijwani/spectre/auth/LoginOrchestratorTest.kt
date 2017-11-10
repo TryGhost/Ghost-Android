@@ -4,24 +4,24 @@ import com.squareup.otto.Subscribe
 import io.reactivex.Observable
 import me.vickychijwani.spectre.auth.LoginOrchestrator.HACKListener
 import me.vickychijwani.spectre.auth.LoginOrchestrator.Listener
+import me.vickychijwani.spectre.event.*
 import me.vickychijwani.spectre.event.BusProvider.getBus
-import me.vickychijwani.spectre.event.LoginDoneEvent
-import me.vickychijwani.spectre.event.LoginErrorEvent
-import me.vickychijwani.spectre.network.ApiProvider
-import me.vickychijwani.spectre.network.ApiProviderFactory
-import me.vickychijwani.spectre.network.GhostApiService
-import me.vickychijwani.spectre.network.GhostApiUtils
+import me.vickychijwani.spectre.network.*
 import me.vickychijwani.spectre.network.entity.AuthReqBody
 import me.vickychijwani.spectre.testing.*
 import me.vickychijwani.spectre.util.Pair
-import org.hamcrest.CoreMatchers.*
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.everyItem
+import org.hamcrest.CoreMatchers.sameInstance
+import org.junit.*
 import org.junit.Assert.assertThat
-import org.junit.Before
-import org.junit.ClassRule
-import org.junit.Test
-import org.junit.rules.TestRule
 import org.mockito.ArgumentMatchers.any
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.atLeastOnce
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.never
+import org.mockito.Mockito.spy
+import org.mockito.Mockito.verify
 import org.mockito.hamcrest.MockitoHamcrest.argThat
 import retrofit2.Retrofit
 import retrofit2.mock.NetworkBehavior
@@ -37,9 +37,9 @@ import java.util.*
 class LoginOrchestratorTest {
 
     companion object {
-        @ClassRule @JvmField var rxSchedulersRule: TestRule = RxSchedulersRule()
-        @ClassRule @JvmField var loggingRule: TestRule = LoggingRule()
-        @ClassRule @JvmField var eventBusRule: TestRule = EventBusRule()
+        @ClassRule @JvmField var rxSchedulersRule = RxSchedulersRule()
+        @ClassRule @JvmField var loggingRule = LoggingRule()
+        @ClassRule @JvmField var eventBusRule = EventBusRule()
 
         private val BLOG_URL_WITHOUT_PROTOCOL = "blog.example.com"
         private val BLOG_URL = "http://$BLOG_URL_WITHOUT_PROTOCOL"

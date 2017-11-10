@@ -6,17 +6,16 @@ import me.vickychijwani.spectre.auth.AuthService.Listener
 import me.vickychijwani.spectre.event.BusProvider.getBus
 import me.vickychijwani.spectre.event.CredentialsExpiredEvent
 import me.vickychijwani.spectre.model.entity.AuthToken
-import me.vickychijwani.spectre.network.GhostApiService
-import me.vickychijwani.spectre.network.GhostApiUtils
+import me.vickychijwani.spectre.network.*
 import me.vickychijwani.spectre.testing.*
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.Matchers.hasProperty
-import org.junit.Before
-import org.junit.ClassRule
-import org.junit.Test
-import org.junit.rules.TestRule
+import org.junit.*
 import org.mockito.ArgumentMatchers.any
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.spy
+import org.mockito.Mockito.verify
 import org.mockito.hamcrest.MockitoHamcrest.argThat
 
 /**
@@ -27,9 +26,9 @@ import org.mockito.hamcrest.MockitoHamcrest.argThat
 class AuthServiceTest {
 
     companion object {
-        @ClassRule @JvmField val rxSchedulersRule: TestRule = RxSchedulersRule()
-        @ClassRule @JvmField val loggingRule: TestRule = LoggingRule()
-        @ClassRule @JvmField val eventBusRule: TestRule = EventBusRule()
+        @ClassRule @JvmField val rxSchedulersRule = RxSchedulersRule()
+        @ClassRule @JvmField val loggingRule = LoggingRule()
+        @ClassRule @JvmField val eventBusRule = EventBusRule()
 
         private val BLOG_URL = "https://blog.example.com"
     }
@@ -53,10 +52,10 @@ class AuthServiceTest {
     fun refreshToken_expiredAccessToken() {
         refreshToken("expired-access-token", "refresh-token", "auth-code")
 
-        verify<CredentialSink>(credSink).setLoggedIn(BLOG_URL, true)
-        verify<Listener>(listener).onNewAuthToken(argThat(hasProperty("accessToken",
+        verify(credSink).setLoggedIn(BLOG_URL, true)
+        verify(listener).onNewAuthToken(argThat(hasProperty("accessToken",
                 `is`("refreshed-access-token"))))
-        verify<Listener>(listener).onNewAuthToken(argThat(hasProperty("refreshToken",
+        verify(listener).onNewAuthToken(argThat(hasProperty("refreshToken",
                 `is`("refresh-token"))))
     }
 
@@ -64,10 +63,10 @@ class AuthServiceTest {
     fun refreshToken_expiredAccessAndRefreshToken() {
         refreshToken("expired-access-token", "expired-refresh-token", "auth-code")
 
-        verify<CredentialSink>(credSink).setLoggedIn(BLOG_URL, true)
-        verify<Listener>(listener).onNewAuthToken(argThat(hasProperty("accessToken",
+        verify(credSink).setLoggedIn(BLOG_URL, true)
+        verify(listener).onNewAuthToken(argThat(hasProperty("accessToken",
                 `is`("access-token"))))
-        verify<Listener>(listener).onNewAuthToken(argThat(hasProperty("refreshToken",
+        verify(listener).onNewAuthToken(argThat(hasProperty("refreshToken",
                 `is`("refresh-token"))))
     }
 
@@ -78,7 +77,7 @@ class AuthServiceTest {
 
         refreshToken("expired-access-token", "expired-refresh-token", "expired-auth-code")
 
-        verify<CredentialSink>(credSink).deleteCredentials(BLOG_URL)
+        verify(credSink).deleteCredentials(BLOG_URL)
         verify(spy).onCredentialsExpiredEvent(any())
         getBus().unregister(spy)
     }

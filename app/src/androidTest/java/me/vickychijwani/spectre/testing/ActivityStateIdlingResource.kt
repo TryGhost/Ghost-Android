@@ -1,7 +1,6 @@
 package me.vickychijwani.spectre.testing
 
 import android.app.Activity
-import android.os.Handler
 import android.support.annotation.NonNull
 import android.support.test.espresso.IdlingResource
 import java.lang.ref.WeakReference
@@ -13,11 +12,7 @@ import java.lang.ref.WeakReference
  */
 open class ActivityStateIdlingResource(@NonNull activity: Activity,
                                        private val mIdlePredicate: (Activity) -> Boolean)
-    : IdlingResource {
-
-    companion object {
-        private val IDLE_POLL_DELAY_MILLIS = 100L
-    }
+    : BaseIdlingResource {
 
     /* Hold a weak reference, so we don't leak memory even if the resource isn't unregistered. */
     private val mActivity: WeakReference<Activity> = WeakReference(activity)
@@ -38,9 +33,7 @@ open class ActivityStateIdlingResource(@NonNull activity: Activity,
                 mResourceCallback!!.onTransitionToIdle()
             }
         } else {
-            /* Force a re-check of the idle state in a little while. If isIdleNow() returns false,
-             * Espresso only polls it every few seconds which can slow down our tests. */
-            Handler().postDelayed({ isIdleNow }, IDLE_POLL_DELAY_MILLIS)
+            forceCheckIdleState()
         }
 
         return isIdle

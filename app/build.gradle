@@ -61,6 +61,18 @@ android {
             ext.enableCrashlytics = true
         }
     }
+
+    sourceSets {
+        // add shared test code to both unit and instrumentation tests
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
+        }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
+
     lintOptions {
         // check for lint errors but don't abort builds
         // I had to disable it because we don't get translations for new strings immediately

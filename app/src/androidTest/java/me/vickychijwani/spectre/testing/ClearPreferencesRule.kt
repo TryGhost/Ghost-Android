@@ -35,9 +35,13 @@ class ClearPreferencesRule : TestRule {
         return object : Statement() {
             @Throws(Throwable::class)
             override fun evaluate() {
+                // clear data before and after the test(s)
                 clearData()
-                base.evaluate()
-                clearData()
+                try {
+                    base.evaluate()
+                } finally {
+                    clearData()
+                }
             }
         }
     }

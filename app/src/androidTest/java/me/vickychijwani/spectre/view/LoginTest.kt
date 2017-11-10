@@ -16,11 +16,13 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class) @LargeTest
 class LoginTest {
 
-    @Rule @JvmField
-    val mActivityRule = IntentsTestRule(LoginActivity::class.java)
+    companion object {
+        @ClassRule @JvmField val deleteDefaultPostsRule = DeleteDefaultPostsRule(TEST_BLOG_WITH_PROTOCOL)
+    }
 
-    @Rule @JvmField
-    val mPrefsRule = ClearPreferencesRule()
+    @Rule @JvmField val mActivityRule = IntentsTestRule(LoginActivity::class.java)
+    @Rule @JvmField val mPrefsRule = ClearPreferencesRule()
+    @Rule @JvmField val mOkHttpIdlingResourceRule = OkHttpIdlingResourceRule()
 
     private lateinit var mProgressBarIdlingResource: IdlingResource
 

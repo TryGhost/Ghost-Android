@@ -8,6 +8,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.palaima.debugdrawer.DebugDrawer;
 import io.palaima.debugdrawer.commons.BuildModule;
@@ -20,6 +21,8 @@ import me.vickychijwani.spectre.network.UnsafeHttpClientFactory;
 
 public class DebugSpectreApplication extends SpectreApplication {
 
+    private static AtomicBoolean isRunningTest;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -30,8 +33,11 @@ public class DebugSpectreApplication extends SpectreApplication {
             return;
         }
 
-        // auto-detect Activity memory leaks!
-        LeakCanary.install(this);
+        // DON'T enable leak detection in instrumentation tests
+        if (! isRunningEspressoTest()) {
+            // auto-detect Activity memory leaks!
+            LeakCanary.install(this);
+        }
 
         Stetho.initialize(Stetho.newInitializerBuilder(this)
                 .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
@@ -59,4 +65,17 @@ public class DebugSpectreApplication extends SpectreApplication {
         ).build();
     }
 
+    public static synchronized boolean isRunningEspressoTest() {
+        if (isRunningTest == null) {
+            boolean istest;
+            try {
+                Class.forName("android.support.test.espresso.Espresso");
+                istest = true;
+            } catch (ClassNotFoundException e) {
+                istest = false;
+            }
+            isRunningTest = new AtomicBoolean(istest);
+        }
+        return isRunningTest.get();
+    }
 }

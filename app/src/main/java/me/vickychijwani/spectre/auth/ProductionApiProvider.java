@@ -8,7 +8,7 @@ import me.vickychijwani.spectre.network.GhostApiUtils;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
-class ProductionApiProvider implements ApiProvider {
+public class ProductionApiProvider implements ApiProvider {
 
     private final Retrofit mRetrofit;
 

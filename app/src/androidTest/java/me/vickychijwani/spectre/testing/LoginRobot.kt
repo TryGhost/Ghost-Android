@@ -15,8 +15,7 @@ import org.hamcrest.CoreMatchers.containsString
 
 
 val TEST_BLOG = "10.0.2.2:2368"
-val TEST_USER = "user@example.com"
-val TEST_PWD = "randomtestpwd"
+val TEST_BLOG_WITH_PROTOCOL = "http://$TEST_BLOG"
 
 fun startLogin(func: BlogAddressRobot.() -> Unit) = BlogAddressRobot().apply { func() }
 

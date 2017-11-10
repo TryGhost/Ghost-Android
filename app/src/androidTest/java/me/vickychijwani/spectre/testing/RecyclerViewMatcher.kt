@@ -16,7 +16,6 @@ class RecyclerViewMatcher(private val recyclerViewId: Int) {
     }
 
     fun atPositionOnView(position: Int, targetViewId: Int): Matcher<View> {
-
         return object : TypeSafeMatcher<View>() {
             internal var resources: Resources? = null
             internal var childView: View? = null
@@ -27,13 +26,10 @@ class RecyclerViewMatcher(private val recyclerViewId: Int) {
                     idDescription = try {
                         this.resources!!.getResourceName(recyclerViewId)
                     } catch (_: Resources.NotFoundException) {
-                        String.format("%s (resource name not found)",
-                                Integer.valueOf(recyclerViewId))
+                        String.format("%s (resource name not found)", recyclerViewId)
                     }
-
                 }
-
-                description.appendText("with id: " + idDescription)
+                description.appendText("Item at position $position in RecyclerView with id: $idDescription")
             }
 
             override fun matchesSafely(view: View): Boolean {
@@ -43,19 +39,18 @@ class RecyclerViewMatcher(private val recyclerViewId: Int) {
                 if (childView == null) {
                     val recyclerView = view.rootView.findViewById(recyclerViewId) as RecyclerView?
                     if (recyclerView?.id == recyclerViewId) {
-                        childView = recyclerView.findViewHolderForAdapterPosition(position).itemView
+                        childView = recyclerView.findViewHolderForAdapterPosition(position)?.itemView
                     } else {
                         return false
                     }
                 }
 
-                if (targetViewId == -1) {
-                    return view === childView
+                return if (targetViewId == -1) {
+                    view === childView
                 } else {
                     val targetView = childView?.findViewById(targetViewId)
-                    return view === targetView
+                    view === targetView
                 }
-
             }
         }
     }

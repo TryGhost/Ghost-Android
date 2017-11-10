@@ -19,11 +19,13 @@ class OkHttpIdlingResourceRule : TestRule {
                 val r = OkHttpIdlingResource.create("OkHttp", client)
                 IdlingRegistry.getInstance().register(r)
 
-                // run test
-                base.evaluate()
-
-                // clean up
-                IdlingRegistry.getInstance().unregister(r)
+                try {
+                    // run test
+                    base.evaluate()
+                } finally {
+                    // clean up
+                    IdlingRegistry.getInstance().unregister(r)
+                }
             }
         }
     }

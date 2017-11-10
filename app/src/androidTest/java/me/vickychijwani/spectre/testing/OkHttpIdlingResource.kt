@@ -27,7 +27,7 @@ import okhttp3.*
  */
 class OkHttpIdlingResource private constructor(private val name: String,
                                                private val dispatcher: Dispatcher)
-    : IdlingResource {
+    : BaseIdlingResource {
     @Volatile private var callback: IdlingResource.ResourceCallback? = null
 
     init {
@@ -44,6 +44,8 @@ class OkHttpIdlingResource private constructor(private val name: String,
         val idle = dispatcher.runningCallsCount() == 0
         if (idle && callback != null) {
             callback!!.onTransitionToIdle()
+        } else {
+            forceCheckIdleState()
         }
         return idle
     }
