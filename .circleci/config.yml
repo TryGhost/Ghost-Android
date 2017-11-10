@@ -8,10 +8,23 @@ jobs:
 
     # https://circleci.com/docs/2.0/configuration-reference/#docker--machine-executor
     docker:
-      - image: circleci/android:api-${TARGET_SDK_VERSION}-alpha
+      - image: bitriseio/docker-android:latest
       - image: ghost:1-alpine   # test against latest 1.x version of Ghost
 
     steps:
+      # adapted from https://github.com/nenick/android-circleci-2.0/blob/master/circle.yml
+      # setup emulator first so it can launch in the background while we run build and unit tests
+      - run:
+          name: Setup emulator
+          command: |
+            SYSTEM_IMAGE="system-images;android-25;google_apis;armeabi-v7a"
+            echo "no" | avdmanager create avd -n test -k "${SYSTEM_IMAGE}"
+
+      - run:
+          name: Launch emulator
+          command: /opt/android-sdk-linux/emulator/emulator -avd test -noaudio -no-boot-anim -no-window -accel on
+          background: true
+
       # https://circleci.com/docs/2.0/configuration-reference/#checkout
       - checkout
 
@@ -38,8 +51,20 @@ jobs:
           command: curl -vvvv --fail -d 'setup[0][name]=User' -d 'setup[0][email]=user@example.com' -d 'setup[0][password]=randomtestpwd' -d 'setup[0][blogTitle]=My Blog' http://localhost:2368/ghost/api/v0.1/authentication/setup/
 
       - run:
-          name: Run tests
+          name: Run unit tests
           command: ./gradlew testDebug -PdisablePreDex --console=plain
+
+      - run:
+          name: Wait for emulator
+          command: |
+            ./.circleci/android-wait-for-boot.sh
+            # unlock the emulator screen
+            sleep 30
+            adb shell input keyevent 82
+
+      - run:
+          name: Run end-to-end tests
+          command: ./gradlew connectedAndroidTest -PdisablePreDex --console=plain
 
       # https://circleci.com/docs/2.0/configuration-reference/#store_artifacts
       - store_artifacts:
