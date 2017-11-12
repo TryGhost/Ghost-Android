@@ -1,2 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Alamat Blog</string>
+    <string name="prompt_email">Surel</string>
+    <string name="prompt_password">Kata Sandi</string>
+    <string name="action_sign_in">Masuk</string>
+
+    <string name="error_invalid_email">Alamat email ini tidak valid</string>
+    <string name="error_field_required">Bagian ini wajib diisi</string>
+
+    <string name="no_such_blog">Tidak ada admin Ghost di %s/ghost</string>
+    <string name="login_unexpected_error">Terdapat galat tak terduga saat proses masuk. Sila coba lagi.</string>
+    <string name="login_connection_error">Tidak dapat terhubung ke %s/ghost. Sila coba lagi.</string>
+    <string name="login_ssl_unsupported">Blog Anda tidak mendukung https:// (SSL)</string>
+    <string name="logout">Keluar</string>
+    <string name="credentials_expired">Gagal masuk secara otomatis, sila masuk kembali.</string>
+    <string name="unsynced_changes_msg">Anda akan kehilangan semua perubahan yang belum disinkronkan jika keluar sekarang</string>
+    <string name="dont_logout">Jangan keluar</string>
+
+    <string name="status_published">Diterbitkan %s</string>
+    <string name="status_draft">Konsep</string>
+    <string name="status_scheduled">Dijadwalkan - %s</string>
+    <string name="status_offline_changes">Tersimpan pada perangkat, menunggu terhubung ke jaringan</string>
+    </resources>
