@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="prompt_blog_url">Bloggadresse (blogg.eksempel.no)</string>
+    <string name="prompt_blog_url">Bloggadresse</string>
     <string name="prompt_email">E-post</string>
     <string name="prompt_password">Passord</string>
     <string name="action_sign_in">Logg inn</string>
 
-    <string name="error_invalid_email">Denne e-postadressen er ugyldig.</string>
-    <string name="error_field_required">Dette feltet er påkrevd.</string>
+    <string name="error_invalid_email">Denne e-postadressen er ugyldig</string>
+    <string name="error_field_required">Dette feltet er påkrevd</string>
 
-    <string name="no_such_blog">Det er ingen Ghost-administrator på %s/ghost.</string>
+    <string name="no_such_blog">Det er ingen Ghost-administrator på %s/ghost</string>
     <string name="login_unexpected_error">Uventet feil under innlogging. Prøv igjen.</string>
     <string name="login_connection_error">Kunne ikke koble til %s/ghost. Prøv igjen.</string>
-    <string name="login_ssl_unsupported">Din blogg støtter ikke https:// (SSL). Prøv å endre til http://.</string>
+    <string name="login_ssl_unsupported">Din blogg støtter ikke https:// (SSL)</string>
     <string name="logout">Logg ut</string>
     <string name="unsynced_changes_msg">Du vil miste alle ulagrede endringer hvis du logger ut nå</string>
     <string name="dont_logout">Ikke logg ut</string>
@@ -110,5 +110,13 @@
     <string name="draft">Kladd</string>
     <string name="published">Publisert</string>
     <string name="scheduled">Planlagt</string>
+
+<string name="credentials_expired">Automatisk innlogging mislyktes, logg inn igjen</string>
+    <string name="send_feedback">Send tilbakemelding…</string>
+
+    <string name="post_excerpt_hint">Sammendrag</string>
+    <string name="post_page_hint">Gjør dette innlegget til en side</string>
+
+    <string name="next">Neste</string>
 
 </resources>
