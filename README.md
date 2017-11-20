@@ -1,7 +1,7 @@
 <img src="https://i.imgur.com/ZN3qK49.gif" width="320" align="right" hspace="20">
 
 [![](https://img.shields.io/circleci/project/TryGhost/Ghost-Android.svg)](https://circleci.com/gh/TryGhost/Ghost-Android)
-[![Translate on Weblate](https://hosted.weblate.org/widgets/quill/-/svg-badge.svg)](https://hosted.weblate.org/engage/quill/en/?utm_source=widget)
+[![Translate on Weblate](https://hosted.weblate.org/widgets/ghost/-/svg-badge.svg)](https://hosted.weblate.org/engage/ghost/en/?utm_source=widget)
 
 The official Ghost Android application. Get it [here on the Google Play Store][playstore].
 
@@ -52,5 +52,5 @@ If you face any issues setting this up, please let me know by [filing a new issu
 
 
 [playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
-[weblate]: https://hosted.weblate.org/engage/quill/en/
+[weblate]: https://hosted.weblate.org/engage/ghost/en/
 [conflict-ui]: https://github.com/vickychijwani/quill/issues/144#issuecomment-264991612

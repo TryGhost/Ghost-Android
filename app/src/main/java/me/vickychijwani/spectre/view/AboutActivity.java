@@ -15,7 +15,7 @@ import me.vickychijwani.spectre.util.AppUtils;
 public class AboutActivity extends BaseActivity {
 
     public static final String URL_GITHUB_CONTRIBUTING = "https://github.com/tryghost/ghost-android/blob/master/CONTRIBUTING.md#reporting-bugs";
-    public static final String URL_TRANSLATE = "https://hosted.weblate.org/engage/quill/en/";
+    public static final String URL_TRANSLATE = "https://hosted.weblate.org/engage/ghost/en/";
     public static final String URL_SLACK = "https://slack.ghost.org/";
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
