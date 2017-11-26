@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="#eee">
+            android:background="@color/image_placeholder">
 
             <ImageView
                 android:id="@+id/post_image_placeholder"
