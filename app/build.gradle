@@ -17,12 +17,12 @@ apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
 
     defaultConfig {
         applicationId 'org.ghost.android'
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1_02_01_00      // 2 digits each for major, minor, patch, build number
                                     // example: 2.0.0-beta1 => 2_00_00_00, 2.0.0 => 2_00_00_01
         versionName '1.2.1'
@@ -139,7 +139,8 @@ dependencies {
     implementation "com.android.support:percent:$rootProject.ext.supportLibVersion"
     implementation "com.android.support:customtabs:$rootProject.ext.supportLibVersion"
     implementation "org.ocpsoft.prettytime:prettytime:4.0.1.Final"
-    implementation "com.tsengvn:typekit:1.0.1"
+    // using a fork because https://github.com/tsengvn/typekit/issues/9#issuecomment-324478332
+    implementation "com.github.katoro:typekit:1.0.1"
 
     // misc
     implementation "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"

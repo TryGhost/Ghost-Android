@@ -62,7 +62,7 @@
                         style="@style/AboutItemStyle">
                         <ImageView
                             style="@style/AboutIconStyle"
-                            android:src="@drawable/ic_launcher"
+                            android:src="@mipmap/ic_launcher"
                             android:tint="@android:color/transparent"
                             />
                         <TextView

@@ -4,7 +4,7 @@ version: 2
 jobs:
   build:
     environment:
-      TARGET_SDK_VERSION: 25
+      TARGET_SDK_VERSION: 26
 
     # https://circleci.com/docs/2.0/configuration-reference/#docker--machine-executor
     docker:

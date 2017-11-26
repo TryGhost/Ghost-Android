@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Ghost colors from https://ghost.org/design -->
+    <color name="ghost_blue">#3eb0ef</color>
+    <color name="white">#ffffff</color>
+    <color name="light_grey">#e5eff5</color>
+    <color name="mid_grey">#738a94</color>
+    <color name="dark_grey">#343f44</color>
+
     <color name="primary">#1e2527</color>
     <color name="primary_dark">#101415</color>
     <color name="accent">#3eb0ef</color>
