@@ -66,7 +66,7 @@
 
     <string name="post_title_hint">Post title</string>
     <string name="post_image_hint">Add post image</string>
-    <string name="post_tags_hint">Add some tags…</string>
+    <string name="post_tags_hint">Tags</string>
     <string name="post_tags_format_hint">Use commas to separate tags</string>
     <string name="post_body_hint">Begin writing your story…</string>
     <string name="post_image_load_error">Error loading post image</string>

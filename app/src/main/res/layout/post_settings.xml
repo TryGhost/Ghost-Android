@@ -62,19 +62,26 @@
 
 
     <!-- tags -->
-    <me.vickychijwani.spectre.view.widget.ChipsEditText
-        android:id="@+id/post_tags_edit"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/post_tags_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_large"
         android:layout_marginLeft="@dimen/padding_large"
-        android:layout_marginRight="@dimen/padding_large"
-        android:textAppearance="@style/TextAppearance"
-        android:lineSpacingMultiplier="1.2"
-        android:scrollHorizontally="false"
-        android:hint="@string/post_tags_hint"
-        android:imeOptions="actionDone"
-        />
+        android:layout_marginRight="@dimen/padding_large">
+
+        <me.vickychijwani.spectre.view.widget.ChipsEditText
+            android:id="@+id/post_tags_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance"
+            android:lineSpacingMultiplier="1.2"
+            android:scrollHorizontally="false"
+            android:hint="@string/post_tags_hint"
+            android:imeOptions="actionDone"
+            />
+
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -97,7 +104,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_large"
         android:layout_marginLeft="@dimen/padding_large"
-        android:layout_marginRight="@dimen/padding_large">
+        android:layout_marginRight="@dimen/padding_large"
+        app:counterEnabled="true"
+        app:counterMaxLength="@integer/post_excerpt_max_length">
 
         <EditText
             android:id="@+id/post_excerpt"
