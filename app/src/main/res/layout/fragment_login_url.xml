@@ -14,7 +14,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         style="@style/MyLoginForm"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="false">
 
         <TextView
             android:id="@+id/blog_url_title"
