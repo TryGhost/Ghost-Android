@@ -8,27 +8,29 @@
     <color name="mid_grey">#738a94</color>
     <color name="dark_grey">#343f44</color>
 
+    <!-- main colors -->
     <color name="primary">#1e2527</color>
     <color name="primary_dark">#101415</color>
-    <color name="accent">#3eb0ef</color>
-    <color name="background">#FFFFFF</color>
-    <color name="card_list_background">#EEEEEE</color>
-    <color name="format_toolbar_background">#DFDFDF</color>
-    <color name="login_error">#E57373</color>
+    <color name="accent">@color/ghost_blue</color>
+    <color name="background">@color/white</color>
 
-    <color name="text_primary">#343f44</color>
-    <color name="text_secondary">#738a94</color>
+    <color name="text_primary">@color/dark_grey</color>
+    <color name="text_secondary">@color/mid_grey</color>
     <color name="text_tertiary">#B0B9BC</color>
     <color name="text_primary_inverted">#FFFFFF</color>
     <color name="text_primary_inverted_dim">#88FFFFFF</color>
-    <color name="text_secondary_inverted">#e5eff5</color>
+    <color name="text_secondary_inverted">@color/light_grey</color>
     <color name="text_tertiary_inverted">#BBBBBB</color>
     <color name="text_shadow">#000000</color>
-    <color name="text_shadow_login">#343f44</color>
-
-    <color name="image_placeholder">#CCCCCC</color>
+    <color name="text_shadow_login">@color/dark_grey</color>
 
     <!-- one-off colors -->
+    <color name="card_list_background">#EEEEEE</color>
+    <color name="image_placeholder">#EEEEEE</color>
+    <color name="format_toolbar_background">#DFDFDF</color>
+    <color name="login_error">#E57373</color>
+
+    <!-- post statuses -->
     <color name="status_offline_changes">#F33</color>
     <color name="status_published_auto_saved">#F33</color>
     <color name="status_draft">#C84428</color>
