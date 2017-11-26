@@ -547,7 +547,7 @@ public class PostEditFragment extends BaseFragment implements
     // returns true if a network call is pending, false otherwise
     private boolean savePost(boolean persistChanges, boolean isAutoSave,
                              @Nullable @Post.Status String newStatus) {
-        mPost.setTitle(mPostTitleEditView.getText().toString());
+        mPost.setTitleFromPostEditor(mPostTitleEditView.getText().toString());
         mPost.setMarkdown(mPostEditView.getText().toString());
         mPost.setMobiledoc(GhostApiUtils.markdownToMobiledoc(mPost.getMarkdown()));
         mPost.setHtml(null);   // omit stale HTML from request body
@@ -635,7 +635,7 @@ public class PostEditFragment extends BaseFragment implements
                     // published and then unpublished earlier).
                     if (Post.PUBLISHED.equals(finalTargetStatus)) {
                         // update the title in memory first, from the latest value in UI
-                        mPost.setTitle(mPostTitleEditView.getText().toString());
+                        mPost.setTitleFromPostEditor(mPostTitleEditView.getText().toString());
                         mPost.setSlug(new Slugify().slugify(mPost.getTitle()));
                     }
                     saveToServerExplicitly(finalTargetStatus);
@@ -743,7 +743,7 @@ public class PostEditFragment extends BaseFragment implements
             mOriginalPost = new Post(post);             // store a copy for calculating diff later
             mLastSavedPost = new Post(mOriginalPost);   // the original is obviously already "saved"
         }
-        mPostTitleEditView.setText(post.getTitle());
+        mPostTitleEditView.setText(post.getTitleForPostEditor());
         mPostEditView.setText(post.getMarkdown());
         if (mPostEditViewCursorPos >= 0
                 // cursor pos is == length, when it's at the very end

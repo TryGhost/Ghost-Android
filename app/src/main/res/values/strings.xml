@@ -64,11 +64,11 @@
     <string name="save_scenario_auto_save_draft">Draft saved</string>
     <string name="save_scenario_explicitly_save_draft">Draft saved</string>
 
-    <string name="post_title_hint">Give your post a title…</string>
+    <string name="post_title_hint">Post title</string>
     <string name="post_image_hint">Add post image</string>
     <string name="post_tags_hint">Add some tags…</string>
     <string name="post_tags_format_hint">Use commas to separate tags</string>
-    <string name="post_body_hint">Type something here…</string>
+    <string name="post_body_hint">Begin writing your story…</string>
     <string name="post_image_load_error">Error loading post image</string>
     <string name="post_excerpt_hint">Excerpt</string>
     <string name="post_feature_hint">Feature this post</string>

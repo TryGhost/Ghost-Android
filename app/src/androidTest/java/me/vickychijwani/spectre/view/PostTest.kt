@@ -63,7 +63,9 @@ class PostTest {
         }.backToPostList {
             hasDraft(Post.DEFAULT_TITLE, position = 0)
         }.openPost(position = 0).doWithPost {
-            hasEditorTitle(Post.DEFAULT_TITLE)
+            hasEditorTitle("")
+            preview()
+            hasPreviewTitle(Post.DEFAULT_TITLE)
         }.deleteDraft {
             doesNotHavePost(Post.DEFAULT_TITLE, position = 0)
         }

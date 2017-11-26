@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringDef;
+import android.text.TextUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -303,6 +304,14 @@ public class Post implements RealmModel, Parcelable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTitleForPostEditor() {
+        return (! DEFAULT_TITLE.equals(getTitle())) ? getTitle() : "";
+    }
+
+    public void setTitleFromPostEditor(@NonNull String title) {
+        setTitle((! TextUtils.isEmpty(title)) ? title : DEFAULT_TITLE);
     }
 
     public String getSlug() {
