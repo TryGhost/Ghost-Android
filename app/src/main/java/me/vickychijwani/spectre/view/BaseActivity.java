@@ -83,7 +83,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onPause()");
-        mOnPauseDisposables.dispose();
+        // clear() instead of dispose() because dispose makes it non-reusable after it is called
+        mOnPauseDisposables.clear();
     }
 
     @Override

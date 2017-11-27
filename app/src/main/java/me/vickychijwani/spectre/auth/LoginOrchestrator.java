@@ -88,6 +88,7 @@ public class LoginOrchestrator implements
 
     public void reset() {
         mLoginFlowDisposable.dispose();
+        mLoginFlowDisposable = null;
         setState(null);
     }
 
