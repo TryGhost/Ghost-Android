@@ -1,7 +1,5 @@
 package me.vickychijwani.spectre.view.fragments;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +12,7 @@ import android.webkit.WebView;
 import me.vickychijwani.spectre.R;
 import me.vickychijwani.spectre.account.AccountManager;
 import me.vickychijwani.spectre.model.entity.Post;
+import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.view.BundleKeys;
 
@@ -79,9 +78,8 @@ public class PostViewFragment extends BaseFragment
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // launch links in external browser
-                url = NetworkUtils.makeAbsoluteUrl(blogUrl, url);
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
+                AppUtils.openUri(PostViewFragment.this,
+                        NetworkUtils.makeAbsoluteUrl(blogUrl, url));
                 return true;
             }
         });

@@ -1,7 +1,6 @@
 package me.vickychijwani.spectre.view;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -43,27 +42,28 @@ public class AboutActivity extends BaseActivity {
 
     @OnClick(R.id.about_report_bugs)
     public void onReportBugsClicked(View v) {
-        openUrl(URL_GITHUB_CONTRIBUTING);
+        AppUtils.openUri(this, URL_GITHUB_CONTRIBUTING);
     }
 
     @OnClick(R.id.about_translate)
     public void onTranslateClicked(View v) {
-        openUrl(URL_TRANSLATE);
+        AppUtils.openUri(this, URL_TRANSLATE);
     }
 
     @OnClick(R.id.about_play_store)
     public void onRateOnPlayStoreClicked(View v) {
         final String appPackageName = getPackageName();
         try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+            AppUtils.openUri(this, "market://details?id=" + appPackageName);
         } catch (android.content.ActivityNotFoundException anfe) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+            AppUtils.openUri(this, "https://play.google.com/store/apps/details?id="
+                    + appPackageName);
         }
     }
 
     @OnClick(R.id.about_help)
     public void onHelpClicked(View v) {
-        openUrl(URL_SLACK);
+        AppUtils.openUri(this, URL_SLACK);
     }
 
 }

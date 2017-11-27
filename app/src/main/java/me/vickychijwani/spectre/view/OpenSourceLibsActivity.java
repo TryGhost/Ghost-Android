@@ -1,8 +1,6 @@
 package me.vickychijwani.spectre.view;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
@@ -21,6 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.vickychijwani.spectre.R;
+import me.vickychijwani.spectre.util.AppUtils;
 
 public class OpenSourceLibsActivity extends BaseActivity {
 
@@ -65,9 +64,7 @@ public class OpenSourceLibsActivity extends BaseActivity {
             int pos = mLibsList.getChildLayoutPosition(v);
             if (pos == RecyclerView.NO_POSITION) return;
             Library library = mLibsAdapter.getItem(pos);
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(library.url));
-            startActivity(intent);
+            AppUtils.openUri(this, library.url);
         });
         mLibsList.setAdapter(mLibsAdapter);
         mLibsList.setLayoutManager(new LinearLayoutManager(this));

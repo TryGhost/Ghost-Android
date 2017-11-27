@@ -164,10 +164,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         customTabsIntent.launchUrl(this, Uri.parse(url));
     }
 
-    protected void openUrl(String url) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-    }
-
     protected void credentialsExpired() {
         new CredentialsExpiredEventHandler(this)
                 .onCredentialsExpiredEvent(new CredentialsExpiredEvent());

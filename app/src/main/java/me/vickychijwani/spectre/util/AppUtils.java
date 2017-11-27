@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -17,6 +18,7 @@ import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -69,6 +71,20 @@ public class AppUtils {
         android.content.res.Configuration conf = res.getConfiguration();
         conf.locale = Locale.getDefault();
         res.updateConfiguration(conf, dm);
+    }
+
+    public static void openUri(@NonNull Context context, @NonNull String uri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(intent);
+        } else {
+            Toast.makeText(context, R.string.intent_no_apps,
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static void openUri(@NonNull Fragment fragment, @NonNull String uri) {
+        openUri(fragment.getActivity(), uri);
     }
 
     // Add a custom event handler for link clicks in TextView HTML
