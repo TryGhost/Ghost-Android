@@ -29,10 +29,10 @@ import me.vickychijwani.spectre.network.entity.ConfigurationList;
 import me.vickychijwani.spectre.util.Listenable;
 import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.util.functions.Action1;
+import me.vickychijwani.spectre.util.log.Log;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import retrofit2.HttpException;
-import timber.log.Timber;
 
 import static me.vickychijwani.spectre.event.BusProvider.getBus;
 
@@ -49,6 +49,8 @@ public class LoginOrchestrator implements
         ERR_SSL,
         ERR_UNKNOWN
     }
+
+    private static final String TAG = LoginOrchestrator.class.getSimpleName();
 
     private final BlogUrlValidator mBlogUrlValidator;
     private final ApiProviderFactory mApiProviderFactory;
@@ -96,7 +98,7 @@ public class LoginOrchestrator implements
 
     private void setState(@Nullable String blogUrl) {
         if (blogUrl != null) {
-            Timber.i("VALID BLOG URL: " + blogUrl);
+            Log.i(TAG, "VALID BLOG URL: %s", blogUrl);
             mValidBlogUrl = blogUrl;
             mApiProvider = mApiProviderFactory.create(blogUrl);
             mAuthService = AuthService.createWithGivenCredentials(blogUrl,
@@ -203,12 +205,12 @@ public class LoginOrchestrator implements
                     forEachListener(l -> l.onApiError(apiError.message, isEmailError));
                 }
             } else {
-                Timber.e(new LoginFailedException(e));
+                Log.exception(new LoginFailedException(e));
             }
         }
 
         else {
-            Timber.e(new LoginFailedException(e));
+            Log.exception(new LoginFailedException(e));
             forEachListener(l -> l.onNetworkError(getErrorType(e), e));
         }
 

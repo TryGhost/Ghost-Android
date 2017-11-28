@@ -27,7 +27,7 @@ class AuthServiceTest {
 
     companion object {
         @ClassRule @JvmField val rxSchedulersRule = RxSchedulersRule()
-        @ClassRule @JvmField val loggingRule = LoggingRule()
+        @ClassRule @JvmField val loggingRule = JvmLoggingRule()
         @ClassRule @JvmField val eventBusRule = EventBusRule()
 
         private val BLOG_URL = "https://blog.example.com"

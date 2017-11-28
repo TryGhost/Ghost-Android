@@ -3,7 +3,6 @@ package me.vickychijwani.spectre.view.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import me.vickychijwani.spectre.R;
 import me.vickychijwani.spectre.auth.GhostAuth;
 import me.vickychijwani.spectre.view.BundleKeys;
 import me.vickychijwani.spectre.view.LoginActivity;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class GhostAuthFragment extends WebViewFragment {
 
@@ -66,7 +66,7 @@ public class GhostAuthFragment extends WebViewFragment {
                 }
                 String authCode = GhostAuth.extractAuthCodeFromUrl(url);
                 if (authCode != null) {
-                    Log.d(TAG, "AUTH CODE = " + authCode);
+                    Log.d(TAG, "AUTH CODE = %s", authCode);
                     activity.onGhostAuthCode(authCode);
                     return true;
                 } else {

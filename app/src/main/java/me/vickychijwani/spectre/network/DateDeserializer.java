@@ -1,7 +1,6 @@
 package me.vickychijwani.spectre.network;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -13,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import me.vickychijwani.spectre.util.log.Log;
 
 class DateDeserializer implements JsonDeserializer<Date> {
 
@@ -30,7 +31,8 @@ class DateDeserializer implements JsonDeserializer<Date> {
         try {
             return formatter.parse(date);
         } catch (ParseException e) {
-            Log.e(TAG, "Parsing failed: " + Log.getStackTraceString(e));
+            Log.e(TAG, "Date parsing failed");
+            Log.exception(e);
             return new Date();
         }
     }

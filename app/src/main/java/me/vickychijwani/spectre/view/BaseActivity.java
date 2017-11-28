@@ -10,11 +10,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
@@ -29,6 +27,7 @@ import me.vickychijwani.spectre.R;
 import me.vickychijwani.spectre.SpectreApplication;
 import me.vickychijwani.spectre.event.BusProvider;
 import me.vickychijwani.spectre.event.CredentialsExpiredEvent;
+import me.vickychijwani.spectre.util.log.Log;
 import me.vickychijwani.spectre.view.fragments.BaseFragment;
 
 @SuppressWarnings("WeakerAccess")
@@ -54,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onCreate()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onCreate()", this.getClass().getSimpleName());
     }
 
     protected void setLayout(int layoutResID) {
@@ -65,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onStart()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onStart()", this.getClass().getSimpleName());
         getBus().register(this);
         if (! (this instanceof LoginActivity)) {
             mCredentialsExpiredEventHandler = new CredentialsExpiredEventHandler(this);
@@ -76,13 +75,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onResume()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onResume()", this.getClass().getSimpleName());
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onPause()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onPause()", this.getClass().getSimpleName());
         // clear() instead of dispose() because dispose makes it non-reusable after it is called
         mOnPauseDisposables.clear();
     }
@@ -90,7 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onStop()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onStop()", this.getClass().getSimpleName());
         if (mCredentialsExpiredEventHandler != null) {
             getBus().unregister(mCredentialsExpiredEventHandler);
             mCredentialsExpiredEventHandler = null;
@@ -101,19 +100,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onDestroy()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onDestroy()", this.getClass().getSimpleName());
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onLowMemory()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onLowMemory()", this.getClass().getSimpleName());
     }
 
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onTrimMemory()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onTrimMemory()", this.getClass().getSimpleName());
     }
 
     @Override
@@ -129,7 +128,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Crashlytics.log(Log.DEBUG, TAG, this.getClass().getSimpleName() + "#onBackPressed()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onBackPressed()", this.getClass().getSimpleName());
         // give fragments a chance to handle back press
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         if (fragments != null) {

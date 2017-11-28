@@ -38,7 +38,7 @@ class LoginOrchestratorTest {
 
     companion object {
         @ClassRule @JvmField var rxSchedulersRule = RxSchedulersRule()
-        @ClassRule @JvmField var loggingRule = LoggingRule()
+        @ClassRule @JvmField var loggingRule = JvmLoggingRule()
         @ClassRule @JvmField var eventBusRule = EventBusRule()
 
         private val BLOG_URL_WITHOUT_PROTOCOL = "blog.example.com"

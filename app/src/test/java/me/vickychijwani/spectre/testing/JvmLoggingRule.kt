@@ -1,26 +1,17 @@
 package me.vickychijwani.spectre.testing
 
+import me.vickychijwani.spectre.util.log.Log
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
-import timber.log.Timber
-
-class LoggingRule : TestRule {
-
-    private val tree = object : Timber.Tree() {
-        override fun log(priority: Int, tag: String?, message: String?, t: Throwable?) {
-            message?.let {
-                println(message)
-            }
-            t?.printStackTrace()
-        }
-    }
+// uses normal JVM methods for logging, instead of depending on Android or Crashlytics
+class JvmLoggingRule : TestRule {
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
-                Timber.plant(tree)
+                Log.useEnvironment(Log.Environment.JVM)
                 base.evaluate()
             }
         }

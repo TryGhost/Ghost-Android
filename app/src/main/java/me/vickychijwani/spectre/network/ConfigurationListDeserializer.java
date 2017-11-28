@@ -1,8 +1,5 @@
 package me.vickychijwani.spectre.network;
 
-import android.util.Log;
-
-import com.crashlytics.android.Crashlytics;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -15,6 +12,7 @@ import java.util.Map;
 
 import me.vickychijwani.spectre.model.entity.ConfigurationParam;
 import me.vickychijwani.spectre.network.entity.ConfigurationList;
+import me.vickychijwani.spectre.util.log.Log;
 
 /* package */ class ConfigurationListDeserializer implements JsonDeserializer<ConfigurationList> {
 
@@ -31,7 +29,8 @@ import me.vickychijwani.spectre.network.entity.ConfigurationList;
             // }]}
             return parseConfig(configJsons.get(0).getAsJsonObject());
         } catch (Exception e) {
-            Crashlytics.log(Log.DEBUG, "ParseException", "Exception thrown while trying to parse JSON: " + element.toString());
+            Log.e("ParseException", "Exception thrown while trying to parse JSON: %s",
+                    element.toString());
             throw e;
         }
     }

@@ -2,13 +2,13 @@ package me.vickychijwani.spectre.model;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import io.realm.DynamicRealmObject;
 import io.realm.FieldAttribute;
 import io.realm.Realm;
 import io.realm.RealmObjectSchema;
 import me.vickychijwani.spectre.util.functions.Action3;
+import me.vickychijwani.spectre.util.log.Log;
 
 public final class RealmUtils {
 

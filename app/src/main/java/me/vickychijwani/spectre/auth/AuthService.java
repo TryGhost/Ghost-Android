@@ -23,11 +23,13 @@ import me.vickychijwani.spectre.network.entity.RefreshReqBody;
 import me.vickychijwani.spectre.network.entity.RevokeReqBody;
 import me.vickychijwani.spectre.util.Listenable;
 import me.vickychijwani.spectre.util.NetworkUtils;
-import timber.log.Timber;
+import me.vickychijwani.spectre.util.log.Log;
 
 import static me.vickychijwani.spectre.event.BusProvider.getBus;
 
 public class AuthService implements Listenable<AuthService.Listener> {
+
+    private static final String TAG = AuthService.class.getSimpleName();
 
     private final String mBlogUrl;
     private final GhostApiService mApi;
@@ -91,7 +93,7 @@ public class AuthService implements Listenable<AuthService.Listener> {
                     .observeOn(Schedulers.io())
                 .map(ConfigurationList::getClientSecret)
                 .flatMap(clientSecret -> revokeToken(token, clientSecret))
-                .doOnError(Timber::e)
+                .doOnError(Log::exception)
                 .subscribe();
     }
 
@@ -181,11 +183,11 @@ public class AuthService implements Listenable<AuthService.Listener> {
     Observable<AuthReqBody> getAuthReqBody(ConfigurationList config) {
         String clientSecret = config.getClientSecret();
         if (authTypeIsGhostAuth(config)) {
-            Timber.i("Using Ghost auth strategy for login");
+            Log.i(TAG, "Using Ghost auth strategy for login");
             final GhostAuth.Params params = extractGhostAuthParams(mBlogUrl, config);
             return getGhostAuthReqBody(params, clientSecret, params.redirectUri);
         } else {
-            Timber.i("Using password auth strategy for login");
+            Log.i(TAG, "Using password auth strategy for login");
             final PasswordAuth.Params params = new PasswordAuth.Params(mBlogUrl);
             return getPasswordAuthReqBody(params, clientSecret);
         }

@@ -15,7 +15,7 @@ import me.vickychijwani.spectre.event.LoadGhostVersionEvent;
 import me.vickychijwani.spectre.event.LoginDoneEvent;
 import me.vickychijwani.spectre.event.LoginErrorEvent;
 import me.vickychijwani.spectre.event.LogoutStatusEvent;
-import timber.log.Timber;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class AnalyticsService {
 
@@ -58,7 +58,7 @@ public class AnalyticsService {
         if (ghostVersion == null) {
             ghostVersion = "Unknown";
         }
-        Timber.i("GHOST VERSION = " + ghostVersion);
+        Log.i(TAG, "GHOST VERSION = %s", ghostVersion);
         Answers.getInstance().logCustom(new CustomEvent("Ghost Version")
                 .putCustomAttribute("version", ghostVersion));
     }
@@ -68,33 +68,33 @@ public class AnalyticsService {
             blogUrl = "Unknown";
         }
         String successStr = success ? "SUCCEEDED" : "FAILED";
-        Timber.i("LOGIN " + successStr + ", BLOG URL = " + blogUrl);
+        Log.i(TAG, "LOGIN %s, BLOG URL = %s", successStr, blogUrl);
         Answers.getInstance().logLogin(new LoginEvent()
                 .putCustomAttribute("URL", blogUrl)
                 .putSuccess(success));
     }
 
     public static void logGhostV0Error() {
-        Timber.i("GHOST VERSION 0.x ERROR - UPGRADE REQUIRED");
+        Log.i(TAG, "GHOST VERSION 0.x ERROR - UPGRADE REQUIRED");
         Answers.getInstance().logCustom(new CustomEvent("Ghost v0.x error"));
     }
 
     @Subscribe
     public void onLogoutStatusEvent(LogoutStatusEvent logoutEvent) {
         if (logoutEvent.succeeded) {
-            Timber.i("LOGOUT SUCCEEDED");
+            Log.i(TAG, "LOGOUT SUCCEEDED");
             Answers.getInstance().logCustom(new CustomEvent("Logout"));
         }
     }
 
     public static void logMetadataDbSchemaVersion(@NonNull String metadataDbSchemaVersion) {
-        Timber.i("METADATA DB SCHEMA VERSION = " + metadataDbSchemaVersion);
+        Log.i(TAG, "METADATA DB SCHEMA VERSION = %s", metadataDbSchemaVersion);
         Answers.getInstance().logCustom(new CustomEvent("Metadata DB Schema Version")
                 .putCustomAttribute("version", metadataDbSchemaVersion));
     }
 
     public static void logDbSchemaVersion(@NonNull String dbSchemaVersion) {
-        Timber.i("DB SCHEMA VERSION = " + dbSchemaVersion);
+        Log.i(TAG, "DB SCHEMA VERSION = %s", dbSchemaVersion);
         Answers.getInstance().logCustom(new CustomEvent("DB Schema Version")
                 .putCustomAttribute("version", dbSchemaVersion));
     }
@@ -165,7 +165,7 @@ public class AnalyticsService {
             // FIXME this is a huge hack, also Fabric only shows 10 of these per day
             postStatsEvent.putCustomAttribute("URL", postUrl);
         }
-        Timber.i("POST ACTION: " + postAction);
+        Log.i(TAG, "POST ACTION: %s", postAction);
         Answers.getInstance().logCustom(postStatsEvent);
     }
 

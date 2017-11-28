@@ -4,16 +4,14 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.util.Pair;
-
-import com.crashlytics.android.Crashlytics;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class Observables {
 
@@ -39,15 +37,14 @@ public class Observables {
             @NonNull Uri fileUri) {
         return Observable.create(emitter -> {
             try {
-                Log.d(TAG, "Attempting to read uri: " + fileUri);
+                Log.d(TAG, "Attempting to read uri: %s", fileUri.toString());
                 InputStream inputStream = contentResolver.openInputStream(fileUri);
                 String mimeType = contentResolver.getType(fileUri);
                 emitter.onNext(new Pair<>(inputStream, mimeType));
             } catch (IOException e) {
                 emitter.onError(e);
-                Crashlytics.logException(new Exception("Failed to open input stream for uri, " +
+                Log.exception(new Exception("Failed to open input stream for uri, " +
                         "see previous exception", e));
-                Log.e(TAG, Log.getStackTraceString(e));
             } finally {
                 emitter.onComplete();
             }

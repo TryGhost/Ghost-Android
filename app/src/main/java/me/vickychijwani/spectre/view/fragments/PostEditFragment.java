@@ -18,7 +18,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,7 +29,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.github.slugify.Slugify;
 import com.squareup.otto.Subscribe;
 
@@ -56,12 +54,13 @@ import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Tag;
 import me.vickychijwani.spectre.network.ApiFailure;
 import me.vickychijwani.spectre.network.GhostApiUtils;
-import me.vickychijwani.spectre.util.functions.Action1;
 import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.EditTextSelectionState;
 import me.vickychijwani.spectre.util.EditTextUtils;
 import me.vickychijwani.spectre.util.KeyboardUtils;
 import me.vickychijwani.spectre.util.PostUtils;
+import me.vickychijwani.spectre.util.functions.Action1;
+import me.vickychijwani.spectre.util.log.Log;
 import me.vickychijwani.spectre.view.BundleKeys;
 import me.vickychijwani.spectre.view.FormatOptionClickListener;
 import me.vickychijwani.spectre.view.Observables;
@@ -476,13 +475,14 @@ public class PostEditFragment extends BaseFragment implements
     @Subscribe
     public void onFileUploadErrorEvent(FileUploadErrorEvent event) {
         if (event.apiFailure.error != null) {
-            Crashlytics.logException(new FileUploadFailedException(event.apiFailure.error));
+            Log.exception(new FileUploadFailedException(event.apiFailure.error));
         } else if (event.apiFailure.response != null) {
             try {
                 String responseStr = event.apiFailure.response.errorBody().string();
-                Crashlytics.logException(new FileUploadFailedException(responseStr));
+                Log.exception(new FileUploadFailedException(responseStr));
             } catch (IOException e) {
-                Log.e(TAG, Log.getStackTraceString(e));
+                Log.exception(new Exception("Error while recording file upload exception, " +
+                        "see previous exception for details", e));
             }
         }
         Toast.makeText(mActivity, R.string.image_upload_failed, Toast.LENGTH_SHORT).show();
@@ -626,7 +626,7 @@ public class PostEditFragment extends BaseFragment implements
                 .setMessage(msg)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     if (finalTargetStatus.equals(mPost.getStatus())) {
-                        Crashlytics.logException(new IllegalStateException("UI is messed up, " +
+                        Log.exception(new IllegalStateException("UI is messed up, " +
                                 "desired post status is same as current status!"));
                     }
                     // This will not be triggered when updating a published post, that goes through

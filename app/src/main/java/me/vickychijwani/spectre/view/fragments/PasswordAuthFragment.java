@@ -25,9 +25,9 @@ import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.KeyboardUtils;
 import me.vickychijwani.spectre.util.Listenable;
 import me.vickychijwani.spectre.util.NetworkUtils;
+import me.vickychijwani.spectre.util.log.Log;
 import me.vickychijwani.spectre.view.AboutActivity;
 import me.vickychijwani.spectre.view.LoginActivity;
-import timber.log.Timber;
 
 public class PasswordAuthFragment extends BaseFragment implements
         TextView.OnEditorActionListener,
@@ -64,7 +64,7 @@ public class PasswordAuthFragment extends BaseFragment implements
             if ("login-help".equals(url)) {
                 AppUtils.openUri(PasswordAuthFragment.this, AboutActivity.URL_SLACK);
             } else {
-                Timber.wtf("Unexpected URL = " + url);
+                Log.wtf("Unexpected URL = %s", url);
             }
         });
 

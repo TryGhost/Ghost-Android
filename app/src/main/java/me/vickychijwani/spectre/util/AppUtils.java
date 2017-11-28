@@ -20,12 +20,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
-
 import java.util.Locale;
 
 import me.vickychijwani.spectre.R;
 import me.vickychijwani.spectre.util.functions.Action1;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class AppUtils {
 
@@ -41,7 +40,7 @@ public class AppUtils {
                 return context.getString(R.string.version_unknown);
             }
         } catch (PackageManager.NameNotFoundException e) {
-            Crashlytics.logException(new RuntimeException("Failed to get package info, " +
+            Log.exception(new RuntimeException("Failed to get package info, " +
                     "see previous exception for details", e));
             return context.getString(R.string.version_unknown);
         }

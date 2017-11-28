@@ -24,7 +24,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +36,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -66,6 +64,7 @@ import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Setting;
 import me.vickychijwani.spectre.util.DeviceUtils;
 import me.vickychijwani.spectre.util.NetworkUtils;
+import me.vickychijwani.spectre.util.log.Log;
 import me.vickychijwani.spectre.view.image.BorderedCircleTransformation;
 import me.vickychijwani.spectre.view.widget.SpaceItemDecoration;
 import retrofit2.Response;
@@ -285,16 +284,15 @@ public class PostListActivity extends BaseActivity {
         if (error != null && NetworkUtils.isConnectionError(error)) {
             Toast.makeText(this, R.string.network_timeout, Toast.LENGTH_LONG).show();
         } else {
-            Crashlytics.log(Log.ERROR, TAG, "generic error message triggered during refresh");
+            Log.e(TAG, "Generic error message triggered during refresh");
             if (error != null) {
-                Crashlytics.logException(new SyncException("sync failed", error));
+                Log.exception(new SyncException("sync failed", error));
             } else if (response != null) {
                 try {
-                        Crashlytics.logException(new SyncException("response: "
-                                + response.errorBody().string()));
+                    Log.exception(new SyncException("Response: " + response.errorBody().string()));
                 } catch (Exception exception) {
-                    Crashlytics.logException(new SyncException("sync failed, but threw this when " +
-                            "trying to log response", exception));
+                    Log.exception(new SyncException("Sync failed, but threw this when trying to " +
+                            "log response", exception));
                 }
             }
         }

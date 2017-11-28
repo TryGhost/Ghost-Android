@@ -17,7 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +31,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Callback;
 
@@ -63,6 +61,7 @@ import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.util.PostUtils;
 import me.vickychijwani.spectre.util.functions.Action0;
 import me.vickychijwani.spectre.util.functions.Action1;
+import me.vickychijwani.spectre.util.log.Log;
 import me.vickychijwani.spectre.view.fragments.PostEditFragment;
 import me.vickychijwani.spectre.view.fragments.PostViewFragment;
 import me.vickychijwani.spectre.view.widget.ChipsEditText;
@@ -185,7 +184,7 @@ public class PostViewActivity extends BaseActivity implements
         }
         mPost = bundle.getParcelable(BundleKeys.POST);
         //noinspection ConstantConditions
-        Crashlytics.log(Log.DEBUG, TAG, "[onCreate] post id = " + mPost.getId());
+        Log.i(TAG, "[onCreate] post id = %s", mPost.getId());
 
         @PostViewFragmentPagerAdapter.TabPosition int startingTabPosition =
                 PostViewFragmentPagerAdapter.TAB_POSITION_PREVIEW;

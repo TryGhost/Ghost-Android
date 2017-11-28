@@ -1,9 +1,5 @@
 package me.vickychijwani.spectre.model;
 
-import android.util.Log;
-
-import com.crashlytics.android.Crashlytics;
-
 import io.realm.DynamicRealm;
 import io.realm.DynamicRealmObject;
 import io.realm.FieldAttribute;
@@ -15,6 +11,7 @@ import me.vickychijwani.spectre.model.entity.ETag;
 import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.pref.AppState;
 import me.vickychijwani.spectre.pref.UserPrefs;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class BlogMetadataDBMigration implements RealmMigration {
 
@@ -23,7 +20,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
     @Override
     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
         RealmSchema schema = realm.getSchema();
-        Crashlytics.log(Log.INFO, TAG, "MIGRATING DATABASE from v" + oldVersion + " to v" + newVersion);
+        Log.i(TAG, "MIGRATING DATABASE from v%d to v%d", oldVersion, newVersion);
 
         // NOTE: schema versions 0, 1, 2 and 3 are not possible because this app was released AFTER
         // we hit schema version 4. The old migration code is kept around for reference.
@@ -35,7 +32,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
                         .where(Post.class.getSimpleName())
                         .isNull("slug")
                         .findAll();
-                Crashlytics.log(Log.DEBUG, TAG, "CONVERTING " + postsWithNullSlug.size() + " SLUGS FROM NULL TO \"\"");
+                Log.i(TAG, "CONVERTING %d SLUGS FROM NULL TO \"\"", postsWithNullSlug.size());
                 for (DynamicRealmObject obj : postsWithNullSlug) {
                     obj.setString("slug", "");
                 }
@@ -76,12 +73,12 @@ public class BlogMetadataDBMigration implements RealmMigration {
                     .or()
                     .equalTo("type", ETag.TYPE_ALL_POSTS)
                     .findAll();
-            Crashlytics.log(Log.DEBUG, TAG, "DELETING ALL ETAGS TO REFRESH DATA COMPLETELY");
+            Log.i(TAG, "DELETING ALL ETAGS TO REFRESH DATA COMPLETELY");
             allEtags.deleteAllFromRealm();
 
             if (!schema.contains("Role")) {
                 // create the Role table
-                Crashlytics.log(Log.DEBUG, TAG, "CREATING ROLE TABLE");
+                Log.i(TAG, "CREATING ROLE TABLE");
                 schema.create("Role")
                         .addField("id", Integer.class, FieldAttribute.PRIMARY_KEY)
                         .addField("uuid", String.class, FieldAttribute.REQUIRED)
@@ -90,7 +87,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
             }
 
             if (!schema.get("User").hasField("roles")) {
-                Crashlytics.log(Log.DEBUG, TAG, "ADDING ROLES FIELD TO USER TABLE");
+                Log.i(TAG, "ADDING ROLES FIELD TO USER TABLE");
                 schema.get("User").addRealmListField("roles", schema.get("Role"));
             }
             ++oldVersion;
@@ -98,7 +95,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
 
         if (oldVersion == 2) {
             if (!schema.get("Post").hasField("conflictState")) {
-                Crashlytics.log(Log.DEBUG, TAG, "ADDING CONFLICT STATE FIELD TO POST TABLE");
+                Log.i(TAG, "ADDING CONFLICT STATE FIELD TO POST TABLE");
                 schema.get("Post").addField("conflictState", String.class, FieldAttribute.REQUIRED);
             }
             ++oldVersion;
@@ -106,7 +103,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
 
         if (oldVersion == 3) {
             // Ghost 1.0 upgrade, drop all data
-            Crashlytics.log(Log.WARN, TAG, "DROPPING ALL DATA");
+            Log.w(TAG, "DROPPING ALL DATA");
             final SpectreApplication app = SpectreApplication.getInstance();
 //            app.setOldRealmSchemaVersion(3);
 

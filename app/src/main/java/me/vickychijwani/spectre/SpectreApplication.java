@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
@@ -31,10 +30,9 @@ import me.vickychijwani.spectre.model.BlogMetadataDBMigration;
 import me.vickychijwani.spectre.model.BlogMetadataModule;
 import me.vickychijwani.spectre.network.NetworkService;
 import me.vickychijwani.spectre.network.ProductionHttpClientFactory;
-import me.vickychijwani.spectre.util.CrashReportingTree;
+import me.vickychijwani.spectre.util.log.Log;
 import okhttp3.OkHttpClient;
 import retrofit2.Response;
-import timber.log.Timber;
 
 public class SpectreApplication extends Application {
 
@@ -58,12 +56,8 @@ public class SpectreApplication extends Application {
         super.onCreate();
 
         Fabric.with(this, new Crashlytics(), new Answers());
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        } else {
-            Timber.plant(new CrashReportingTree());
-        }
-        Crashlytics.log(Log.DEBUG, TAG, "APP LAUNCHED");
+        Log.useEnvironment(BuildConfig.DEBUG ? Log.Environment.DEBUG : Log.Environment.RELEASE);
+        Log.i(TAG, "APP LAUNCHED");
 
         BusProvider.getBus().register(this);
         sInstance = this;
@@ -124,8 +118,8 @@ public class SpectreApplication extends Application {
         mPicasso = new Picasso.Builder(this)
                 .downloader(new OkHttp3Downloader(mOkHttpClient))
                 .listener((picasso, uri, exception) -> {
-                    Log.e("Picasso", "Failed to load image: " + uri + "\n"
-                            + Log.getStackTraceString(exception));
+                    Log.e("Picasso", "Failed to load image: %s", uri);
+                    Log.exception(exception);
                 })
                 .build();
     }
@@ -167,24 +161,23 @@ public class SpectreApplication extends Application {
         if (errorResponse != null) {
             try {
                 String responseString = errorResponse.errorBody().string();
-                Crashlytics.log(Log.ERROR, TAG, responseString);
+                Log.e(TAG, responseString);
             } catch (IOException e) {
-                Crashlytics.log(Log.ERROR, TAG, "[onApiErrorEvent] Error while parsing response" +
-                        " error body!");
+                Log.e(TAG, "[onApiErrorEvent] Error while parsing response error body!");
             }
         }
         if (error != null) {
-            Crashlytics.log(Log.ERROR, TAG, Log.getStackTraceString(error));
+            Log.exception(error);
         }
     }
 
     @Subscribe
     public void onDeadEvent(DeadEvent event) {
-        Crashlytics.log(Log.WARN, TAG, "Dead event ignored: " + event.event.getClass().getName());
+        Log.w(TAG, "Dead event ignored: %s", event.event.getClass().getName());
     }
 
     private void uncaughtRxException(Throwable e) {
-        Crashlytics.logException(new UncaughtRxException(e));
+        Log.exception(new UncaughtRxException(e));
     }
 
 }

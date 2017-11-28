@@ -8,9 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
-
-import com.crashlytics.android.Crashlytics;
 
 import java.util.Calendar;
 import java.util.Comparator;
@@ -24,6 +21,7 @@ import me.vickychijwani.spectre.model.entity.BlogMetadata;
 import me.vickychijwani.spectre.model.entity.PendingAction;
 import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Tag;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class PostUtils {
 
@@ -133,9 +131,9 @@ public class PostUtils {
             String postUrl = NetworkUtils.makeAbsoluteUrl(blogUrl, postPath);
             // FIXME temp logs for Crashlytics issue #110
             if (publishedAt == null) {
-                Crashlytics.log(Log.ERROR, "PostUtils", "PUBLISHED POST WITH NULL DATE FOUND!");
-                Crashlytics.log(Log.ERROR, "PostUtils", "Returning URL with current date instead: " + postUrl);
-                Crashlytics.logException(new IllegalStateException("PUBLISHED POSTS MUST NOT HAVE A NULL DATE!"));
+                Log.e("PostUtils", "PUBLISHED POST WITH NULL DATE FOUND!");
+                Log.e("PostUtils", "Returning URL with current date instead: %s", postUrl);
+                Log.exception(new IllegalStateException("PUBLISHED POSTS MUST NOT HAVE A NULL DATE!"));
             }
             return postUrl;
         } else if (post.isDraft() || post.isScheduled()) {

@@ -3,10 +3,8 @@ package me.vickychijwani.spectre.network;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.squareup.otto.Bus;
@@ -86,6 +84,7 @@ import me.vickychijwani.spectre.util.PostUtils;
 import me.vickychijwani.spectre.util.functions.Action0;
 import me.vickychijwani.spectre.util.functions.Action1;
 import me.vickychijwani.spectre.util.functions.Action2;
+import me.vickychijwani.spectre.util.log.Log;
 import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -116,7 +115,7 @@ public class NetworkService implements
     private final ArrayDeque<ApiCallEvent> mRefreshEventsQueue = new ArrayDeque<>();
 
     public void start(OkHttpClient httpClient) {
-        Crashlytics.log(Log.DEBUG, TAG, "Initializing NetworkService...");
+        Log.i(TAG, "Initializing NetworkService...");
         getBus().register(this);
         if (AccountManager.hasActiveBlog()) {
             BlogMetadata activeBlog = AccountManager.getActiveBlog();
@@ -455,7 +454,7 @@ public class NetworkService implements
 
     @Subscribe
     public void onCreatePostEvent(final CreatePostEvent event) {
-        Crashlytics.log(Log.DEBUG, TAG, "[onCreatePostEvent] creating new post");
+        Log.i(TAG, "[onCreatePostEvent] creating new post");
         Post newPost = new Post();
         newPost.addPendingAction(PendingAction.CREATE);
         newPost.setId(getTempUniqueId(Post.class));
@@ -568,7 +567,7 @@ public class NetworkService implements
         // the loop variable is *local* to the loop block, so it can be captured in a closure easily
         // this is unlike JavaScript, in which the same loop variable is mutated
         for (final Post localPost : localDeletedPosts) {
-            Crashlytics.log(Log.DEBUG, TAG, "[onSyncPostsEvent] deleting post id = " + localPost.getId());
+            Log.i(TAG, "[onSyncPostsEvent] deleting post id = %s", localPost.getId());
             mApi.deletePost(mAuthToken.getAuthHeader(), localPost.getId()).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
@@ -591,7 +590,7 @@ public class NetworkService implements
 
         // 2. NEW POSTS
         for (final Post localPost : localNewPosts) {
-            Crashlytics.log(Log.DEBUG, TAG, "[onSyncPostsEvent] creating post");    // local new posts don't have an id
+            Log.i(TAG, "[onSyncPostsEvent] creating post");    // local new posts don't have an id
             mApi.createPost(mAuthToken.getAuthHeader(), PostStubList.from(localPost)).enqueue(new Callback<PostList>() {
                 @Override
                 public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
@@ -618,7 +617,7 @@ public class NetworkService implements
 
         // 3. EDITED POSTS
         Action1<Post> uploadEditedPost = (editedPost) -> {
-            Crashlytics.log(Log.DEBUG, TAG, "[onSyncPostsEvent] updating post id = " + editedPost.getId());
+            Log.i(TAG, "[onSyncPostsEvent] updating post id = %s", editedPost.getId());
             PostStubList postStubList = PostStubList.from(editedPost);
             mApi.updatePost(mAuthToken.getAuthHeader(), editedPost.getId(), postStubList).enqueue(new Callback<PostList>() {
                 @Override
@@ -648,7 +647,8 @@ public class NetworkService implements
             });
         };
         for (final Post localPost : localEditedPosts) {
-            Crashlytics.log(Log.DEBUG, TAG, "[onSyncPostsEvent] downloading edited post with id = " + localPost.getId() + " for comparison");
+            Log.i(TAG, "[onSyncPostsEvent] downloading edited post with id = %s for comparison",
+                    localPost.getId());
             mApi.getPost(mAuthToken.getAuthHeader(), localPost.getId()).enqueue(new Callback<PostList>() {
                 @Override
                 public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
@@ -662,16 +662,16 @@ public class NetworkService implements
                                     && !serverPost.getUpdatedAt().equals(localPost.getUpdatedAt()));
                         }
                         if (hasConflict && PostUtils.isDirty(serverPost, localPost)) {
-                            Crashlytics.log(Log.WARN, TAG, "[onSyncPostsEvent] conflict found for post id = " + localPost.getId());
+                            Log.w(TAG, "[onSyncPostsEvent] conflict found for post id = %s", localPost.getId());
                             postUploadQueue.removeFirstOccurrence(localPost);
                             if (postUploadQueue.isEmpty()) syncFinishedCB.call();
                             localPost.setConflictState(Post.CONFLICT_UNRESOLVED);
                             createOrUpdateModel(localPost);
-                            Crashlytics.log(Log.DEBUG, TAG, "localPost updated at:" + localPost.getUpdatedAt().toString());
-                            Crashlytics.log(Log.DEBUG, TAG, "serverPost updated at: " + serverPost.getUpdatedAt().toString());
-                            Crashlytics.log(Log.DEBUG, TAG, "localPost contents:\n" + localPost.getMarkdown());
-                            Crashlytics.log(Log.DEBUG, TAG, "serverPost contents:\n" + serverPost.getMarkdown());
-                            Crashlytics.logException(new PostConflictFoundException());
+                            Log.i(TAG, "localPost updated at: %s", localPost.getUpdatedAt().toString());
+                            Log.i(TAG, "serverPost updated at: %s", serverPost.getUpdatedAt().toString());
+                            Log.i(TAG, "localPost contents: %s", localPost.getMarkdown());
+                            Log.i(TAG, "serverPost contents: %s", serverPost.getMarkdown());
+                            Log.exception(new PostConflictFoundException());
                             getBus().post(new PostConflictFoundEvent(localPost, serverPost));
                         } else {
                             uploadEditedPost.call(localPost);
@@ -697,11 +697,11 @@ public class NetworkService implements
         Post realmPost = mRealm.where(Post.class)
                 .equalTo("id", event.post.getId())
                 .findFirst();
-        Crashlytics.log(Log.DEBUG, TAG, "[onSavePostEvent] post id = " + event.post.getId());
+        Log.i(TAG, "[onSavePostEvent] post id = %s", event.post.getId());
 
         if (realmPost.hasPendingAction(PendingAction.DELETE)) {
             RuntimeException e = new IllegalArgumentException("Trying to save deleted post with id = " + realmPost.getId());
-            Crashlytics.logException(e);
+            Log.exception(e);
         }
 
         // TODO bug in edge-case:
@@ -754,12 +754,12 @@ public class NetworkService implements
     @Subscribe
     public void onDeletePostEvent(DeletePostEvent event) {
         String postId = event.post.getId();
-        Crashlytics.log(Log.DEBUG, TAG, "[onDeletePostEvent] post id = " + postId);
+        Log.i(TAG, "[onDeletePostEvent] post id = %s", postId);
 
         Post realmPost = mRealm.where(Post.class).equalTo("id", postId).findFirst();
         if (realmPost == null) {
             RuntimeException e = new IllegalArgumentException("Trying to delete post with non-existent id = " + postId);
-            Crashlytics.logException(e);
+            Log.exception(e);
         } else if (realmPost.hasPendingAction(PendingAction.CREATE)) {
             deleteModel(realmPost);
             getBus().post(new PostDeletedEvent(postId));
@@ -777,7 +777,7 @@ public class NetworkService implements
     @SuppressLint("DefaultLocale")
     @Subscribe
     public void onFileUploadEvent(FileUploadEvent event) {
-        Crashlytics.log(Log.DEBUG, TAG, "[onFileUploadEvent] uploading file");
+        Log.i(TAG, "[onFileUploadEvent] uploading file");
 
         InputStream inputStream = event.inputStream;
         String mimeType = event.mimeType;

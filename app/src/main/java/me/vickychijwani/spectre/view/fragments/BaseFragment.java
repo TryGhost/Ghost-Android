@@ -1,16 +1,14 @@
 package me.vickychijwani.spectre.view.fragments;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.crashlytics.android.Crashlytics;
 import com.squareup.otto.Bus;
 import com.squareup.picasso.Picasso;
 
@@ -18,6 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.vickychijwani.spectre.SpectreApplication;
 import me.vickychijwani.spectre.event.BusProvider;
+import me.vickychijwani.spectre.util.log.Log;
 
 @SuppressWarnings("WeakerAccess")
 public abstract class BaseFragment extends Fragment {
@@ -60,14 +59,14 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onCreateView()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onCreateView()", mClassName);
         return null;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onStart()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onStart()", mClassName);
         getBus().register(this);
     }
 
@@ -79,45 +78,45 @@ public abstract class BaseFragment extends Fragment {
                     "#onCreateView(). This is required in order to unbind Fragment views. See " +
                     "http://jakewharton.github.io/butterknife/#reset");
         }
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onResume()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onResume()", mClassName);
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onAttach()");
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.i(Log.Tag.LIFECYCLE, "%s#onAttach()", mClassName);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onDetach()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onDetach()", mClassName);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onPause()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onPause()", mClassName);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onStop()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onStop()", mClassName);
         getBus().unregister(this);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onDestroyView()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onDestroyView()", mClassName);
         unbindView();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Crashlytics.log(Log.DEBUG, TAG, mClassName + "#onDestroy()");
+        Log.i(Log.Tag.LIFECYCLE, "%s#onDestroy()", mClassName);
     }
 
     /**

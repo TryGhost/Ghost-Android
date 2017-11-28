@@ -10,8 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
-
 import java.util.Date;
 
 import butterknife.BindView;
@@ -20,6 +18,7 @@ import me.vickychijwani.spectre.analytics.AnalyticsService;
 import me.vickychijwani.spectre.event.SavePostEvent;
 import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.util.DateTimeUtils;
+import me.vickychijwani.spectre.util.log.Log;
 
 public class PostConflictResolutionActivity extends BaseActivity implements View.OnClickListener {
 
@@ -81,7 +80,7 @@ public class PostConflictResolutionActivity extends BaseActivity implements View
                 } else if (mChoiceGroup.getCheckedRadioButtonId() == R.id.conflict_choice_use_server_copy) {
                     resolveConflict(new Post(mServerPost));
                 } else {
-                    Crashlytics.logException(new IllegalStateException("No choice selected in conflict resolution UI!"));
+                    Log.exception(new IllegalStateException("No choice selected in conflict resolution UI!"));
                 }
                 break;
 //            case R.id.conflict_decide_later_btn:
