@@ -349,13 +349,23 @@ public class PostViewActivity extends BaseActivity implements
 
     @Subscribe
     public void onPostSyncedEvent(PostSyncedEvent event) {
-        if (event.id.equals(mPost.getId()) && mbPreviewPost) {
-            mHandler.removeCallbacks(mSaveTimeoutRunnable);
-            startBrowserActivity(PostUtils.getPostUrl(mPost));
-            if (mProgressDialog != null) {
-                mProgressDialog.dismiss();
+        if (event.post != null && event.post.getId().equals(mPost.getId())) {
+            // Use the synced post, as the server could have modified it (e.g., if the slug clashes).
+            // Since syncing happens *asynchronously* (relative to the time the SavePostEvent was
+            // fired), using unsafeUpdatePost() WILL overwrite the user's edits! So, update the
+            // existing post with whatever properties *could* have been updated by the server *and*
+            // are NOT user-modifiable. The change will automatically propagate to the editor and
+            // other fragments because they share the object reference directly.
+            mPost.setSlug(event.post.getSlug());
+
+            if (mbPreviewPost) {
+                mHandler.removeCallbacks(mSaveTimeoutRunnable);
+                startBrowserActivity(PostUtils.getPostUrl(mPost));
+                if (mProgressDialog != null) {
+                    mProgressDialog.dismiss();
+                }
+                mbPreviewPost = false;
             }
-            mbPreviewPost = false;
         }
     }
 
@@ -378,15 +388,16 @@ public class PostViewActivity extends BaseActivity implements
     @Subscribe
     public void onPostReplacedEvent(PostReplacedEvent event) {
         // FIXME check which post changed before blindly assigning to mPost!
-        updatePost(event.newPost);
+        unsafeUpdatePost(event.newPost);
     }
 
     @Subscribe
     public void onPostSavedEvent(PostSavedEvent event) {
-        if (! mPost.getId().equals(event.post.getId())) {
-            return;
+        // since saving happens synchronously (from the time the SavePostEvent was fired), updating
+        // the post editor is also safe - it won't overwrite the user's edits
+        if (mPost.getId().equals(event.post.getId())) {
+            unsafeUpdatePost(event.post);
         }
-        updatePost(event.post);
     }
 
     @Subscribe
@@ -395,7 +406,8 @@ public class PostViewActivity extends BaseActivity implements
         finish();
     }
 
-    private void updatePost(@NonNull Post newPost) {
+    // this method is marked "unsafe" because it replaces the post editor contents without checking!
+    private void unsafeUpdatePost(@NonNull Post newPost) {
         mPost = newPost;
         ((PostViewFragmentPagerAdapter) mViewPager.getAdapter()).setPost(mPost);
         // Crashlytics issue 104: fragments can be null when a draft gets uploaded right

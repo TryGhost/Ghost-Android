@@ -40,9 +40,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.realm.RealmList;
+import me.vickychijwani.spectre.BuildConfig;
 import me.vickychijwani.spectre.R;
 import me.vickychijwani.spectre.analytics.AnalyticsService;
 import me.vickychijwani.spectre.error.FileUploadFailedException;
+import me.vickychijwani.spectre.error.UserEditsLostException;
 import me.vickychijwani.spectre.event.FileUploadErrorEvent;
 import me.vickychijwani.spectre.event.FileUploadEvent;
 import me.vickychijwani.spectre.event.FileUploadedEvent;
@@ -688,7 +690,7 @@ public class PostEditFragment extends BaseFragment implements
     }
 
     @Subscribe
-    public void onPostSyncedEvent(PostSyncedEvent event) {
+    public void onPostSyncedEvent(PostSyncedEvent _) {
         SaveScenario saveScenario = mSaveScenario;
         mSaveScenario = SaveScenario.UNKNOWN;
         mHandler.removeCallbacks(mSaveTimeoutRunnable);
@@ -738,6 +740,17 @@ public class PostEditFragment extends BaseFragment implements
     }
 
     public void setPost(@NonNull Post post, boolean isOriginal) {
+        // check if this method is being called at a time when the user has some edits that will
+        // be lost as soon as this method completes
+        if (mPost != null && !mPost.getMarkdown().trim().equals(post.getMarkdown().trim())) {
+            RuntimeException e = new UserEditsLostException();
+            if (BuildConfig.DEBUG) {
+                throw e;
+            } else {
+                Log.exception(e);
+            }
+        }
+
         mPost = post;
         if (isOriginal) {
             mOriginalPost = new Post(post);             // store a copy for calculating diff later

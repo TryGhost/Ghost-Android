@@ -624,16 +624,17 @@ public class NetworkService implements
                 public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
                     if (response.isSuccessful()) {
                         PostList postList = response.body();
+                        Post syncedPost = postList.posts.get(0);
                         Post realmPost = mRealm.where(Post.class)
                                 .equalTo("id", editedPost.getId())
                                 .findFirst();
                         // saved posts do not have the markdown/mobiledoc fields set, so retain
                         // those values from a pre-save copy
-                        postList.posts.get(0).setMarkdown(realmPost.getMarkdown());
-                        postList.posts.get(0).setMobiledoc(realmPost.getMobiledoc());
+                        syncedPost.setMarkdown(realmPost.getMarkdown());
+                        syncedPost.setMobiledoc(realmPost.getMobiledoc());
                         createOrUpdateModel(postList.posts);
                         postUploadQueue.removeFirstOccurrence(editedPost);
-                        getBus().post(new PostSyncedEvent(editedPost.getId()));
+                        getBus().post(new PostSyncedEvent(syncedPost));
                         if (postUploadQueue.isEmpty()) syncFinishedCB.call();
                     } else {
                         onFailure.call(editedPost, new ApiFailure<>(response));
