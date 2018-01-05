@@ -4,19 +4,19 @@
     <!-- login -->
     <string name="prompt_blog_url">Dirección del blog</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Iniciar sesión</string>
 
     <string name="error_invalid_email">La dirección de email es inválida</string>
-    <string name="error_field_required">Este campos es obligatorio</string>
+    <string name="error_field_required">Este campo es obligatorio</string>
 
     <string name="no_such_blog">No se encuentra el panel de administración de Ghost en %s/ghost</string>
     <string name="login_unexpected_error">Error inesperado durante el acceso. Por favor, vuelva a intentarlo.</string>
     <string name="login_connection_error">No se ha podido conectar a %s/ghost. Por favor, vuelva a intentarlo.</string>
     <string name="login_ssl_unsupported">Su blog no soporta https:// (SSL)</string>
     <string name="logout">Cerrar sesión</string>
-    <string name="credentials_expired">¿Ha cambiado su contraseña? No se ha podido iniciar sesión con esa contraseña.</string>
-    <string name="unsynced_changes_msg">Se perderán todos sus cambios si cierra la sesión ahora</string>
+    <string name="credentials_expired">Auto Inicio de Sesión fallido, por favor ingrese de nuevo</string>
+    <string name="unsynced_changes_msg">Se perderán todos los cambios no guardados si cierra la sesión ahora</string>
     <string name="dont_logout">No cerrar sesión</string>
 
     <!-- posts -->
@@ -107,4 +107,20 @@
     <string name="intent_no_apps">No se ha encontrado ninguna aplicación que pueda realizar esta acción</string>
     <string name="next">Siguiente</string>
 
-</resources>
+<string name="post_excerpt_hint">Extracto</string>
+    <string name="post_page_hint">Convertir este Artículo a Página</string>
+
+    <string name="enable_permission_tip">Haga Tap en Permisos y habilite Almacenamiento</string>
+
+    <string name="conflict_explanation"><b>El artículo <i>%s</i> tiene un conflicto.</b> Fue actualizado en el servidor antes de que la copia en su dispositivo fuera enviada. Qué versión del artículo le gustaría mantener?</string>
+    <string name="conflict_choice_use_device_copy">Copia local enviada</string>
+    <string name="conflict_choice_use_server_copy">Descargar copia del servidor</string>
+    <string name="conflict_last_update_at">Última actualización %s</string>
+    <string name="conflict_post_preview_title">Se mantendrá la copia del artículo mostrada abajo:</string>
+    <string name="conflict_post_preview_status">Estado del artículo: <b>%s</b></string>
+
+    <string name="accept">Aceptar</string>
+    <string name="draft">Borrador</string>
+    <string name="published">Publicado</string>
+    <string name="scheduled">Programado</string>
+    </resources>
