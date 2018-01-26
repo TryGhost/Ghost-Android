@@ -207,7 +207,7 @@ class GhostApiTest {
         API.doWithAuthToken { token ->
             API.createRandomPost(token, { post1, _, _ ->
                 API.createRandomPost(token, { post2, _, _ ->
-                    val response = execute(API.getPosts(token.authHeader, "", 100))
+                    val response = execute(API.getPosts(token.authHeader, "", null, 100))
                     val posts = response.body()!!.posts
                     assertThat(response.code(), `is`(HTTP_OK))
                     assertThat(posts.size, `is`(2))
@@ -229,7 +229,7 @@ class GhostApiTest {
         API.doWithAuthToken { token ->
             API.createRandomPost(token, { _, _, _ ->
                 API.createRandomPost(token, { post2, _, _ ->
-                    val response = execute(API.getPosts(token.authHeader, "", 1))
+                    val response = execute(API.getPosts(token.authHeader, "", null, 1))
                     val posts = response.body()!!.posts
                     assertThat(response.code(), `is`(HTTP_OK))
                     assertThat(posts.size, `is`(1))

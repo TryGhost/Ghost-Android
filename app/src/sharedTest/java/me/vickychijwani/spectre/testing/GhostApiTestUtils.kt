@@ -14,7 +14,7 @@ val TEST_PWD = "randomtestpwd"
 // extension functions for the GhostApiService
 fun GhostApiService.deleteDefaultPosts() {
     this.doWithAuthToken { token ->
-        val posts = execute(this.getPosts(token.authHeader, "", 100)).body()!!
+        val posts = execute(this.getPosts(token.authHeader, "", null, 100)).body()!!
         // A default Ghost install has these many posts initially. If there are more than this,
         // abort. This is to avoid messing up a production blog (like my own) by mistake.
         val DEFAULT_POST_COUNT = 7

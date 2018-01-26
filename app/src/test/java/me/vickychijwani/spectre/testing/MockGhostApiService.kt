@@ -1,18 +1,15 @@
 package me.vickychijwani.spectre.testing
 
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
+import com.google.gson.*
 import io.reactivex.Observable
-import me.vickychijwani.spectre.model.entity.AuthToken
-import me.vickychijwani.spectre.model.entity.ConfigurationParam
+import me.vickychijwani.spectre.model.entity.*
 import me.vickychijwani.spectre.network.GhostApiService
 import me.vickychijwani.spectre.network.entity.*
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
-import retrofit2.mock.BehaviorDelegate
-import retrofit2.mock.Calls
+import retrofit2.mock.*
 import java.net.HttpURLConnection
 
 class MockGhostApiService(private val mDelegate: BehaviorDelegate<GhostApiService>,
@@ -82,7 +79,7 @@ class MockGhostApiService(private val mDelegate: BehaviorDelegate<GhostApiServic
         return null
     }
 
-    override fun getPosts(@Header("Authorization") authHeader: String, @Header("If-None-Match") etag: String, @Query("limit") numPosts: Int): Call<PostList>? {
+    override fun getPosts(@Header("Authorization") authHeader: String, @Header("If-None-Match") etag: String, @Query("filter") filter: String, @Query("limit") numPosts: Int): Call<PostList>? {
         return null
     }
 
