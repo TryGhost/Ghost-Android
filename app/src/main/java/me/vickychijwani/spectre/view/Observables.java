@@ -3,14 +3,15 @@ package me.vickychijwani.spectre.view;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.util.Pair;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
+import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.log.Log;
 
 public class Observables {
@@ -32,15 +33,28 @@ public class Observables {
         AlertDialog makeDialog(ObservableEmitter<T> emitter);
     }
 
-    public static Observable<Pair<InputStream, String>> getFileUploadMetadataFromUri(
+    public static final class FileUploadMetadata {
+        public final InputStream inputStream;
+        @Nullable public final String filename;
+        public final String mimeType;
+        public FileUploadMetadata(InputStream inputStream, @Nullable String filename,
+                                  String mimeType) {
+            this.inputStream = inputStream;
+            this.filename = filename;
+            this.mimeType = mimeType;
+        }
+    }
+
+    public static Observable<FileUploadMetadata> getFileUploadMetadataFromUri(
             @NonNull ContentResolver contentResolver,
             @NonNull Uri fileUri) {
         return Observable.create(emitter -> {
             try {
                 Log.d(TAG, "Attempting to read uri: %s", fileUri.toString());
                 InputStream inputStream = contentResolver.openInputStream(fileUri);
+                String filename = AppUtils.getFileNameFromUri(contentResolver, fileUri);
                 String mimeType = contentResolver.getType(fileUri);
-                emitter.onNext(new Pair<>(inputStream, mimeType));
+                emitter.onNext(new FileUploadMetadata(inputStream, filename, mimeType));
             } catch (IOException e) {
                 emitter.onError(e);
                 Log.exception(new Exception("Failed to open input stream for uri, " +

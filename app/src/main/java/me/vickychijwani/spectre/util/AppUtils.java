@@ -1,14 +1,18 @@
 package me.vickychijwani.spectre.util;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -84,6 +88,29 @@ public class AppUtils {
 
     public static void openUri(@NonNull Fragment fragment, @NonNull String uri) {
         openUri(fragment.getActivity(), uri);
+    }
+
+    // credits: https://stackoverflow.com/a/25005243/504611
+    @Nullable
+    public static String getFileNameFromUri(@NonNull ContentResolver contentResolver,
+                                            @NonNull Uri uri) {
+        String filename = null;
+        if (uri.getScheme().equals("content")) {
+            try (Cursor cursor = contentResolver.query(uri, null, null,
+                    null, null)) {
+                if (cursor != null && cursor.moveToFirst()) {
+                    filename = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            }
+        }
+        if (filename == null) {
+            filename = uri.getPath();
+            int cut = filename.lastIndexOf('/');
+            if (cut != -1) {
+                filename = filename.substring(cut + 1);
+            }
+        }
+        return filename;
     }
 
     // Add a custom event handler for link clicks in TextView HTML

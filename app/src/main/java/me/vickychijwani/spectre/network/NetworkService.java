@@ -3,7 +3,6 @@ package me.vickychijwani.spectre.network;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.webkit.MimeTypeMap;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -776,8 +775,9 @@ public class NetworkService implements
     public void onFileUploadEvent(FileUploadEvent event) {
         Log.i(TAG, "[onFileUploadEvent] uploading file");
 
-        InputStream inputStream = event.inputStream;
-        String mimeType = event.mimeType;
+        final InputStream inputStream = event.inputStream;
+        final String filename = event.filename;
+        final String mimeType = event.mimeType;
 
         byte[] fileBytes = null;
         try {
@@ -803,10 +803,6 @@ public class NetworkService implements
         if (fileBytes == null) {
             return;
         }
-
-        // generate a random filename, Ghost chokes without it
-        String ext = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
-        String filename = String.format("upload-%d.%s", System.currentTimeMillis() / 1000, ext);
 
         RequestBody body = RequestBody.create(MediaType.parse(mimeType), fileBytes);
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("uploadimage", filename, body);

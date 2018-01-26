@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -436,6 +437,7 @@ public class PostEditFragment extends BaseFragment implements
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private void uploadImage(@NonNull Uri uri) {
         if (mUploadDisposable != null && !mUploadDisposable.isDisposed()) {
             mUploadDisposable.dispose();
@@ -449,8 +451,14 @@ public class PostEditFragment extends BaseFragment implements
                 .getFileUploadMetadataFromUri(mActivity.getContentResolver(), uri)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((pair) -> {
-                    getBus().post(new FileUploadEvent(pair.first, pair.second));
+                .subscribe((metadata) -> {
+                    String filename = metadata.filename;
+                    if (filename == null) {
+                        // generate a random filename
+                        String ext = MimeTypeMap.getSingleton().getExtensionFromMimeType(metadata.mimeType);
+                        filename = String.format("upload-%d.%s", System.currentTimeMillis() / 1000, ext);
+                    }
+                    getBus().post(new FileUploadEvent(metadata.inputStream, filename, metadata.mimeType));
                 }, (error) -> {
                     onFileUploadErrorEvent(new FileUploadErrorEvent(new ApiFailure(error)));
                 }, () -> {
