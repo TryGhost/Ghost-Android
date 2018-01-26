@@ -84,18 +84,19 @@ public class User implements RealmModel {
         this.roles = roles;
     }
 
-    // the way Ghost permissions work is, authors can only see and edit their own posts,
-    // while all other roles can see and edits everybody's posts
-    public boolean hasOnlyAuthorRole() {
-        // a user can have multiple roles, so they should be restricted to author permissions
-        // only if ALL their roles are "Author"
-        boolean onlyAuthor = true;
+    // the way Ghost permissions work is, authors and contributors can only see and edit their own
+    // posts, while all other roles can see and edit everybody's posts
+    public boolean isOnlyAuthorOrContributor() {
+        // a user can have multiple roles, so they should be restricted to author/contributor
+        // permissions only if ALL their roles are "Author" or "Contributor"
+        boolean onlyAuthorOrContributor = true;
         for (Role role : roles) {
-            if (!"author".equalsIgnoreCase(role.getName())) {
-                onlyAuthor = false;
+            if (!"author".equalsIgnoreCase(role.getName())
+                    && !"contributor".equalsIgnoreCase(role.getName())) {
+                onlyAuthorOrContributor = false;
             }
         }
-        return onlyAuthor;
+        return onlyAuthorOrContributor;
     }
 
 }

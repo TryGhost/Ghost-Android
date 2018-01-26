@@ -368,29 +368,25 @@ public class NetworkService implements
             }
         }
 
-        mApi.getPosts(mAuthToken.getAuthHeader(), loadEtag(ETag.TYPE_ALL_POSTS), POSTS_FETCH_LIMIT).enqueue(new Callback<PostList>() {
+        RealmResults<User> users = mRealm.where(User.class).findAll();
+        if (users.size() == 0) {
+            return;
+        }
+
+        User user = users.first();
+        String authorFilter = null;     // Retrofit skips parameters with null values
+        if (user.isOnlyAuthorOrContributor()) {
+            authorFilter = "author:" + user.getSlug();
+        }
+
+        final Call<PostList> postListCall = mApi.getPosts(mAuthToken.getAuthHeader(),
+                loadEtag(ETag.TYPE_ALL_POSTS), authorFilter, POSTS_FETCH_LIMIT);
+        postListCall.enqueue(new Callback<PostList>() {
             @Override
             public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
                 if (response.isSuccessful()) {
                     PostList postList = response.body();
                     storeEtag(response.headers(), ETag.TYPE_ALL_POSTS);
-
-                    // if this user is only an author, filter out posts they're not authorized to access
-                    // FIXME use GET posts/?filter=author_id:1 instead, similar to Ghost-Admin filters
-                    RealmResults<User> users = mRealm.where(User.class).findAll();
-                    if (users.size() > 0) {
-                        User user = users.first();
-                        if (user.hasOnlyAuthorRole()) {
-                            String currentUser = user.getId();
-                            // reverse iteration because in forward iteration, indices change on deleting
-                            for (int i = postList.posts.size() - 1; i >= 0; --i) {
-                                Post post = postList.posts.get(i);
-                                if (currentUser.equals(post.getAuthor())) {
-                                    postList.posts.remove(i);
-                                }
-                            }
-                        }
-                    }
 
                     // delete local copies of posts that are no longer within the POSTS_FETCH_LIMIT
                     // FIXME if there are any locally-edited posts at this point that were pushed

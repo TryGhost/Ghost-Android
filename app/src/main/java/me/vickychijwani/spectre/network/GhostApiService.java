@@ -51,7 +51,9 @@ public interface GhostApiService {
     // FIXME (issue #81) only allowing N posts right now to avoid too much data transfer
     @GET("posts/?status=all&staticPages=all&include=tags&formats=mobiledoc,html")
     Call<PostList> getPosts(@Header("Authorization") String authHeader,
-                            @Header("If-None-Match") String etag, @Query("limit") int numPosts);
+                            @Header("If-None-Match") String etag,
+                            @Query("filter") String filter,
+                            @Query("limit") int numPosts);
 
     @GET("posts/{id}/?status=all&include=tags&formats=mobiledoc,html")
     Call<PostList> getPost(@Header("Authorization") String authHeader, @Path("id") String id);
