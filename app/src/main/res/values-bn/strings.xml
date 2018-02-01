@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="prompt_blog_url">ব্লগের ঠিকানা</string>
@@ -10,15 +10,110 @@
     <string name="error_field_required">এটা পূরণ করা বাধ্যতামূলক</string>
 
     <string name="no_such_blog">%s/ghost এখানে কোন এডমিন পাওয়া যায়নি</string>
-    <string name="login_unexpected_error">অপ্রত্যাশিত error. আবার চেষ্টা করুন</string>
+    <string name="login_unexpected_error">অপ্রত্যাশিত error. দয়া করে আবার চেষ্টা করুন।</string>
     <string name="login_connection_error">%s/ghost এ কানেক্ট করা যাচ্ছে না. আবার চেষ্টা করুন.</string>
-    <string name="login_ssl_unsupported">আপনার ব্লগ https:// (SSL) সাপোর্ট করছে না.</string>
+    <string name="login_ssl_unsupported">আপনার ব্লগ https:// (SSL) সাপোর্ট করে না</string>
     <string name="logout">লগ-আউট</string>
-    <string name="credentials_expired">আপনি কি পাসওয়ার্ড চেঞ্জ করেছেন? বর্তমান পাসওয়ার্ড কাজ করছে না.</string>
-    <string name="unsynced_changes_msg">আপনি সবকিছু হারাবেন এখন লগ-আউট করলে.</string>
+    <string name="credentials_expired">অটো-লগইন ব্যর্থ হয়েছে, আবার লগ ইন করুন</string>
+    <string name="unsynced_changes_msg">এখন লগ-আউট করলে আপনি সবকিছু হারাবেন</string>
     <string name="dont_logout">লগ-আউট করবনা</string>
 
     <string name="status_published">প্রকাশিত হয়েছে %s</string>
     <string name="status_draft">ড্রাফট</string>
+
+<string name="status_scheduled">"আসছে  - %s"</string>
+    <string name="status_offline_changes">ডিভাইসে সেভ হয়েছে এবং তা প্রকাশের প্রতীক্ষায় আছে…</string>
+    <string name="status_published_auto_saved">চেঞ্জ অটোসেভ্ হয়েছে, কিন্তু এখনো প্রকাশ হয়নি</string>
+    <string name="status_marked_for_deletion">বাদ দেয়ার জন্য চিহ্নিত করা হয়েছে এবং তা প্রকাশের প্রতীক্ষায় আছে…</string>
+    <string name="status_marked_for_deletion_open_error">এই পোষ্টটি বাদ দেয়ার জন্য চিহ্নিত করা হয়েছে, এটি খোলা যাবে না</string>
+
+    <string name="preview">প্রিভিউ</string>
+    <string name="edit">এডিট</string>
+    <string name="publish">প্রকাশ</string>
+    <string name="update_post">পোস্ট আপডেট</string>
+    <string name="unpublish">অপ্রকাশ</string>
+    <string name="alert_publish">খসড়াটি প্রকাশ করতে চান?</string>
+    <string name="alert_unpublish">পোস্টটি অপ্রকাশিত অবস্থায় নিয়ে যেতে চান?</string>
+    <string name="delete_draft">খসড়াটি মুছুন</string>
+    <string name="alert_delete_draft_title">এই খসড়াটি মুছতে চান?</string>
+    <string name="alert_delete_draft_msg">আপনি এটি পূর্বাবস্থায় ফেরাতে পারবেন না!</string>
+    <string name="alert_delete_yes">ডিলিট্</string>
+    <string name="alert_delete_no">রাখা হোক</string>
+    <string name="post_deleted">পোস্টটি মুছে ফেলা হয়েছে</string>
+    <string name="alert_save_msg">পরিবর্তিত পোষ্টটি আপডেট করা হবে?</string>
+    <string name="alert_save_yes">হ্যাঁ, আপডেট করা হোক</string>
+    <string name="alert_save_no">এখনো নয়</string>
+    <string name="discard_changes">পরিবর্তনগুলি বাতিল করা হোক</string>
+    <string name="alert_discard_changes_title">আপনি কি চান এই পোস্টটি খোলার পর থেকে সমস্ত পরিবর্তন বাতিল হোক?</string>
+    <string name="alert_discard_changes_msg">আর ফিরে যাওয়া যাবে না!</string>
+    <string name="discard">বাতিল করা হোক</string>
+    <string name="view_homepage">হোমপেজ দেখব</string>
+    <string name="view_post_on_blog">ব্লগ পোষ্ট দেখব</string>
+    <string name="post_settings">পোস্ট সেটিংস</string>
+
+    <string name="save_post_progress">পোষ্ট সেভ করা হচ্ছে…</string>
+    <string name="save_post_failed">পোষ্ট সেভ করা সম্ভব হলো না</string>
+    <string name="save_post_view">ব্লগ দেখব</string>
+    <string name="save_post_timeout">ডিভাইসে সেভ করা হয়েছে</string>
+
+    <string name="save_scenario_unknown">সেভ করা হয়েছে</string>
+    <string name="save_scenario_publish_draft">পোষ্টটি প্রকাশিত হয়েছে!</string>
+    <string name="save_scenario_unpublish_published_post">পোষ্টটি অপ্রকাশিত হয়েছে</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">পরিবর্তনগুলি ডিভাইসে সেভ হয়েছে</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">পোষ্টটি আপডেট করা হয়েছে</string>
+    <string name="save_scenario_auto_save_draft">খসড়াটি সেভ করা হয়েছে</string>
+    <string name="save_scenario_explicitly_save_draft">খসড়াটি সেভ করা হয়েছে</string>
+
+    <string name="post_title_hint">আপনার পোস্টটির একটি শিরোনাম দিন…</string>
+    <string name="post_image_hint">পোষ্টে ছবি এড করুন</string>
+    <string name="post_tags_hint">কিছু ট্যাগ এড করুন…</string>
+    <string name="post_tags_format_hint">ট্যাগ আলাদা করার জন্য কমা ব্যবহার করুন</string>
+    <string name="post_body_hint">এখানে কিছু টাইপ করুন …</string>
+    <string name="post_image_load_error">পোস্টের ছবি লোড করার সময় সমস্য়া হয়েছে</string>
+    <string name="post_excerpt_hint">উদ্ধৃতি</string>
+    <string name="post_feature_hint">এই পোস্টটি ফিচার করা হোক</string>
+    <string name="post_page_hint">এই পোষ্টটিকে পেইজ করা হোক</string>
+
+    <string name="insert_image">ছবি ইনসার্ট্</string>
+    <string name="insert_image_url">URL ইনসার্ট্</string>
+    <string name="image_url">ছবির URL</string>
+    <string name="insert_image_upload">ছবি আপলোড</string>
+    <string name="uploading">আপলোড করা হচ্ছে…</string>
+    <string name="image_upload_failed">ছবিটি আপলোড করা যায়নি</string>
+    <string name="remove_image">এই ছবিটি সরানো হোক</string>
+    <string name="enable_permission_tip">Permissions -এ ট্যাপ করুন ও Storage permission এনাবল করুন</string>
+
+    <string name="conflict_explanation"><b> এই পোষ্টটি <i> %s</i> conflict আছে.</b> আপনার ডিভাইসের সংস্করণ আপলোড করার আগে এটি সার্ভারে আপডেট করা হয়েছে। আপনি পোস্টের কোন সংস্করণটি রাখতে চান?</string>
+    <string name="conflict_choice_use_device_copy">ডিভাইসের সংস্করণ আপলোড করুন</string>
+    <string name="conflict_choice_use_server_copy">সার্ভারের সংস্করণ ডাউনলোড করুন</string>
+    <string name="conflict_last_update_at">শেষ আপডেট হয়েছে %s -তে</string>
+    <string name="conflict_post_preview_title">পোস্টটির নীচের সংস্করণটি রাখা হবে:</string>
+    <string name="conflict_post_preview_status">পোষ্টের স্ট্যাটাস: <b>%s</b></string>
+
+    <string name="about_action">সম্পর্কে…</string>
+    <string name="about">সম্পর্কে</string>
+
+    <string name="version">সংস্করণ</string>
+
+    <string name="category_support_development">ডেভেলপমেন্টে সহযোগীতা করুন</string>
+    <string name="play_store">প্লে স্টোরে রেট করুন</string>
+    <string name="play_store_subtitle">আপনার সহযোগীতার জন্য ধন্যবাদ!</string>
+
+    <string name="no_internet_connection">ইন্টারনেট সংযোগ নেই</string>
+    <string name="network_timeout">কানেকশান টাইম আউট হয়েছে</string>
+    <string name="refresh_failed">ডেটা রিফ্রেশ করা যায়নি</string>
+
+    <string name="done">সম্পন্ন</string>
+    <string name="save">সেভ</string>
+    <string name="refresh">রিফ্রেশ</string>
+    <string name="share">শেয়ার</string>
+    <string name="loading">লোড হচ্ছে…</string>
+    <string name="insert">ইনসার্ট্</string>
+    <string name="intent_no_apps">কোনও অ্যাপ্লিকেশন নেই যা এই কাজটি করতে পারে</string>
+    <string name="accept">এক্সেপ্ট</string>
+    <string name="draft">খশড়া</string>
+    <string name="published">প্রকাশিত</string>
+    <string name="scheduled">আসছে</string>
+    <string name="next">পরবর্তী</string>
 
 </resources>
