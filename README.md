@@ -49,7 +49,7 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [@fastbyte01](https://hosted.weblate.org/user/fastbyte01/) (Italian translation)
 - [@cristears](https://hosted.weblate.org/user/cristears/) (Korean translation)
 - [Allan Nordhøy](https://hosted.weblate.org/user/kingu/) (Norwegian translation)
-
+- [@urbangeek](https://github.com/urbangeek) (Bengali translation)
 
 [playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
 [weblate]: https://hosted.weblate.org/engage/ghost/en/
