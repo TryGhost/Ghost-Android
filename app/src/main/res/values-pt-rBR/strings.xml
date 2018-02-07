@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Endereço do Blog</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Sena</string>
+    <string name="action_sign_in">Acessar</string>
+
+    <string name="error_invalid_email">Este endereço de email é inválido</string>
+    <string name="error_field_required">Este campo é requerido</string>
+
+    <string name="no_such_blog">Não tem panel de administração de Ghost em %s/ghost</string>
+    <string name="login_unexpected_error">Erro inesperado enquanto se acessava. Por favor tente de novo.</string>
+    <string name="login_connection_error">Não foi possível ligar com %s/ghost. Por favor tente de novo.</string>
+    <string name="login_ssl_unsupported">Seu blog não soporta https:// (SSL)</string>
+    <string name="logout">Sair</string>
+    <string name="credentials_expired">Auto-acesso falhado, por favor acesse de novo</string>
+    <string name="unsynced_changes_msg">Você perderá os câmbios que não foram gravados se sair agora</string>
+    <string name="dont_logout">Não sair</string>
+
+    <string name="status_published">Publicado %s</string>
+    <string name="status_draft">Boceto</string>
+    <string name="status_scheduled">Programado - %s</string>
+    <string name="status_offline_changes">Gravar no aparelho, esperando conseguir ligação…</string>
+    <string name="status_published_auto_saved">Mudanças salvadas, ainda sem publicar-se</string>
+    <string name="status_marked_for_deletion">Marcado para apagar, esperando ligaçao…</string>
+    <string name="status_marked_for_deletion_open_error">Essa publicaçao está marcado para excluir, não pode ser aberto</string>
+
+    <string name="preview">Vista previa</string>
+    <string name="edit">Editar</string>
+    <string name="publish">Publicar</string>
+    <string name="update_post">Atualizar Publicação</string>
+    </resources>

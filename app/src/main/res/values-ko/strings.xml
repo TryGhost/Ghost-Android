@@ -107,4 +107,10 @@
     <string name="conflict_post_preview_title">글의 다음 사본이 유지될 것입니다:</string>
     <string name="accept">승인</string>
     <string name="draft">초안</string>
-    </resources>
+    <string name="discard_changes">변경 사항 취소</string>
+    <string name="alert_discard_changes_title">이 글을 연 후에 편집했던 내용을 모두 취소할까요?</string>
+    <string name="post_excerpt_hint">발췌본</string>
+    <string name="post_feature_hint">특성 글로 지정</string>
+    <string name="next">다음</string>
+
+</resources>

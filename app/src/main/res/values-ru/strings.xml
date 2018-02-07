@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Адрес блога</string>
+    <string name="prompt_email">Эл. адрес</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Войти</string>
+
+    <string name="error_invalid_email">Этот эл. адрес недействительный</string>
+    <string name="error_field_required">Это поле независимо заполнить</string>
+
+    <string name="no_such_blog">Не найден Ghost admin %s/ghost</string>
+    <string name="login_unexpected_error">Неожиданная ошибка при входе. Пожалуйста повторите попытку.</string>
+    <string name="login_connection_error">Невозможно подключиться к %s/ghost. Пожалуйста, повторите попытку.</string>
+    <string name="login_ssl_unsupported">Ваш блог не поддерживает https:// (SSL)</string>
+    <string name="logout">Выйти</string>
+    <string name="credentials_expired">Ошибка автоматического входа в систему, пожалуйста, войдите снова</string>
+    <string name="unsynced_changes_msg">Вы потеряете все несинхронизированные изменения, если вы сейчас выйдете из системы</string>
+    <string name="dont_logout">Не выходить из системы</string>
+
+    <string name="status_published">Опубликовано %s</string>
+    <string name="status_draft">Черновик</string>
+    <string name="status_scheduled">Запланировано - %s</string>
+    <string name="status_offline_changes">Сохранено на устройстве, ожидается подключение к интернету…</string>
+    <string name="status_published_auto_saved">Изменения автоматически сохранены, но не опубликованы</string>
+    </resources>
