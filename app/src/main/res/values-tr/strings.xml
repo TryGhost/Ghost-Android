@@ -4,12 +4,12 @@
     <string name="prompt_password">Parola</string>
     <string name="action_sign_in">Oturum Aç</string>
 
-    <string name="error_invalid_email">Bu e-posta adresi geçersiz</string>
+    <string name="error_invalid_email">Kullandığınız e-posta adresi geçersiz</string>
     <string name="error_field_required">Bu alan gereklidir</string>
 
     <string name="no_such_blog">%s/ghost bölümünde Ghost admin yok</string>
-    <string name="login_unexpected_error">Oturum açma işlemi sırasında beklenmedik bir hata oluştu. Lütfen tekrar deneyin.</string>
-    <string name="login_connection_error">%s/ghost bağlanılamadı. Lütfen tekrar deneyin.</string>
+    <string name="login_unexpected_error">Oturum açma işlemi sırasında beklenmedik bir hata oluştu. Lütfen tekrar deneyiniz.</string>
+    <string name="login_connection_error">%s/ghost bağlanılamadı. Lütfen tekrar deneyiniz.</string>
     <string name="login_ssl_unsupported">Blogunuz https: // (SSL) seçeneğini desteklemiyor</string>
     <string name="logout">Çıkış Yap</string>
     <string name="credentials_expired">Otomatik giriş başarısız oldu, lütfen tekrar giriş yapın</string>
@@ -72,9 +72,9 @@
     <string name="image_url">Görsel URL\'si</string>
     <string name="insert_image_upload">Görsel yükleniyor</string>
     <string name="uploading">Yükleniyor…</string>
-    <string name="image_upload_failed">Resim yüklenemedi</string>
-    <string name="remove_image">Bu Resmi Kaldır</string>
-    <string name="enable_permission_tip">İzinler\'e dokunun ve Depolama iznini etkinleştirin</string>
+    <string name="image_upload_failed">Görsel yüklenemedi</string>
+    <string name="remove_image">Bu görseli kaldır</string>
+    <string name="enable_permission_tip">İzinler\'e gidin ve depolama iznini etkinleştirin</string>
 
     <string name="post_image_hint">Yazı görseli ekle</string>
     <string name="post_tags_hint">Bazı etiketler ekleyin…</string>
@@ -112,4 +112,5 @@
     <string name="scheduled">Zamanlanmış</string>
     <string name="next">Sonraki</string>
 
-</resources>
+<string name="conflict_explanation"><b>%s<i>Yazısında</i>çakışma var.</b> cihazınızın kopyasını karşıya önce sunucuda güncelleştirildi. Yazının hangi sürümü tutmak istiyorsunuz?</string>
+    </resources>
