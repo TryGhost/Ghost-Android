@@ -94,4 +94,6 @@
     <string name="play_store">Play Store üzerinde değerlendirin</string>
     <string name="play_store_subtitle">Desteğiniz için teşekkür ederiz!</string>
 
+    <string name="no_internet_connection">İnternet bağlantısı yok</string>
+    <string name="network_timeout">Bağlantı zaman aşımına uğradı</string>
     </resources>
