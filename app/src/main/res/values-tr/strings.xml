@@ -112,5 +112,5 @@
     <string name="scheduled">Zamanlanmış</string>
     <string name="next">Sonraki</string>
 
-<string name="conflict_explanation">&lt;b&gt;Yazı&lt;i&gt;%s&lt;/i&gt;&lt;/i&gt; bir çakışmaya sahip. Yazı cihazınızdaki kopya yüklenmeden önce değiştirilmiş. Hangi sürümü tutmak istiyorsunuz ?<b>%s<i>Yazısında</i>çakışma var.</b> cihazınızın kopyasını karşıya önce sunucuda güncelleştirildi. Yazının hangi sürümü tutmak istiyorsunuz?</string>
+<string name="conflict_explanation"><b>Yazı<i>%s</i></b> bir çakışmaya sahip. Yazı cihazınızdaki kopya yüklenmeden önce değiştirilmiş. Hangi sürümü tutmak istiyorsunuz ?</string>
     </resources>
