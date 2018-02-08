@@ -92,4 +92,6 @@
     <string name="version">Sürüm</string>
 
     <string name="play_store">Play Store üzerinde değerlendirin</string>
+    <string name="play_store_subtitle">Desteğiniz için teşekkür ederiz!</string>
+
     </resources>
