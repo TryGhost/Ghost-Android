@@ -105,4 +105,5 @@
     <string name="share">Paylaş</string>
     <string name="loading">Yükleniyor…</string>
     <string name="insert">Ekle</string>
+    <string name="intent_no_apps">Bu işlemi gerçekleştirebilecek hiçbir uygulama yok</string>
     </resources>
