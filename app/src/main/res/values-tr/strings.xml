@@ -108,4 +108,8 @@
     <string name="intent_no_apps">Bu işlemi gerçekleştirebilecek hiçbir uygulama yok</string>
     <string name="accept">Kabul et</string>
     <string name="draft">Taslak</string>
-    </resources>
+    <string name="published">Yayımlanan</string>
+    <string name="scheduled">Zamanlanmış</string>
+    <string name="next">Sonraki</string>
+
+</resources>
