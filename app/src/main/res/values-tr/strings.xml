@@ -76,4 +76,5 @@
     <string name="remove_image">Bu Resmi Kaldır</string>
     <string name="enable_permission_tip">İzinler\'e dokunun ve Depolama iznini etkinleştirin</string>
 
+    <string name="post_image_hint">Yazı görseli ekle</string>
     </resources>
