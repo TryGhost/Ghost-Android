@@ -40,10 +40,10 @@
     <string name="alert_save_msg">Yazı değişikliklerle birlikte güncelleştirilsin mi?</string>
     <string name="alert_save_yes">Evet, güncelle</string>
     <string name="alert_save_no">Henüz değil</string>
-    <string name="discard_changes">Değişiklikleri gözardı et</string>
-    <string name="alert_discard_changes_title">Bu yazıyı açtıktan sonra TÜM değişiklikler silinsin mi?</string>
+    <string name="discard_changes">Değişiklikleri yoksay</string>
+    <string name="alert_discard_changes_title">Bu yazıyı açtıktan sonra TÜM değişiklikler yoksayılsın mı?</string>
     <string name="alert_discard_changes_msg">İşlemin geri dönüşü yok!</string>
-    <string name="discard">At</string>
+    <string name="discard">Yoksay</string>
     <string name="view_homepage">Anasayfa görünümü</string>
     <string name="view_post_on_blog">Blog\'daki yazıyı görüntüle</string>
     <string name="post_settings">Yazı Ayarları</string>
