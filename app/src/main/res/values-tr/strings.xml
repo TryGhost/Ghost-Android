@@ -81,10 +81,10 @@
     <string name="post_tags_format_hint">Etiketleri ayırmak için virgül kullanın</string>
     <string name="conflict_choice_use_server_copy">Sunucu kopyasını indir</string>
     <string name="post_feature_hint">Bu yazıyı öne çıkar</string>
-    <string name="conflict_last_update_at">Son %s güncellendi</string>
+    <string name="conflict_last_update_at">Son güncelleme: %s</string>
     <string name="conflict_post_preview_title">Yazının aşağıdaki kopyası tutulacaktır:</string>
     <string name="conflict_choice_use_device_copy">Aygıt kopyasını yükle</string>
-    <string name="conflict_post_preview_status">Yazı durum: <b>%s</b></string>
+    <string name="conflict_post_preview_status">Yazı durumu: <b>%s</b></string>
 
     <string name="about_action">Hakkında…</string>
     <string name="about">Hakkında</string>
