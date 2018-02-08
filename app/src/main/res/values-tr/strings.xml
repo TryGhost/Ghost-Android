@@ -107,4 +107,5 @@
     <string name="insert">Ekle</string>
     <string name="intent_no_apps">Bu işlemi gerçekleştirebilecek hiçbir uygulama yok</string>
     <string name="accept">Kabul et</string>
+    <string name="draft">Taslak</string>
     </resources>
