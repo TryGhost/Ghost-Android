@@ -86,4 +86,9 @@
     <string name="conflict_choice_use_device_copy">Aygıt kopyasını yükle</string>
     <string name="conflict_post_preview_status">Yazı durum: <b>%s</b></string>
 
+    <string name="about_action">Hakkında…</string>
+    <string name="about">Hakkında</string>
+
+    <string name="version">Sürüm</string>
+
     </resources>
