@@ -101,4 +101,7 @@
     <string name="refresh_failed">Veri yenilenemedi</string>
 
     <string name="save">Kaydet</string>
+    <string name="refresh">Yenile</string>
+    <string name="share">Paylaş</string>
+    <string name="loading">Yükleniyor…</string>
     </resources>
