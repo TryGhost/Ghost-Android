@@ -97,4 +97,5 @@
     <string name="no_internet_connection">İnternet bağlantısı yok</string>
     <string name="network_timeout">Bağlantı zaman aşımına uğradı</string>
     <string name="category_support_development">Destek geliştirme</string>
+    <string name="done">Oldu</string>
     </resources>
