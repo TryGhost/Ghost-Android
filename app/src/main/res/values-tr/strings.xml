@@ -98,4 +98,6 @@
     <string name="network_timeout">Bağlantı zaman aşımına uğradı</string>
     <string name="category_support_development">Destek geliştirme</string>
     <string name="done">Oldu</string>
+    <string name="refresh_failed">Veri yenilenemedi</string>
+
     </resources>
