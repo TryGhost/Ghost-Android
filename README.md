@@ -50,6 +50,8 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [@cristears](https://hosted.weblate.org/user/cristears/) (Korean translation)
 - [Allan Nordhøy](https://hosted.weblate.org/user/kingu/) (Norwegian translation)
 - [@urbangeek](https://github.com/urbangeek) (Bengali translation)
+- [@MertcanGokgoz](https://github.com/mertcangokgoz) (Turkish translation)
+- [@geekdinazor](https://github.com/geekdinazor) (Turkish translation)
 
 [playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
 [weblate]: https://hosted.weblate.org/engage/ghost/en/
