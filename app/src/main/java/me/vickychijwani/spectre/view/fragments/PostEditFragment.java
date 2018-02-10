@@ -189,8 +189,16 @@ public class PostEditFragment extends BaseFragment implements
         super.onSaveInstanceState(outState);
         outState.putParcelable(BundleKeys.POST, mPost);
         outState.putBoolean(BundleKeys.POST_EDITED, mPostChangedInMemory);
-        // save the editor cursor pos because setPost is called in onCreate/onResume
-        outState.putInt(EDITOR_CURSOR_POS, mPostEditView.getSelectionEnd());
+        // Save the editor cursor pos. From onSaveInstanceState docs:
+        // "There are no guarantees about whether it will occur before or after onPause()"
+        // That's why we need to apply this defensive logic to save the position in all cases
+        int editorCursorPos = mPostEditView.getSelectionEnd();
+        if (editorCursorPos == 0 && mPostEditViewCursorPos > 0) {
+            // if the current position is 0, use the last-known position, because the current pos
+            // may have already been reset to 0 by the call to savePost in onPause()
+            editorCursorPos = mPostEditViewCursorPos;
+        }
+        outState.putInt(EDITOR_CURSOR_POS, editorCursorPos);
     }
 
     public void saveSelectionState() {
@@ -212,6 +220,8 @@ public class PostEditFragment extends BaseFragment implements
         super.onPause();
         // remove pending callbacks
         mHandler.removeCallbacks(mSaveTimeoutRunnable);
+        // note misc editor state before saving post, because setPost is called in onResume
+        mPostEditViewCursorPos = mPostEditView.getSelectionEnd();
         // persist changes to disk, unless the user opted to discard those changes
         // workaround: do this ONLY if an image upload is NOT in progress - this is to avoid saving
         // the post prematurely and generating a spurious conflict that cannot be dealt with cleanly
@@ -223,8 +233,6 @@ public class PostEditFragment extends BaseFragment implements
             // we still need to save to memory, else the post will revert to its original state!
             saveToMemory();
         }
-        // save misc editor state because setPost is called in onResume
-        mPostEditViewCursorPos = mPostEditView.getSelectionEnd();
 
         // unsubscribe from observable and hide progress bar
         if (mUploadDisposable != null && !mUploadDisposable.isDisposed()) {
