@@ -1,2 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Adresa blogului</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Parola</string>
+    <string name="action_sign_in">Loghează-te</string>
+
+    <string name="error_invalid_email">Această adresă de e-mail nu este validă</string>
+    <string name="error_field_required">Acest câmp este obligatoriu</string>
+
+    </resources>
