@@ -518,6 +518,8 @@ public class NetworkService implements
                     Post post = postsToDelete.get(i);
                     if (i > 0) deleteQuery.or();
                     deleteQuery.equalTo("id", post.getId());
+                    Log.i(TAG, "[onSyncPostsEvent] deleted local copy of post %s",
+                            post.getId());
                 }
                 deleteModels(deleteQuery.findAll());
             }
@@ -562,22 +564,28 @@ public class NetworkService implements
         // the loop variable is *local* to the loop block, so it can be captured in a closure easily
         // this is unlike JavaScript, in which the same loop variable is mutated
         for (final Post localPost : localDeletedPosts) {
-            Log.i(TAG, "[onSyncPostsEvent] deleting post id = %s", localPost.getId());
+            Log.i(TAG, "[onSyncPostsEvent] deleting post %s", localPost.getId());
             mApi.deletePost(mAuthToken.getAuthHeader(), localPost.getId()).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                     if (response.isSuccessful()) {
                         AnalyticsService.logDraftDeleted();
+                        Log.i(TAG, "[onSyncPostsEvent] deleted remote post %s",
+                                localPost.getId());
                         postUploadQueue.removeFirstOccurrence(localPost);
                         postsToDelete.add(localPost);
                         if (postUploadQueue.isEmpty()) syncFinishedCB.call();
                     } else {
+                        Log.e(TAG, "[onSyncPostsEvent] failed to delete remote post, " +
+                                "id %s", localPost.getId());
                         onFailure.call(localPost, new ApiFailure<>(response));
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<String> call, @NonNull Throwable error) {
+                    Log.e(TAG, "[onSyncPostsEvent] failed to delete remote post, " +
+                            "id %s", localPost.getId());
                     onFailure.call(localPost, new ApiFailure<>(error));
                 }
             });
@@ -585,7 +593,7 @@ public class NetworkService implements
 
         // 2. NEW POSTS
         for (final Post localPost : localNewPosts) {
-            Log.i(TAG, "[onSyncPostsEvent] creating post");    // local new posts don't have an id
+            Log.i(TAG, "[onSyncPostsEvent] creating post with local id %s", localPost.getId());
             mApi.createPost(mAuthToken.getAuthHeader(), PostStubList.from(localPost)).enqueue(new Callback<PostList>() {
                 @Override
                 public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
@@ -593,18 +601,23 @@ public class NetworkService implements
                         PostList postList = response.body();
                         AnalyticsService.logNewDraftUploaded();
                         Post updatedPost = copyPosts(createOrUpdateModel(postList.posts)).get(0);
+                        Log.i(TAG, "[onSyncPostsEvent] created post %s", updatedPost.getId());
                         postUploadQueue.removeFirstOccurrence(localPost);
                         postsToDelete.add(localPost);
                         // FIXME this is a new post! how do subscribers know which post changed?
                         getBus().post(new PostReplacedEvent(updatedPost));
                         if (postUploadQueue.isEmpty()) syncFinishedCB.call();
                     } else {
+                        Log.e(TAG, "[onSyncPostsEvent] failed to sync new post, " +
+                                "local id %s", localPost.getId());
                         onFailure.call(localPost, new ApiFailure<>(response));
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<PostList> call, @NonNull Throwable error) {
+                    Log.e(TAG, "[onSyncPostsEvent] failed to sync new post, " +
+                            "local id %s", localPost.getId());
                     onFailure.call(localPost, new ApiFailure<>(error));
                 }
             });
@@ -612,7 +625,7 @@ public class NetworkService implements
 
         // 3. EDITED POSTS
         Action1<Post> uploadEditedPost = (editedPost) -> {
-            Log.i(TAG, "[onSyncPostsEvent] updating post id = %s", editedPost.getId());
+            Log.i(TAG, "[onSyncPostsEvent] updating post %s", editedPost.getId());
             PostStubList postStubList = PostStubList.from(editedPost);
             mApi.updatePost(mAuthToken.getAuthHeader(), editedPost.getId(), postStubList).enqueue(new Callback<PostList>() {
                 @Override
@@ -627,23 +640,34 @@ public class NetworkService implements
                         // those values from a pre-save copy
                         syncedPost.setMarkdown(realmPost.getMarkdown());
                         syncedPost.setMobiledoc(realmPost.getMobiledoc());
+                        if (!realmPost.getId().equals(syncedPost.getId())) {
+                            Log.wtf("Trying to update a post with a different id! " +
+                                    "syncedPost.id = %s, realmPost.id = %s",
+                                    syncedPost.getId(), realmPost.getId());
+                        }
+                        Log.i(TAG, "[onSyncPostsEvent] updated post %s",
+                                syncedPost.getId());
                         createOrUpdateModel(postList.posts);
                         postUploadQueue.removeFirstOccurrence(editedPost);
                         getBus().post(new PostSyncedEvent(syncedPost));
                         if (postUploadQueue.isEmpty()) syncFinishedCB.call();
                     } else {
+                        Log.e(TAG, "[onSyncPostsEvent] failed to update post %s",
+                                editedPost.getId());
                         onFailure.call(editedPost, new ApiFailure<>(response));
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<PostList> call, @NonNull Throwable error) {
+                    Log.e(TAG, "[onSyncPostsEvent] failed to update post %s",
+                            editedPost.getId());
                     onFailure.call(editedPost, new ApiFailure<>(error));
                 }
             });
         };
         for (final Post localPost : localEditedPosts) {
-            Log.i(TAG, "[onSyncPostsEvent] downloading edited post with id = %s for comparison",
+            Log.i(TAG, "[onSyncPostsEvent] downloading edited post %s for comparison",
                     localPost.getId());
             mApi.getPost(mAuthToken.getAuthHeader(), localPost.getId()).enqueue(new Callback<PostList>() {
                 @Override
@@ -658,7 +682,7 @@ public class NetworkService implements
                                     && !serverPost.getUpdatedAt().equals(localPost.getUpdatedAt()));
                         }
                         if (hasConflict && PostUtils.isDirty(serverPost, localPost)) {
-                            Log.w(TAG, "[onSyncPostsEvent] conflict found for post id = %s", localPost.getId());
+                            Log.w(TAG, "[onSyncPostsEvent] conflict found for post %s", localPost.getId());
                             postUploadQueue.removeFirstOccurrence(localPost);
                             if (postUploadQueue.isEmpty()) syncFinishedCB.call();
                             localPost.setConflictState(Post.CONFLICT_UNRESOLVED);
@@ -673,14 +697,16 @@ public class NetworkService implements
                             uploadEditedPost.call(localPost);
                         }
                     } else {
-                        // if we can't get the server post, optimistically upload the local copy
+                        Log.w(TAG, "[onSyncPostsEvent] couldn't get server post for " +
+                                "conflict detection - uploading local copy optimistically");
                         uploadEditedPost.call(localPost);
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<PostList> call, @NonNull Throwable error) {
-                    // if we can't get the server post, optimistically upload the local copy
+                    Log.w(TAG, "[onSyncPostsEvent] couldn't get server post for " +
+                            "conflict detection - uploading local copy optimistically");
                     uploadEditedPost.call(localPost);
                 }
             });
