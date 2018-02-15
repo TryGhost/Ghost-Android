@@ -3,7 +3,7 @@
 
     <!-- login -->
     <string name="prompt_blog_url">Blogadresse</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email">E-Mail</string>
     <string name="prompt_password">Passwort</string>
     <string name="action_sign_in">Anmelden</string>
 
