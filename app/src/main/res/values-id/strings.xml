@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="prompt_blog_url">Alamat Blog</string>
+<resources><string name="prompt_blog_url">Alamat blog</string>
     <string name="prompt_email">Surel</string>
     <string name="prompt_password">Kata Sandi</string>
     <string name="action_sign_in">Masuk</string>
@@ -19,5 +19,20 @@
     <string name="status_published">Diterbitkan %s</string>
     <string name="status_draft">Konsep</string>
     <string name="status_scheduled">Dijadwalkan - %s</string>
-    <string name="status_offline_changes">Tersimpan pada perangkat, menunggu terhubung ke jaringan</string>
-    </resources>
+    <string name="status_offline_changes">Tersimpan pada perangkat, menunggu daring…</string>
+    <string name="status_published_auto_saved">Perubahan tersimpan otomatis, belum dipublikasikan</string>
+    <string name="status_marked_for_deletion">Ditandai untuk dihapus, menunggu daring…</string>
+    <string name="status_marked_for_deletion_open_error">Kiriman ini ditandai untuk dihapus, tidak dapat dibuka</string>
+
+    <string name="preview">Pratinjau</string>
+    <string name="edit">Ubah</string>
+    <string name="publish">Terbitkan</string>
+    <string name="update_post">Perbarui Kiriman</string>
+    <string name="unpublish">Batalkan Penerbitan</string>
+    <string name="alert_publish">Terbitkan konsep?</string>
+    <string name="alert_delete_yes">Hapus</string>
+    <string name="alert_delete_no">Jaga</string>
+    <string name="post_deleted">Kiriman dihapus</string>
+    <string name="next">Selanjutnya</string>
+
+</resources>
