@@ -37,7 +37,7 @@
     <string name="alert_delete_yes">Deletar</string>
     <string name="alert_delete_no">Manter</string>
     <string name="post_deleted">Deletar publicação</string>
-    <string name="alert_save_msg">"Atualizar publicação com as mudanças? "</string>
+    <string name="alert_save_msg">Atualizar publicação com essas mudanças?</string>
     <string name="alert_save_yes">Sim, atualizar</string>
     <string name="alert_save_no">Não ainda</string>
     <string name="discard_changes">Descartar mudanças</string>
