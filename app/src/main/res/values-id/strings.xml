@@ -8,17 +8,17 @@
     <string name="error_field_required">Bagian ini wajib diisi</string>
 
     <string name="no_such_blog">Tidak ada admin Ghost di %s/ghost</string>
-    <string name="login_unexpected_error">Terdapat galat tak terduga saat proses masuk. Sila coba lagi.</string>
-    <string name="login_connection_error">Tidak dapat terhubung ke %s/ghost. Sila coba lagi.</string>
+    <string name="login_unexpected_error">Terdapat kesalahan tak terduga saat proses masuk. Silakan coba lagi.</string>
+    <string name="login_connection_error">Tidak dapat terhubung ke %s/ghost. Silakan coba lagi.</string>
     <string name="login_ssl_unsupported">Blog Anda tidak mendukung https:// (SSL)</string>
     <string name="logout">Keluar</string>
     <string name="credentials_expired">Gagal masuk secara otomatis, silakan masuk kembali</string>
     <string name="unsynced_changes_msg">Anda akan kehilangan semua perubahan yang belum disinkronkan jika keluar sekarang</string>
     <string name="dont_logout">Jangan keluar</string>
 
-    <string name="status_published">Diterbitkan %s</string>
-    <string name="status_draft">Konsep</string>
-    <string name="status_scheduled">Dijadwalkan - %s</string>
+    <string name="status_published">Diterbitkan pada %s</string>
+    <string name="status_draft">Draf</string>
+    <string name="status_scheduled">Terjadwal - %s</string>
     <string name="status_offline_changes">Tersimpan pada perangkat, menunggu daring…</string>
     <string name="status_published_auto_saved">Perubahan tersimpan otomatis, belum dipublikasikan</string>
     <string name="status_marked_for_deletion">Ditandai untuk dihapus, menunggu daring…</string>
