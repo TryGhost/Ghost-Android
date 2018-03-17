@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="prompt_blog_url">Alamat Blog</string>
+<resources><string name="prompt_blog_url">Alamat blog</string>
     <string name="prompt_email">Surel</string>
     <string name="prompt_password">Kata Sandi</string>
     <string name="action_sign_in">Masuk</string>
@@ -8,16 +8,109 @@
     <string name="error_field_required">Bagian ini wajib diisi</string>
 
     <string name="no_such_blog">Tidak ada admin Ghost di %s/ghost</string>
-    <string name="login_unexpected_error">Terdapat galat tak terduga saat proses masuk. Sila coba lagi.</string>
-    <string name="login_connection_error">Tidak dapat terhubung ke %s/ghost. Sila coba lagi.</string>
+    <string name="login_unexpected_error">Terdapat kesalahan tak terduga saat proses masuk. Silakan coba lagi.</string>
+    <string name="login_connection_error">Tidak dapat terhubung ke %s/ghost. Silakan coba lagi.</string>
     <string name="login_ssl_unsupported">Blog Anda tidak mendukung https:// (SSL)</string>
     <string name="logout">Keluar</string>
-    <string name="credentials_expired">Gagal masuk secara otomatis, sila masuk kembali.</string>
+    <string name="credentials_expired">Gagal masuk secara otomatis, silakan masuk kembali</string>
     <string name="unsynced_changes_msg">Anda akan kehilangan semua perubahan yang belum disinkronkan jika keluar sekarang</string>
     <string name="dont_logout">Jangan keluar</string>
 
-    <string name="status_published">Diterbitkan %s</string>
-    <string name="status_draft">Konsep</string>
-    <string name="status_scheduled">Dijadwalkan - %s</string>
-    <string name="status_offline_changes">Tersimpan pada perangkat, menunggu terhubung ke jaringan</string>
+    <string name="status_published">Diterbitkan pada %s</string>
+    <string name="status_draft">Draf</string>
+    <string name="status_scheduled">Terjadwal - %s</string>
+    <string name="status_offline_changes">Tersimpan pada perangkat, menunggu daring…</string>
+    <string name="status_published_auto_saved">Perubahan tersimpan otomatis, belum dipublikasikan</string>
+    <string name="status_marked_for_deletion">Ditandai untuk dihapus, menunggu daring…</string>
+    <string name="status_marked_for_deletion_open_error">Kiriman ini ditandai untuk dihapus, tidak dapat dibuka</string>
+
+    <string name="preview">Pratinjau</string>
+    <string name="edit">Ubah</string>
+    <string name="publish">Terbitkan</string>
+    <string name="update_post">Perbarui Kiriman</string>
+    <string name="unpublish">Batalkan Penerbitan</string>
+    <string name="alert_publish">Terbitkan konsep?</string>
+    <string name="alert_delete_yes">Hapus</string>
+    <string name="alert_delete_no">Jaga</string>
+    <string name="post_deleted">Kiriman dihapus</string>
+    <string name="next">Selanjutnya</string>
+
+<string name="alert_unpublish">Hentikan penayangan entri?</string>
+    <string name="delete_draft">Hapus draf</string>
+    <string name="alert_delete_draft_title">Hapus draf ini?</string>
+    <string name="alert_delete_draft_msg">Anda tidak dapat membatalkan ini!</string>
+    <string name="alert_save_msg">Perbarui entri?</string>
+    <string name="alert_save_yes">Ya, perbarui</string>
+    <string name="alert_save_no">Belum</string>
+    <string name="discard_changes">Buang perubahan</string>
+    <string name="alert_discard_changes_title">Buang SEMUA perubahan sejak anda membuka entri ini?</string>
+    <string name="alert_discard_changes_msg">Anda tidak akan dapat kembali!</string>
+    <string name="discard">Buang</string>
+    <string name="view_homepage">Lihat beranda</string>
+    <string name="view_post_on_blog">Lihat entri pada blog</string>
+    <string name="post_settings">Setelan entri</string>
+
+    <string name="save_post_progress">Menyimpan entri…</string>
+    <string name="save_post_failed">Tidak dapat menyimpan entri</string>
+    <string name="save_post_view">Lihat pada blog</string>
+    <string name="save_post_timeout">Tersimpan pada perangkat</string>
+
+    <string name="save_scenario_unknown">Tersimpan</string>
+    <string name="save_scenario_publish_draft">Entri berhasil diterbitkan!</string>
+    <string name="save_scenario_unpublish_published_post">Penayangan entri berhasil dihentikan</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">Perubahan berhasil disimpan pada perangkat</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">Entri berhasil diperbarui</string>
+    <string name="save_scenario_auto_save_draft">Draf berhasil disimpan</string>
+    <string name="save_scenario_explicitly_save_draft">Draf berhasil disimpan</string>
+
+    <string name="post_title_hint">Beri judul untuk entri anda…</string>
+    <string name="post_image_hint">Tambahkan gambar untuk entri</string>
+    <string name="post_tags_hint">Tambahkan label…</string>
+    <string name="post_tags_format_hint">Gunakan tanda koma untuk memisahkan label</string>
+    <string name="post_body_hint">Tuliskan sesuatu di sini…</string>
+    <string name="post_image_load_error">Terjadi kesalahan ketika memuat gambar entri</string>
+    <string name="post_excerpt_hint">Kutipan</string>
+    <string name="post_feature_hint">Utamakan entri ini</string>
+    <string name="post_page_hint">Jadikan entri ini sebagai laman</string>
+
+    <string name="insert_image">Sisipkan Gambar</string>
+    <string name="insert_image_url">Sisipkan tautan URL</string>
+    <string name="image_url">Tautan URL Gambar</string>
+    <string name="insert_image_upload">Unggah Gambar</string>
+    <string name="uploading">Mengunggah…</string>
+    <string name="image_upload_failed">Tidak dapat mengunggah gambar</string>
+    <string name="remove_image">Hapus Gambar Ini</string>
+    <string name="enable_permission_tip">Ketuk Perizinan dan aktifkan Izin Penyimpanan</string>
+
+    <string name="conflict_explanation"><b>Terjadi konflik pada entri<i>%s</i>.</b> Entri tersebut telah diperbarui pada server sebelum salinan pada perangkat anda berhasil diunggah. Versi manakah yang akan anda simpan?</string>
+    <string name="conflict_choice_use_device_copy">Unggah salinan dari perangkat</string>
+    <string name="conflict_choice_use_server_copy">Unduh salinan dari server</string>
+    <string name="conflict_last_update_at">Terakhir diperbarui pada %s</string>
+    <string name="conflict_post_preview_title">Salinan entri di bawah ini akan disimpan:</string>
+    <string name="conflict_post_preview_status">Status entri: <b>%s</b></string>
+
+    <string name="about_action">Perihal…</string>
+    <string name="about">Perihal</string>
+
+    <string name="version">Versi</string>
+
+    <string name="category_support_development">Dukung pengembangan</string>
+    <string name="play_store">Beri penilaian di Play Store</string>
+    <string name="play_store_subtitle">Terima kasih atas dukungan anda!</string>
+
+    <string name="no_internet_connection">Tidak ada koneksi Internet</string>
+    <string name="network_timeout">Waktu koneksi berakhir</string>
+    <string name="refresh_failed">Tidak dapat menyegarkan data</string>
+
+    <string name="done">Selesai</string>
+    <string name="save">Simpan</string>
+    <string name="refresh">Segarkan</string>
+    <string name="share">Bagikan</string>
+    <string name="loading">Memuat…</string>
+    <string name="insert">Sisipkan</string>
+    <string name="intent_no_apps">Tidak ada aplikasi yang dapat menjalankan perintah ini</string>
+    <string name="accept">Terima</string>
+    <string name="draft">Draf</string>
+    <string name="published">Diterbitkan</string>
+    <string name="scheduled">Terjadwal</string>
     </resources>

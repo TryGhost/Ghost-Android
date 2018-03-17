@@ -28,4 +28,89 @@
     <string name="edit">Editar</string>
     <string name="publish">Publicar</string>
     <string name="update_post">Atualizar Publicação</string>
-    </resources>
+    <string name="unpublish">Despublicado</string>
+    <string name="alert_publish">Publicar rascunho?</string>
+    <string name="alert_unpublish">Despublicar publicação?</string>
+    <string name="delete_draft">Deletar rascunho</string>
+    <string name="alert_delete_draft_title">Deletar esse rascunho?</string>
+    <string name="alert_delete_draft_msg">Você não poderá a desfazer essa ação!</string>
+    <string name="alert_delete_yes">Deletar</string>
+    <string name="alert_delete_no">Manter</string>
+    <string name="post_deleted">Deletar publicação</string>
+    <string name="alert_save_msg">Atualizar publicação com essas mudanças?</string>
+    <string name="alert_save_yes">Sim, atualizar</string>
+    <string name="alert_save_no">Não ainda</string>
+    <string name="discard_changes">Descartar mudanças</string>
+    <string name="alert_discard_changes_title">Descartar TODAS as mudanças desde que você abriu esta postagem?</string>
+    <string name="alert_discard_changes_msg">Não há retorno!</string>
+    <string name="discard">"Descartar "</string>
+    <string name="view_homepage">Ver página inicial</string>
+    <string name="view_post_on_blog">Ver postagem no blog</string>
+    <string name="post_settings">Configurações da postagem</string>
+
+    <string name="save_post_progress">Salvando publicação…</string>
+    <string name="save_post_failed">Não foi possível salvar a publicação</string>
+    <string name="save_post_view">Ver no blog</string>
+    <string name="save_post_timeout">Salvo no dispositivo</string>
+
+    <string name="save_scenario_unknown">Salvo</string>
+    <string name="save_scenario_publish_draft">Post publicado!</string>
+    <string name="save_scenario_unpublish_published_post">"Publicação despublicada "</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">Alterações salvas no dispositivo</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">Publicação atualizada</string>
+    <string name="save_scenario_auto_save_draft">Rascunho salvo</string>
+    <string name="save_scenario_explicitly_save_draft">Rascunho salvo</string>
+
+    <string name="post_title_hint">Dê a sua publicação um título…</string>
+    <string name="post_image_hint">Adicionar imagem da publicação</string>
+    <string name="post_tags_hint">Adicione algumas tags…</string>
+    <string name="post_tags_format_hint">Use vírgulas para separar as tags</string>
+    <string name="post_body_hint">Digite algo…</string>
+    <string name="post_image_load_error">Erro ao carregar a imagem da publicação</string>
+    <string name="post_excerpt_hint">Exceção</string>
+    <string name="post_feature_hint">Prioritize esta publicação</string>
+    <string name="post_page_hint">Transforme esta publicação em uma página</string>
+
+    <string name="insert_image">Inserir imagem</string>
+    <string name="insert_image_url">Inserir URL</string>
+    <string name="image_url">URL da imagem</string>
+    <string name="insert_image_upload">Subir imagem</string>
+    <string name="uploading">Subir…</string>
+    <string name="image_upload_failed">Não foi possível subir a imagem</string>
+    <string name="remove_image">Remover essa imagem</string>
+    <string name="enable_permission_tip">Toque em Permissões e ative a permissão de Armazenamento</string>
+
+    <string name="conflict_explanation"><b>Essa publicação post <i>%s</i> tem um conflito.</b> Foi atualizada no servidor antes que a sua versão pudesse ser carregada. Qual versão da publicação você gostaria de manter?</string>
+    <string name="conflict_choice_use_device_copy">Carregar versão do dispositivo</string>
+    <string name="conflict_choice_use_server_copy">Transferir cópia do servidor</string>
+    <string name="conflict_last_update_at">Última atualização em %s</string>
+    <string name="conflict_post_preview_title">A cópia abaixo da publicação será mantida:</string>
+    <string name="conflict_post_preview_status">Status da publicação: <b>%s</b></string>
+
+    <string name="about_action">Sobre…</string>
+    <string name="about">Sobre</string>
+
+    <string name="version">Versão</string>
+
+    <string name="category_support_development">Apoiar o desenvolvimento</string>
+    <string name="play_store">Avalie na Play Store</string>
+    <string name="play_store_subtitle">Obrigado por seu apoio!</string>
+
+    <string name="no_internet_connection">Sem conexão à Internet</string>
+    <string name="network_timeout">Conexão expirada</string>
+    <string name="refresh_failed">Não foi possível atualizar os dados</string>
+
+    <string name="done">Pronto</string>
+    <string name="save">Salvar</string>
+    <string name="refresh">Atualizar</string>
+    <string name="share">Compartilhar</string>
+    <string name="loading">Carregando…</string>
+    <string name="insert">Inserir</string>
+    <string name="intent_no_apps">Não há aplicativos que possam lidar com essa ação</string>
+    <string name="accept">Aceitar</string>
+    <string name="draft">Rascunho</string>
+    <string name="published">Publicado</string>
+    <string name="scheduled">Programado</string>
+    <string name="next">Próximo</string>
+
+</resources>

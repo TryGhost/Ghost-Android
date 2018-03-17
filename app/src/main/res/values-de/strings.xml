@@ -3,7 +3,7 @@
 
     <!-- login -->
     <string name="prompt_blog_url">Blogadresse</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email">E-Mail</string>
     <string name="prompt_password">Passwort</string>
     <string name="action_sign_in">Anmelden</string>
 
@@ -11,16 +11,16 @@
     <string name="error_field_required">Bitte fülle dieses Feld aus</string>
 
     <string name="no_such_blog">Es konnte kein Ghost Admin-Panel in %s/ghost gefunden werden</string>
-    <string name="login_unexpected_error">Unerwarteter Fehler beim Anmelden. Bitte versuche es erneut.</string>
-    <string name="login_connection_error">Es konnte keine Verbindung zu %s/ghost erstellt werden. Bitte versuche es erneut.</string>
+    <string name="login_unexpected_error">Unerwarteter Fehler beim Anmelden. Bitte erneut versuchen.</string>
+    <string name="login_connection_error">Es konnte keine Verbindung zu %s/ghost hergestellt werden. Bitte erneut versuchen.</string>
     <string name="login_ssl_unsupported">Dein Blog unterstützt leider kein https:// (SSL)</string>
     <string name="logout">Abmelden</string>
-    <string name="credentials_expired">Hat sich dein Passwort geändert? Anmeldung mit diesem Passwort nicht möglich.</string>
-    <string name="unsynced_changes_msg">Alle nicht synchronisierten Änderungen gehen verloren, wenn du dich jetzt abmeldest</string>
+    <string name="credentials_expired">Automatisches Anmelden fehlgeschlagen. Bitte melden Sie sich erneut an.</string>
+    <string name="unsynced_changes_msg">Sie verlieren alle nicht synchronisierten Änderungen, wenn Sie sich jetzt abmelden.</string>
     <string name="dont_logout">Nicht abmelden</string>
 
     <!-- posts -->
-    <string name="status_published">Veröffentlicht %s</string>
+    <string name="status_published">"%s veröffentlicht "</string>
     <string name="status_draft">Entwurf</string>
     <string name="status_scheduled">Geplant - %s</string>
     <string name="status_offline_changes">Auf dem Gerät gespeichert, wartet auf eine Verbindung…</string>
@@ -107,4 +107,20 @@
     <string name="intent_no_apps">Es konnte keine App gefunden werde, die diese Aufgabe ausführen kann</string>
     <string name="next">Nächster</string>
 
-</resources>
+<string name="post_excerpt_hint">Auszug</string>
+    <string name="post_page_hint">Diesen Beitrag in eine Seite umwandeln</string>
+
+    <string name="enable_permission_tip">Tippen Sie auf Berechtigungen und aktivieren Sie die Speicherberechtigung.</string>
+
+    <string name="conflict_explanation"><b>Der Beitrag „<i>%s</i>” enthält einen Konflikt.</b> Er wurde auf dem Server aktualisiert, bevor die Kopie des Geräts hochgeladen werden konnte. Welche Version des Beitrags möchten Sie behalten?</string>
+    <string name="conflict_choice_use_device_copy">Gerätekopie hochladen</string>
+    <string name="conflict_choice_use_server_copy">Serverkopie herunterladen</string>
+    <string name="conflict_last_update_at">Zuletzt am %s aktualisiert</string>
+    <string name="conflict_post_preview_title">Die untenstehende Kopie des Beitrags wird behalten:</string>
+    <string name="conflict_post_preview_status">Beitragsstatus: <b>%s</b></string>
+
+    <string name="accept">Zustimmen</string>
+    <string name="draft">Entwurf</string>
+    <string name="published">Veröffentlicht</string>
+    <string name="scheduled">Geplant</string>
+    </resources>

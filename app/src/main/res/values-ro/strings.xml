@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Adresa blogului</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Parola</string>
+    <string name="action_sign_in">Loghează-te</string>
+
+    <string name="error_invalid_email">Această adresă de e-mail nu este validă</string>
+    <string name="error_field_required">Acest câmp este obligatoriu</string>
+
+    <string name="no_such_blog">Nu există panou de administrare Ghost la %s/ghost</string>
+    <string name="login_unexpected_error">Eroare neașteptată la conectare. Încearcă din nou.</string>
+    <string name="login_connection_error">Nu se poate conecta la %s/ghost. Vă rugăm să încercați din nou.</string>
+    <string name="login_ssl_unsupported">Blogul dvs. nu acceptă https:// (SSL)</string>
+    </resources>

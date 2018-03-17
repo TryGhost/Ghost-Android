@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Blogadres</string>
+    <string name="prompt_email">E-mailadres</string>
+    <string name="prompt_password">Wachtwoord</string>
+    <string name="action_sign_in">Inloggen</string>
+
+    <string name="error_invalid_email">Dit e-mailadres is ongeldig</string>
+    <string name="error_field_required">Dit veld is vereist</string>
+
+    <string name="no_such_blog">Er is geen Ghost-administrator op %s/ghost</string>
+    <string name="login_unexpected_error">Er was een onverwachte fout tijdens het inloggen. Probeer het opnieuw.</string>
+    <string name="login_connection_error">Het verbinden met %s/ghost is mislukt. Probeer het opnieuw.</string>
+    <string name="login_ssl_unsupported">Uw blog ondersteunt geen https:// (SSL)</string>
+    <string name="logout">Uitloggen</string>
+    <string name="credentials_expired">Automatisch inloggen is mislukt; log opnieuw in</string>
+    <string name="unsynced_changes_msg">Als u nu uitlogt, dan gaan alle niet-gesynchroniseerde wijzigingen verloren</string>
+    <string name="dont_logout">Niet uitloggen</string>
+
+    <string name="status_published">%s is gepubliceerd</string>
+    <string name="status_draft">Concept</string>
+    <string name="status_scheduled">Ingepland - %s</string>
+    <string name="status_offline_changes">Opgeslagen op apparaat; bezig met wachten op verbinding…</string>
+    <string name="status_published_auto_saved">Wijzigingen zijn automatisch opgeslagen; nog niet gepubliceerd</string>
+    <string name="status_marked_for_deletion">Gemarkeerd voor verwijdering; bezig met wachten op verbinding…</string>
+    <string name="status_marked_for_deletion_open_error">Dit bericht kan niet worden geopend omdat het gemarkeerd is voor verwijdering</string>
+
+    <string name="preview">Voorbeeld</string>
+    <string name="edit">Bewerken</string>
+    <string name="publish">Publiceren</string>
+    <string name="update_post">Bericht bijwerken</string>
+    <string name="unpublish">Publicatie intrekken</string>
+    <string name="alert_publish">Concept publiceren?</string>
+    <string name="alert_unpublish">Berichtpublicatie intrekken?</string>
+    <string name="delete_draft">Concept verwijderen</string>
+    <string name="alert_delete_draft_title">Wilt u dit concept verwijderen?</string>
+    <string name="alert_delete_draft_msg">U kunt dit niet ongedaan maken!</string>
+    <string name="alert_delete_yes">Verwijderen</string>
+    <string name="alert_delete_no">Behouden</string>
+    <string name="post_deleted">Bericht is verwijderd</string>
+    <string name="alert_save_msg">Wilt u het bericht bijwerken met de gedane wijzigingen?</string>
+    <string name="alert_save_yes">Ja, bijwerken</string>
+    <string name="alert_save_no">Nog niet</string>
+    <string name="discard_changes">Wijzigingen verwerpen</string>
+    <string name="alert_discard_changes_title">Wilt u ALLE gedane wijzgingen sinds het openen van dit bericht verwijderen?</string>
+    <string name="alert_discard_changes_msg">Er is geen weg terug!</string>
+    <string name="discard">Verwerpen</string>
+    <string name="view_homepage">Website bezoeken</string>
+    <string name="view_post_on_blog">Bericht weergeven op blog</string>
+    <string name="post_settings">Berichtinstellingen</string>
+
+    <string name="save_post_progress">Bezig met opslaan van bericht…</string>
+    <string name="save_post_failed">Bericht kan niet worden opgeslagen</string>
+    <string name="save_post_view">Weergeven op blog</string>
+    <string name="save_post_timeout">Opgeslagen op apparaat</string>
+
+    <string name="save_scenario_unknown">Opgeslagen</string>
+    <string name="save_scenario_publish_draft">Bericht is gepubliceerd!</string>
+    <string name="save_scenario_unpublish_published_post">Berichtpublicatie is ingetrokken</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">Wijzigingen zijn opgeslagen op apparaat</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">Bericht is bijgewerkt</string>
+    <string name="save_scenario_auto_save_draft">Concept is opgeslagen</string>
+    <string name="save_scenario_explicitly_save_draft">Concept is opgeslagen</string>
+
+    <string name="post_title_hint">Geef uw bericht een titel…</string>
+    <string name="post_image_hint">Afbeelding toevoegen</string>
+    <string name="post_tags_hint">Labels toevoegen…</string>
+    <string name="post_tags_format_hint">Gebruik komma\'s om labels te scheiden</string>
+    <string name="post_body_hint">Typ hier iets…</string>
+    <string name="post_image_load_error">Fout tijdens laden van afbeelding</string>
+    <string name="post_excerpt_hint">Fragment</string>
+    <string name="post_feature_hint">Dit bericht aanprijzen</string>
+    <string name="post_page_hint">Dit bericht veranderen in een pagina</string>
+
+    <string name="insert_image">Afbeelding invoegen</string>
+    <string name="insert_image_url">URL invoegen</string>
+    <string name="image_url">Afbeeldings-URL</string>
+    <string name="insert_image_upload">Afbeelding uploaden</string>
+    <string name="uploading">Bezig met uploaden…</string>
+    <string name="image_upload_failed">Afbeelding kan niet worden geüpload</string>
+    <string name="remove_image">Deze afbeelding verwijderen</string>
+    <string name="enable_permission_tip">Druk op Machtigingen en schakel de opslagmachtiging in</string>
+
+    <string name="conflict_explanation"><b>Het bericht<i>%s</i> bevat een conflict.</b> Het bericht is bijgewerkt op de server voordat de versie op uw apparaat kon worden geüpload. Welke versie wilt u behouden?</string>
+    <string name="conflict_choice_use_device_copy">Apparaatversie uploaden</string>
+    <string name="conflict_choice_use_server_copy">Serverversie downloaden</string>
+    <string name="conflict_last_update_at">Laatst bijgewerkt op %s</string>
+    <string name="conflict_post_preview_title">De onderstaande versie van het bericht zal worden behouden:</string>
+    <string name="conflict_post_preview_status">Berichtstatus: <b>%s</b></string>
+
+    <string name="about_action">Over…</string>
+    <string name="about">Over</string>
+
+    <string name="version">Versie</string>
+
+    <string name="category_support_development">Ondersteun de ontwikkeling</string>
+    <string name="play_store">Beoordelen in de Play Store</string>
+    <string name="play_store_subtitle">Bedankt voor uw ondersteuning!</string>
+
+    <string name="no_internet_connection">Geen internetverbinding</string>
+    <string name="network_timeout">Verbindingstime-out</string>
+    <string name="refresh_failed">Gegevens kunnen niet worden ververst</string>
+
+    <string name="done">Afronden</string>
+    <string name="save">Opslaan</string>
+    <string name="refresh">Verversen</string>
+    <string name="share">Delen</string>
+    <string name="loading">Bezig met laden…</string>
+    <string name="insert">Invoegen</string>
+    <string name="intent_no_apps">Er zijn geen apps die deze actie kunnen uitvoeren</string>
+    <string name="accept">Accepteren</string>
+    <string name="draft">Concept</string>
+    <string name="published">Gepubliceerd</string>
+    <string name="scheduled">Ingepland</string>
+    <string name="next">Volgende</string>
+
+</resources>
