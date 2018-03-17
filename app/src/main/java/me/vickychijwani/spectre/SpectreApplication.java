@@ -161,8 +161,10 @@ public class SpectreApplication extends Application {
         if (errorResponse != null) {
             try {
                 String responseString = errorResponse.errorBody().string();
-                Log.e(TAG, responseString);
-            } catch (IOException e) {
+                // replace %; with %%; to mitigate Crashlytics issue 51:
+                // UnknownFormatConversionException: Conversion = ';'
+                Log.e(TAG, responseString.replace("%;", "%%;"));
+            } catch (Exception e) {
                 Log.e(TAG, "[onApiErrorEvent] Error while parsing response error body!");
             }
         }
