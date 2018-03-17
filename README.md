@@ -52,6 +52,10 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [@urbangeek](https://github.com/urbangeek) (Bengali translation)
 - [@MertcanGokgoz](https://github.com/mertcangokgoz) (Turkish translation)
 - [@geekdinazor](https://github.com/geekdinazor) (Turkish translation)
+- [Thiago Tomasi](https://hosted.weblate.org/user/thiagotomasi/) (Portuguese (Brazil) translation)
+- [@frottle](https://hosted.weblate.org/user/frottle/) (Indonesian translation)
+- [Aditya](https://hosted.weblate.org/user/siadit/) (Indonesian translation)
+- [Heimen Stoffels](https://hosted.weblate.org/user/vistaus/) (Dutch translation)
 
 [playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
 [weblate]: https://hosted.weblate.org/engage/ghost/en/
