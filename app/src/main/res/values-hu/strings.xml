@@ -4,7 +4,13 @@
     <string name="prompt_password">Jelszó</string>
     <string name="action_sign_in">Bejelentkezés</string>
 
-    <string name="error_invalid_email">Az e-mail cím érvénytelen</string>
+    <string name="error_invalid_email">Érvénytelen email cím</string>
     <string name="error_field_required">Kötelező mező</string>
 
+    <string name="no_such_blog">A Ghost admin nem érhető el a %s/ghost címen</string>
+    <string name="login_unexpected_error">Nem várt hiba a bejelentkezés során. Kérlek próbáld újra.</string>
+    <string name="login_connection_error">Nem sikerült csatlakozni a %s/ghost címhez. Kérjük próbáld újra.</string>
+    <string name="login_ssl_unsupported">A blogod nem támogatja a https:// protokollt (SSL)</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="credentials_expired">Nem sikerült az automatikus bejelentkezés, kérjük jelentkezz be újra.</string>
     </resources>
