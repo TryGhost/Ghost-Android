@@ -2,4 +2,9 @@
 <resources><string name="prompt_blog_url">Blog címe</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Jelszó</string>
+    <string name="action_sign_in">Bejelentkezés</string>
+
+    <string name="error_invalid_email">Az e-mail cím érvénytelen</string>
+    <string name="error_field_required">Kötelező mező</string>
+
     </resources>
