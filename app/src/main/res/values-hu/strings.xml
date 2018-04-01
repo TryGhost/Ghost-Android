@@ -30,9 +30,9 @@
     <string name="update_post">Bejegyzés frissítése</string>
     <string name="unpublish">Visszavonás</string>
     <string name="alert_publish">Vázlat publikálása?</string>
-    <string name="alert_unpublish">Bejegyzés visszavonása?</string>
+    <string name="alert_unpublish">Visszavonjuk a bejegyzést?</string>
     <string name="delete_draft">Vázlat törlése</string>
-    <string name="alert_delete_draft_title">Törlöd ezt a vázlatot?</string>
+    <string name="alert_delete_draft_title">Töröljük ezt a vázlatot?</string>
     <string name="alert_delete_draft_msg">Nem fogod tudni visszavonni!</string>
     <string name="alert_delete_yes">Törlés</string>
     <string name="alert_delete_no">Megtartás</string>
@@ -46,12 +46,12 @@
     <string name="discard">Elvetés</string>
     <string name="view_homepage">Kezdőlap megnyitása</string>
     <string name="view_post_on_blog">Bejegyzés megnyitása a blogon</string>
-    <string name="post_settings">Bejegyzés Beállításao</string>
+    <string name="post_settings">Bejegyzés Beállításai</string>
 
     <string name="save_post_progress">Bejegyzés mentése…</string>
     <string name="save_post_failed">Nem sikerült menteni a bejegyzést</string>
     <string name="save_post_view">Megtekintés a blogon</string>
-    <string name="save_post_timeout">Eszközre mentve</string>
+    <string name="save_post_timeout">Mentve az eszközre</string>
 
     <string name="save_scenario_unknown">Mentve</string>
     <string name="save_scenario_publish_draft">Bejegyzés publikálva!</string>
@@ -69,7 +69,7 @@
     <string name="post_image_load_error">Hiba a bejegyzés képének betöltésekor</string>
     <string name="post_excerpt_hint">Kivonat</string>
     <string name="post_feature_hint">Bejegyzés kiemelése</string>
-    <string name="post_page_hint">Bejegyzés konvertálása oldallá</string>
+    <string name="post_page_hint">Bejegyzés konvertálása statikus oldallá</string>
 
     <string name="insert_image">Kép beszúrása</string>
     <string name="insert_image_url">URL beszúrása</string>
@@ -81,7 +81,7 @@
     <string name="enable_permission_tip">Az Engedélyek menüpontban engedélyezd a Tárhely engedélyeket</string>
 
     <string name="conflict_explanation"><b>A <i>%s</i> bejegyzés mentésekor ütközés történt</b> A szerveren módosítások történtek azelőtt, hogy a lokális másolatod feltöltődött. Melyik verzióját akarod megtartani a bejegyzésnek?</string>
-    <string name="conflict_choice_use_device_copy">Eszköz másolatának feltöltése</string>
+    <string name="conflict_choice_use_device_copy">Eszközön lévő verzió feltöltése</string>
     <string name="conflict_choice_use_server_copy">Szerververzió letöltése</string>
     <string name="conflict_last_update_at">Utoljára frissítve: %s</string>
     <string name="conflict_post_preview_title">Az bejegyzés alábbi verziója lesz megtartva:</string>
@@ -97,7 +97,7 @@
     <string name="play_store_subtitle">Köszönjük a támogatásod!</string>
 
     <string name="no_internet_connection">Nincs internetkapcsolat</string>
-    <string name="network_timeout">Kapcsolat időtúllépés miatt megszakadt</string>
+    <string name="network_timeout">A kapcsolat időtúllépés miatt megszakadt</string>
     <string name="refresh_failed">Nem sikerült frissíteni az adatokat</string>
 
     <string name="done">Kész</string>
@@ -106,7 +106,7 @@
     <string name="share">Megosztás</string>
     <string name="loading">Betöltés…</string>
     <string name="insert">Beszúrás</string>
-    <string name="intent_no_apps">Nincsen olyan app, amely tudná kezelni a kérést</string>
+    <string name="intent_no_apps">Nincs olyan app, amely tudná kezelni a kérést</string>
     <string name="accept">Elfogadás</string>
     <string name="draft">Vázlat</string>
     <string name="published">Publikálva</string>
