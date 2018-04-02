@@ -15,7 +15,7 @@ public class AboutActivity extends BaseActivity {
 
     public static final String URL_GITHUB_CONTRIBUTING = "https://github.com/tryghost/ghost-android/blob/master/CONTRIBUTING.md#reporting-bugs";
     public static final String URL_TRANSLATE = "https://hosted.weblate.org/engage/ghost/en/";
-    public static final String URL_SLACK = "https://slack.ghost.org/";
+    public static final String URL_COMMUNITY = "https://forum.ghost.org/";
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.about_version) TextView mVersionView;
@@ -63,7 +63,7 @@ public class AboutActivity extends BaseActivity {
 
     @OnClick(R.id.about_help)
     public void onHelpClicked(View v) {
-        AppUtils.openUri(this, URL_SLACK);
+        AppUtils.openUri(this, URL_COMMUNITY);
     }
 
 }
