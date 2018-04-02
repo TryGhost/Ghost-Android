@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Blog címe</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Jelszó</string>
+    <string name="action_sign_in">Bejelentkezés</string>
+
+    <string name="error_invalid_email">Érvénytelen email cím</string>
+    <string name="error_field_required">Kötelező mező</string>
+
+    <string name="no_such_blog">A Ghost admin nem érhető el a %s/ghost címen</string>
+    <string name="login_unexpected_error">Nem várt hiba a bejelentkezés során. Kérlek próbáld újra.</string>
+    <string name="login_connection_error">Nem sikerült csatlakozni a %s/ghost címhez. Kérjük próbáld újra.</string>
+    <string name="login_ssl_unsupported">A blogod nem támogatja a https:// protokollt (SSL)</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="credentials_expired">Nem sikerült az automatikus bejelentkezés, kérjük jelentkezz be újra</string>
+    <string name="unsynced_changes_msg">Ha most kijelentkezel, minden nem szinkronizált módosítás elvész</string>
+    <string name="dont_logout">Ne jelentkezz ki</string>
+
+    <string name="status_published">Publikálva %s</string>
+    <string name="status_draft">Vázlat</string>
+    <string name="status_scheduled">Beütemezve - %s</string>
+    <string name="status_offline_changes">Mentve az eszközre, várakozás online csatlakozásra…</string>
+    <string name="status_published_auto_saved">Változások automatikusan mentve, még nem publikálva</string>
+    <string name="status_marked_for_deletion">Törlésre megjelölve, várakozás online csatlakozásra…</string>
+    <string name="status_marked_for_deletion_open_error">Ez a bejegyzés törlésre van kijelölve, nem lehet megnyitni</string>
+
+    <string name="preview">Előnézet</string>
+    <string name="edit">Szerkesztés</string>
+    <string name="publish">Publikálás</string>
+    <string name="update_post">Bejegyzés frissítése</string>
+    <string name="unpublish">Visszavonás</string>
+    <string name="alert_publish">Vázlat publikálása?</string>
+    <string name="alert_unpublish">Visszavonjuk a bejegyzést?</string>
+    <string name="delete_draft">Vázlat törlése</string>
+    <string name="alert_delete_draft_title">Töröljük ezt a vázlatot?</string>
+    <string name="alert_delete_draft_msg">Nem fogod tudni visszavonni!</string>
+    <string name="alert_delete_yes">Törlés</string>
+    <string name="alert_delete_no">Megtartás</string>
+    <string name="post_deleted">Bejegyzés törölve</string>
+    <string name="alert_save_msg">Frissítsük a bejegyzést a változásokkal?</string>
+    <string name="alert_save_yes">Igen, frissítsd</string>
+    <string name="alert_save_no">Még nem</string>
+    <string name="discard_changes">Módosítások elvetése</string>
+    <string name="alert_discard_changes_title">Eldobjunk MINDEN módosítást mióta megnyitottad bejegyzést?</string>
+    <string name="alert_discard_changes_msg">Nincs visszaút!</string>
+    <string name="discard">Elvetés</string>
+    <string name="view_homepage">Kezdőlap megnyitása</string>
+    <string name="view_post_on_blog">Bejegyzés megnyitása a blogon</string>
+    <string name="post_settings">Bejegyzés Beállításai</string>
+
+    <string name="save_post_progress">Bejegyzés mentése…</string>
+    <string name="save_post_failed">Nem sikerült menteni a bejegyzést</string>
+    <string name="save_post_view">Megtekintés a blogon</string>
+    <string name="save_post_timeout">Mentve az eszközre</string>
+
+    <string name="save_scenario_unknown">Mentve</string>
+    <string name="save_scenario_publish_draft">Bejegyzés publikálva!</string>
+    <string name="save_scenario_unpublish_published_post">Bejegyzés visszavonva</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">Változások mentve az eszközre</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">Bejegyzés frissítve</string>
+    <string name="save_scenario_auto_save_draft">Vázlat mentve</string>
+    <string name="save_scenario_explicitly_save_draft">Vázlat mentve</string>
+
+    <string name="post_title_hint">Adj címet a bejegyzésednek…</string>
+    <string name="post_image_hint">Kép hozzáadása a bejegyzéshez</string>
+    <string name="post_tags_hint">Címkék felvétele…</string>
+    <string name="post_tags_format_hint">Használj vesszőket a címkék elválasztásához</string>
+    <string name="post_body_hint">Írj ide valamit…</string>
+    <string name="post_image_load_error">Hiba a bejegyzés képének betöltésekor</string>
+    <string name="post_excerpt_hint">Kivonat</string>
+    <string name="post_feature_hint">Bejegyzés kiemelése</string>
+    <string name="post_page_hint">Bejegyzés konvertálása statikus oldallá</string>
+
+    <string name="insert_image">Kép beszúrása</string>
+    <string name="insert_image_url">URL beszúrása</string>
+    <string name="image_url">Kép URL</string>
+    <string name="insert_image_upload">Kép feltöltése</string>
+    <string name="uploading">Feltöltés…</string>
+    <string name="image_upload_failed">Nem sikerült feltölteni a képet</string>
+    <string name="remove_image">Kép eltávolítása</string>
+    <string name="enable_permission_tip">Az Engedélyek menüpontban engedélyezd a Tárhely engedélyeket</string>
+
+    <string name="conflict_explanation"><b>A <i>%s</i> bejegyzés mentésekor ütközés történt</b> A szerveren módosítások történtek azelőtt, hogy a lokális másolatod feltöltődött. Melyik verzióját akarod megtartani a bejegyzésnek?</string>
+    <string name="conflict_choice_use_device_copy">Eszközön lévő verzió feltöltése</string>
+    <string name="conflict_choice_use_server_copy">Szerververzió letöltése</string>
+    <string name="conflict_last_update_at">Utoljára frissítve: %s</string>
+    <string name="conflict_post_preview_title">Az bejegyzés alábbi verziója lesz megtartva:</string>
+    <string name="conflict_post_preview_status">Bejegyzés állapota: <b>%s</b></string>
+
+    <string name="about_action">Információ…</string>
+    <string name="about">Információ</string>
+
+    <string name="version">Verzió</string>
+
+    <string name="category_support_development">Fejlesztés támogatása</string>
+    <string name="play_store">Értékelés a Play Store-ban</string>
+    <string name="play_store_subtitle">Köszönjük a támogatásod!</string>
+
+    <string name="no_internet_connection">Nincs internetkapcsolat</string>
+    <string name="network_timeout">A kapcsolat időtúllépés miatt megszakadt</string>
+    <string name="refresh_failed">Nem sikerült frissíteni az adatokat</string>
+
+    <string name="done">Kész</string>
+    <string name="save">Mentés</string>
+    <string name="refresh">Frissítés</string>
+    <string name="share">Megosztás</string>
+    <string name="loading">Betöltés…</string>
+    <string name="insert">Beszúrás</string>
+    <string name="intent_no_apps">Nincs olyan app, amely tudná kezelni a kérést</string>
+    <string name="accept">Elfogadás</string>
+    <string name="draft">Vázlat</string>
+    <string name="published">Publikálva</string>
+    <string name="scheduled">Beütemezve</string>
+    <string name="next">Következő</string>
+
+</resources>

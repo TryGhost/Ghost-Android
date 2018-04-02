@@ -116,4 +116,7 @@
 
     <string name="enable_permission_tip">点击以启用储存权限</string>
 
+    <string name="post_excerpt_hint">摘要</string>
+    <string name="post_page_hint">转换此文章为一个页面</string>
+
     </resources>
