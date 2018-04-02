@@ -56,6 +56,7 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [@frottle](https://hosted.weblate.org/user/frottle/) (Indonesian translation)
 - [Aditya](https://hosted.weblate.org/user/siadit/) (Indonesian translation)
 - [Heimen Stoffels](https://hosted.weblate.org/user/vistaus/) (Dutch translation)
+- [Akos Nagy](https://hosted.weblate.org/user/conwid/) (Hungarian translation)
 
 [playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
 [weblate]: https://hosted.weblate.org/engage/ghost/en/
