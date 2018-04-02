@@ -21,7 +21,7 @@
     <string name="report_bugs" translatable="false">Report bugs</string>
     <string name="report_bugs_subtitle" translatable="false">Report bugs or propose new features</string>
     <string name="help_title" translatable="false">Help</string>
-    <string name="help_subtitle" translatable="false">Post in our #help Slack channel</string>
+    <string name="help_subtitle" translatable="false">Post in help on our forum</string>
 
     <string name="ghost_v0_error_title" translatable="false">Upgrade to Ghost 1.0</string>
     <string name="ghost_v0_error_tip" translatable="false" tools:ignore="TypographyDashes"><![CDATA[Tap <a href="https://blog.ghost.org/1-0/#howtoupgradetoghost10">here</a> to see upgrade instructions]]></string>

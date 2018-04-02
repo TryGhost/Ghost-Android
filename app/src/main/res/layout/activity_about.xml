@@ -97,7 +97,7 @@
                         style="@style/AboutItemStyle">
                         <ImageView
                             style="@style/AboutIconStyle"
-                            app:srcCompat="@drawable/about_slack"
+                            app:srcCompat="@drawable/about_community"
                             />
                         <LinearLayout style="@style/AboutSubItemStyle">
                             <TextView
