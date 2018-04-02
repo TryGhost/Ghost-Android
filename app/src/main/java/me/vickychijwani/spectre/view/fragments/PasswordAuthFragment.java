@@ -62,7 +62,7 @@ public class PasswordAuthFragment extends BaseFragment implements
         final String loginHelpTip = mLoginHelpTipView.getText().toString();
         AppUtils.setHtmlWithLinkClickHandler(mLoginHelpTipView, loginHelpTip, (url) -> {
             if ("login-help".equals(url)) {
-                AppUtils.openUri(PasswordAuthFragment.this, AboutActivity.URL_SLACK);
+                AppUtils.openUri(PasswordAuthFragment.this, AboutActivity.URL_COMMUNITY);
             } else {
                 Log.wtf("Unexpected URL = %s", url);
             }
