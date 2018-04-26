@@ -26,7 +26,7 @@ The official Ghost Android application. Get it [here on the Google Play Store][p
 If you'd like to see support for your language in Ghost Android, you can easily [contribute translations on Weblate][weblate]. _This requires no setup and no knowledge of Android development_, just keep in mind a few simple rules:
 
 - Many strings have [placeholders](http://envyandroid.com/android-string-xml-resource-formatting/) like "%s", "%d", "%2$s", etc. - keep these intact because other numbers and strings are inserted into these placeholders
-- Single and double quotes need to be preceded with a backslash character (\' and \" respectively)
+- Single and double quotes need to be preceded with a backslash character (`\'` and `\"` respectively)
 - For short strings, try to keep the translated string length close to the English one, because longer strings may not fit in the UI
 
 If you need help getting started, drop a comment on [this issue](https://github.com/TryGhost/Ghost-Android/issues/14).
