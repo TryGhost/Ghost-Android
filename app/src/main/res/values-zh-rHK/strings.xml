@@ -60,6 +60,59 @@
     <string name="save_scenario_auto_save_scheduled_or_published_post">更改已在設備保存</string>
     <string name="save_scenario_explicitly_update_scheduled_or_published_post">文章已更新</string>
     <string name="save_scenario_auto_save_draft">已保存草稿</string>
-    <string name="save_scenario_explicitly_save_draft">已保存草稿</string>
+    <string name="save_scenario_explicitly_save_draft">草稿已被保存</string>
 
-    </resources>
+    <string name="status_scheduled">已發布 - %s</string>
+    <string name="post_title_hint">文章標題…</string>
+    <string name="post_image_hint">添加文章圖片</string>
+    <string name="post_tags_hint">添加一些標籤…</string>
+    <string name="post_tags_format_hint">使用, 分離標籤</string>
+    <string name="post_body_hint">寫一些東西…</string>
+    <string name="post_image_load_error">加載文章圖片出錯</string>
+    <string name="post_excerpt_hint">摘抄</string>
+    <string name="post_feature_hint">標記為特別文章</string>
+    <string name="post_page_hint">發佈為靜態頁面</string>
+
+    <string name="insert_image">插入圖片</string>
+    <string name="insert_image_url">插入鏈接</string>
+    <string name="image_url">圖片鏈接</string>
+    <string name="insert_image_upload">上傳圖片</string>
+    <string name="uploading">上傳中…</string>
+    <string name="image_upload_failed">上傳圖片失敗</string>
+    <string name="remove_image">刪除此圖片</string>
+    <string name="enable_permission_tip">請允許獲取您的存儲空間權限</string>
+
+    <string name="conflict_explanation"><b>文章 <i>%s</i> 有衝突.</b> 服務端有一個更新的版本, 您需要保留哪個版本的文章?</string>
+    <string name="conflict_choice_use_device_copy">上傳本地副本</string>
+    <string name="conflict_choice_use_server_copy">下載服務端副本</string>
+    <string name="conflict_last_update_at">最後更新於 %s</string>
+    <string name="conflict_post_preview_title">以下版本回被保留:</string>
+    <string name="conflict_post_preview_status">文章狀態: <b>%s</b></string>
+
+    <string name="about_action">關於…</string>
+    <string name="about">關於</string>
+
+    <string name="version">版本</string>
+
+    <string name="category_support_development">開發支持</string>
+    <string name="play_store">在Play Store 評論</string>
+    <string name="play_store_subtitle">謝謝您的支持!</string>
+
+    <string name="no_internet_connection">沒有網絡連接</string>
+    <string name="network_timeout">連接超時</string>
+    <string name="refresh_failed">更新數據失敗</string>
+
+    <string name="done">完成</string>
+    <string name="save">保存</string>
+    <string name="refresh">更新</string>
+    <string name="share">分享</string>
+    <string name="loading">加載中…</string>
+    <string name="insert">插入</string>
+    <string name="intent_no_apps">沒有支持此操作的應用</string>
+    <string name="accept">接受</string>
+    <string name="draft">草稿</string>
+    <string name="published">已發布</string>
+    <string name="scheduled">已列入計劃</string>
+    <string name="next">下一個</string>
+
+</resources>
