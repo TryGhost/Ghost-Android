@@ -18,4 +18,46 @@
     <string name="unsynced_changes_msg">如果您現在登出，您會失去所有未同步的變更</string>
     <string name="dont_logout">不要登出</string>
 
+    <string name="status_published">發布了 %s</string>
+    <string name="status_draft">草稿</string>
+    <string name="status_offline_changes">本地已保存, 等待同步到網絡…</string>
+    <string name="status_published_auto_saved">更改已保存, 暫未發佈</string>
+    <string name="status_marked_for_deletion">已標記為刪除, 等待同步到網絡…</string>
+    <string name="status_marked_for_deletion_open_error">已標記刪除, 不能被打開</string>
+
+    <string name="preview">預覽</string>
+    <string name="edit">修改</string>
+    <string name="publish">發佈</string>
+    <string name="update_post">更改文章</string>
+    <string name="unpublish">未發佈</string>
+    <string name="alert_publish">要發佈草稿?</string>
+    <string name="alert_unpublish">取消發佈?</string>
+    <string name="delete_draft">刪除草稿</string>
+    <string name="alert_delete_draft_title">刪除此草稿?</string>
+    <string name="alert_delete_draft_msg">此操作不能撤銷!</string>
+    <string name="alert_delete_yes">刪除</string>
+    <string name="alert_delete_no">保留</string>
+    <string name="post_deleted">文章已被刪除</string>
+    <string name="alert_save_msg">更新文章?</string>
+    <string name="alert_save_yes">是的, 更新</string>
+    <string name="alert_save_no">暫不</string>
+    <string name="discard_changes">放棄更改</string>
+    <string name="alert_discard_changes_title">放棄所有上一次打開以來的更改?</string>
+    <string name="alert_discard_changes_msg">這不能撤銷!</string>
+    <string name="discard">放棄</string>
+    <string name="view_homepage">返回主頁</string>
+    <string name="view_post_on_blog">在博客中打開</string>
+    <string name="post_settings">文章設置</string>
+
+    <string name="save_post_progress">正在保存文章…</string>
+    <string name="save_post_failed">不能保存文章</string>
+    <string name="save_post_view">在博客中查看</string>
+    <string name="save_post_timeout">已在本地設備保存</string>
+
+    <string name="save_scenario_unknown">已保存</string>
+    <string name="save_scenario_publish_draft">文章已發布!</string>
+    <string name="save_scenario_unpublish_published_post">文章已取消發佈</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">更改已在設備保存</string>
+    <string name="save_scenario_explicitly_update_scheduled_or_published_post">文章已更新</string>
+    <string name="save_scenario_auto_save_draft">已保存草稿</string>
     </resources>
