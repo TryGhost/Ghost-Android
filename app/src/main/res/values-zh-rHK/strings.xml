@@ -60,4 +60,6 @@
     <string name="save_scenario_auto_save_scheduled_or_published_post">更改已在設備保存</string>
     <string name="save_scenario_explicitly_update_scheduled_or_published_post">文章已更新</string>
     <string name="save_scenario_auto_save_draft">已保存草稿</string>
+    <string name="save_scenario_explicitly_save_draft">已保存草稿</string>
+
     </resources>
