@@ -5,15 +5,15 @@
     <string name="prompt_password">Mot de passe</string>
     <string name="action_sign_in">Connexion</string>
 
-    <string name="error_invalid_email">Adresse mail invalide</string>
-    <string name="error_field_required">Champ requis</string>
+    <string name="error_invalid_email">Cette adresse e-mail est invalide</string>
+    <string name="error_field_required">Ce champ est requis</string>
 
     <string name="no_such_blog">Pas d\'administration Ghost à l\'adresse %s/ghost</string>
     <string name="login_unexpected_error">Erreur inattendue durant la connexion. Veuillez essayer à nouveau.</string>
     <string name="login_connection_error">Connexion impossible à %s/Ghost. Veuillez essayer à nouveau.</string>
     <string name="login_ssl_unsupported">Votre blog ne supporte pas le https:// (SSL)</string>
     <string name="logout">Déconnexion</string>
-    <string name="credentials_expired">Votre mot de passe a t\'il changé? Connexion impossible avec ce mot de passe.</string>
+    <string name="credentials_expired">La connexion automatique a échoué, veuillez vous reconnecter</string>
     <string name="unsynced_changes_msg">Vous perdrez toutes les modifications non synchronisés si vous vous déconnectez maintenant</string>
     <string name="dont_logout">Rester connecté</string>
 
@@ -100,4 +100,10 @@
     <string name="intent_no_apps">Aucune application pour gérer cette action</string>
     <string name="next">Prochain</string>
 
-</resources>
+<string name="post_excerpt_hint">Extrait</string>
+    <string name="conflict_last_update_at">Dernière mise à jour à %s</string>
+    <string name="accept">Acceptez</string>
+    <string name="draft">Brouillon</string>
+    <string name="published">Publié</string>
+    <string name="scheduled">Prévu</string>
+    </resources>
