@@ -7,15 +7,15 @@
     <string name="prompt_password">Passwort</string>
     <string name="action_sign_in">Anmelden</string>
 
-    <string name="error_invalid_email">Diese Emailadresse ist ungültig</string>
+    <string name="error_invalid_email">Diese E-Mail-Adresse ist ungültig</string>
     <string name="error_field_required">Bitte fülle dieses Feld aus</string>
 
     <string name="no_such_blog">Es konnte kein Ghost Admin-Panel in %s/ghost gefunden werden</string>
-    <string name="login_unexpected_error">Unerwarteter Fehler beim Anmelden. Bitte erneut versuchen.</string>
+    <string name="login_unexpected_error">Beim Anmelden ist ein unerwarteter Fehler aufgetreten. Bitte versuche es erneut.</string>
     <string name="login_connection_error">Es konnte keine Verbindung zu %s/ghost hergestellt werden. Bitte erneut versuchen.</string>
     <string name="login_ssl_unsupported">Dein Blog unterstützt leider kein https:// (SSL)</string>
     <string name="logout">Abmelden</string>
-    <string name="credentials_expired">Automatisches Anmelden fehlgeschlagen. Bitte melden Sie sich erneut an.</string>
+    <string name="credentials_expired">Automatisches Anmelden fehlgeschlagen. Bitte melde dich erneut an.</string>
     <string name="unsynced_changes_msg">Sie verlieren alle nicht synchronisierten Änderungen, wenn Sie sich jetzt abmelden.</string>
     <string name="dont_logout">Nicht abmelden</string>
 
