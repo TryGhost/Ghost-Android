@@ -44,7 +44,7 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [@Dennis-Mayk](https://github.com/Dennis-Mayk) (German translation)
 - [@naofum](https://github.com/naofum) (Japanese translation)
 - [@svenkapudija](https://github.com/svenkapudija) (Croatian translation)
-- [@yffengdong](https://hosted.weblate.org/user/yffengdong/) (Chinese zh-CN translation)
+- [@yffengdong](https://hosted.weblate.org/user/yffengdong/) (Simplified Chinese (zh-CN) translation)
 - [@guillaumevidal](https://github.com/guillaumevidal) (French translation)
 - [@fastbyte01](https://hosted.weblate.org/user/fastbyte01/) (Italian translation)
 - [@cristears](https://hosted.weblate.org/user/cristears/) (Korean translation)
@@ -57,6 +57,7 @@ If you face any issues setting this up, please let me know by [filing a new issu
 - [Aditya](https://hosted.weblate.org/user/siadit/) (Indonesian translation)
 - [Heimen Stoffels](https://hosted.weblate.org/user/vistaus/) (Dutch translation)
 - [Akos Nagy](https://hosted.weblate.org/user/conwid/) (Hungarian translation)
+- [Weizhi Xie](https://github.com/xieweizhi) (Traditional Chinese (zh-HK) translation)
 
 [playstore]: https://play.google.com/store/apps/details?id=org.ghost.android
 [weblate]: https://hosted.weblate.org/engage/ghost/en/
