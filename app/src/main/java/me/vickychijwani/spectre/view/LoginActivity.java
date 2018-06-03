@@ -61,8 +61,9 @@ public class LoginActivity extends BaseActivity implements
     @Override
     protected void onPause() {
         super.onPause();
-        // pop the GhostAuthFragment etc if any
-        getSupportFragmentManager().popBackStack();
+        // DON'T do this, it breaks Auto-fill
+//        // pop the GhostAuthFragment etc if any
+//        getSupportFragmentManager().popBackStack();
     }
 
     @Override
