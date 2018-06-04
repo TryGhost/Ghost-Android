@@ -61,8 +61,8 @@
     <string name="save_scenario_auto_save_draft">Taslak kaydedildi</string>
     <string name="save_scenario_explicitly_save_draft">Taslak kaydedildi</string>
 
-    <string name="post_title_hint">Yazınızı bir başlık verin…</string>
-    <string name="post_body_hint">Burada bir şey yazın…</string>
+    <string name="post_title_hint">Yazı başlığı</string>
+    <string name="post_body_hint">Hikayeni yazmaya başla…</string>
     <string name="post_image_load_error">Yazı için görsel yüklenirken hata oluştu</string>
     <string name="post_excerpt_hint">Alıntı</string>
     <string name="post_page_hint">Bu yazıyı bir sayfaya çevir</string>
@@ -77,7 +77,7 @@
     <string name="enable_permission_tip">İzinler\'e gidin ve depolama iznini etkinleştirin</string>
 
     <string name="post_image_hint">Yazı görseli ekle</string>
-    <string name="post_tags_hint">Bazı etiketler ekleyin…</string>
+    <string name="post_tags_hint">Etiketler</string>
     <string name="post_tags_format_hint">Etiketleri ayırmak için virgül kullanın</string>
     <string name="conflict_choice_use_server_copy">Sunucu kopyasını indir</string>
     <string name="post_feature_hint">Bu yazıyı öne çıkar</string>
