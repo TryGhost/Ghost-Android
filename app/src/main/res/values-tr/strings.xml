@@ -2,17 +2,17 @@
 <resources><string name="prompt_blog_url">Blog adresi</string>
     <string name="prompt_email">Eposta</string>
     <string name="prompt_password">Parola</string>
-    <string name="action_sign_in">Oturum Aç</string>
+    <string name="action_sign_in">Giriş yap</string>
 
     <string name="error_invalid_email">Bu eposta adresi geçersiz</string>
     <string name="error_field_required">Bu alan gerekli</string>
 
     <string name="no_such_blog">%s/ghost adresinde Ghost yöneticisi yok</string>
-    <string name="login_unexpected_error">Oturum açılırken beklenmeyen hata. Lütfen tekrar deneyin.</string>
-    <string name="login_connection_error">%s/ghost adresine bağlanılamadı. Lütfen tekrar deneyin.</string>
+    <string name="login_unexpected_error">Giriş yapılırken beklenmeyen hata. Lütfen yeniden deneyin.</string>
+    <string name="login_connection_error">%s/ghost adresine bağlanılamadı. Lütfen yeniden deneyin.</string>
     <string name="login_ssl_unsupported">Blogunuz https:// (SSL) seçeneğini desteklemiyor</string>
-    <string name="logout">Oturumu Kapat</string>
-    <string name="credentials_expired">Kendiliğinden giriş başarısız, lütfen yeniden giriş yapın</string>
+    <string name="logout">Oturumu kapat</string>
+    <string name="credentials_expired">Kendiliğinden oturum açma başarısız, lütfen yeniden giriş yapın</string>
     <string name="unsynced_changes_msg">Oturumu şimdi kapatırsanız eşitlenmemiş tüm değişiklikleri kaybedeceksiniz</string>
     <string name="dont_logout">Oturumu kapatma</string>
 
@@ -56,25 +56,25 @@
     <string name="save_scenario_unknown">Kaydedildi</string>
     <string name="save_scenario_publish_draft">Yazı yayımlandı!</string>
     <string name="save_scenario_unpublish_published_post">Yazı yayından kaldırıldı</string>
-    <string name="save_scenario_auto_save_scheduled_or_published_post">"Değişiklikler cihaza kaydedilmiş "</string>
+    <string name="save_scenario_auto_save_scheduled_or_published_post">Değişiklikler aygıta kaydedildi</string>
     <string name="save_scenario_explicitly_update_scheduled_or_published_post">Yayın güncellendi</string>
     <string name="save_scenario_auto_save_draft">Taslak kaydedildi</string>
     <string name="save_scenario_explicitly_save_draft">Taslak kaydedildi</string>
 
     <string name="post_title_hint">Yazı başlığı</string>
     <string name="post_body_hint">Hikayeni yazmaya başla…</string>
-    <string name="post_image_load_error">Yazı için görsel yüklenirken hata oluştu</string>
+    <string name="post_image_load_error">Yazı görseli yüklenirken hata</string>
     <string name="post_excerpt_hint">Alıntı</string>
     <string name="post_page_hint">Bu yazıyı bir sayfaya çevir</string>
 
     <string name="insert_image">Görsel ekle</string>
     <string name="insert_image_url">URL ekle</string>
     <string name="image_url">Görsel URL\'si</string>
-    <string name="insert_image_upload">Görsel yükleniyor</string>
+    <string name="insert_image_upload">Görsel Yükle</string>
     <string name="uploading">Yükleniyor…</string>
     <string name="image_upload_failed">Görsel yüklenemedi</string>
     <string name="remove_image">Bu görseli kaldır</string>
-    <string name="enable_permission_tip">İzinler\'e gidin ve depolama iznini etkinleştirin</string>
+    <string name="enable_permission_tip">İzinler\'e dokunun ve Depolama iznini etkinleştirin</string>
 
     <string name="post_image_hint">Yazı görseli ekle</string>
     <string name="post_tags_hint">Etiketler</string>
@@ -91,13 +91,13 @@
 
     <string name="version">Sürüm</string>
 
-    <string name="play_store">Play Store üzerinde değerlendirin</string>
-    <string name="play_store_subtitle">Desteğiniz için teşekkür ederiz!</string>
+    <string name="play_store">Play Store\'da Oyla</string>
+    <string name="play_store_subtitle">Desteğiniz için teşekkürler!</string>
 
     <string name="no_internet_connection">İnternet bağlantısı yok</string>
     <string name="network_timeout">Bağlantı zaman aşımına uğradı</string>
-    <string name="category_support_development">Destek geliştirme</string>
-    <string name="done">Tamam</string>
+    <string name="category_support_development">Geliştirmeyi destekle</string>
+    <string name="done">Bitti</string>
     <string name="refresh_failed">Veri yenilenemedi</string>
 
     <string name="save">Kaydet</string>
@@ -105,12 +105,12 @@
     <string name="share">Paylaş</string>
     <string name="loading">Yükleniyor…</string>
     <string name="insert">Ekle</string>
-    <string name="intent_no_apps">Bu işlemi gerçekleştirebilecek hiçbir uygulama yok</string>
+    <string name="intent_no_apps">Bu eylemi gerçekleştirebilecek bir uygulama yok</string>
     <string name="accept">Kabul et</string>
     <string name="draft">Taslak</string>
     <string name="published">Yayımlanan</string>
     <string name="scheduled">Zamanlanmış</string>
     <string name="next">Sonraki</string>
 
-<string name="conflict_explanation"><b>Yazı<i>%s</i></b> bir çakışmaya sahip. Yazı cihazınızdaki kopya yüklenmeden önce değiştirilmiş. Hangi sürümü tutmak istiyorsunuz ?</string>
+<string name="conflict_explanation"><b><i>%s</i> yazısının bir çakışması var.</b> Aygıtınızdaki kopya yüklenemeden önce, yazı sunucuda güncellenmiş. Yazının hangi sürümünü tutmak istiyorsunuz?</string>
     </resources>
