@@ -8,18 +8,20 @@ import org.hamcrest.Matchers
 import org.junit.Assert
 import retrofit2.*
 
-val TEST_USER = "user@example.com"
-val TEST_PWD = "randomtestpwd"
+const val TEST_BLOG = "10.0.2.2:2368"
+const val TEST_BLOG_WITH_PROTOCOL = "http://$TEST_BLOG"
+const val TEST_USER = "user@example.com"
+const val TEST_PWD = "randomtestpwd"
 
 // extension functions for the GhostApiService
 fun GhostApiService.deleteDefaultPosts() {
     this.doWithAuthToken { token ->
         val posts = execute(this.getPosts(token.authHeader, "", null, 100)).body()!!
-        // A default Ghost install has these many posts initially. If there are more than this,
-        // abort. This is to avoid messing up a production blog (like my own) by mistake.
-        val DEFAULT_POST_COUNT = 7
-        if (posts.posts.isNotEmpty() && posts.posts.size != DEFAULT_POST_COUNT) {
-            throw IllegalStateException("Aborting! Expected $DEFAULT_POST_COUNT posts, " +
+        // A default Ghost install has 7 posts initially. If there are more than this, or the blog
+        // address is not localhost, abort. This is to avoid messing up a production blog by mistake.
+        val MAX_EXPECTED_POSTS = 7
+        if (posts.posts.size > MAX_EXPECTED_POSTS || TEST_BLOG_WITH_PROTOCOL != "http://10.0.2.2:2368") {
+            throw IllegalStateException("Aborting! Expected max $MAX_EXPECTED_POSTS posts, " +
                     "found ${posts.posts.size}")
         }
         for (post in posts.posts) {

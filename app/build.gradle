@@ -32,7 +32,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-        testApplicationId 'org.ghost.android'
+        testApplicationId 'org.ghost.android.test'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

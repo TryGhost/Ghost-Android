@@ -14,9 +14,6 @@ import me.vickychijwani.spectre.view.PostListActivity
 import org.hamcrest.CoreMatchers.containsString
 
 
-val TEST_BLOG = "10.0.2.2:2368"
-val TEST_BLOG_WITH_PROTOCOL = "http://$TEST_BLOG"
-
 fun startLogin(func: BlogAddressRobot.() -> Unit) = BlogAddressRobot().apply { func() }
 
 class BlogAddressRobot {
