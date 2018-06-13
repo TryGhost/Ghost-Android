@@ -62,11 +62,11 @@
     <string name="save_scenario_auto_save_draft">ドラフトを保存しました</string>
     <string name="save_scenario_explicitly_save_draft">ドラフトを保存しました</string>
 
-    <string name="post_title_hint">記事のタイトルを入力してください…</string>
+    <string name="post_title_hint">記事のタイトル</string>
     <string name="post_image_hint">記事の画像を追加</string>
-    <string name="post_tags_hint">タグを追加…</string>
+    <string name="post_tags_hint">タグ</string>
     <string name="post_tags_format_hint">カンマでタグを区切ります</string>
-    <string name="post_body_hint">ここに入力します…</string>
+    <string name="post_body_hint">記事を入力します…</string>
     <string name="post_image_load_error">記事の画像を読み込み中にエラー</string>
     <string name="post_feature_hint">この記事をフィーチャー</string>
 
