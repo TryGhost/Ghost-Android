@@ -65,11 +65,11 @@
     <string name="save_scenario_auto_save_draft">Borrador guardado</string>
     <string name="save_scenario_explicitly_save_draft">Draft guardado</string>
 
-    <string name="post_title_hint">Título del artículo…</string>
+    <string name="post_title_hint">denominación del puesto</string>
     <string name="post_image_hint">Añadir imágen al artículo</string>
-    <string name="post_tags_hint">Añadir etiquetas…</string>
+    <string name="post_tags_hint">Etiquetas</string>
     <string name="post_tags_format_hint">Use comas para separar las etiquetas</string>
-    <string name="post_body_hint">Contenido del artículo…</string>
+    <string name="post_body_hint">Comience a escribir su historia</string>
     <string name="post_image_load_error">Error cargando la imagen del artículo</string>
     <string name="post_feature_hint">Resaltar este artículo</string>
 
