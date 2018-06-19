@@ -63,11 +63,11 @@
     <string name="save_scenario_explicitly_save_draft">草稿被保存</string>
 
     <string name="status_scheduled">已發布 - %s</string>
-    <string name="post_title_hint">文章標題…</string>
+    <string name="post_title_hint">文章標題</string>
     <string name="post_image_hint">添加文章圖片</string>
-    <string name="post_tags_hint">添加一些標籤…</string>
+    <string name="post_tags_hint">標籤</string>
     <string name="post_tags_format_hint">使用, 分離標籤</string>
-    <string name="post_body_hint">寫一些東西…</string>
+    <string name="post_body_hint">開始寫你的故事</string>
     <string name="post_image_load_error">加載文章圖片出錯</string>
     <string name="post_excerpt_hint">摘抄</string>
     <string name="post_feature_hint">標記為特別文章</string>
