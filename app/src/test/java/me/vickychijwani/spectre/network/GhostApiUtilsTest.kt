@@ -24,7 +24,7 @@ class GhostApiUtilsTest {
     }
 
     private val MARKDOWN = "**bold** _italic_"
-    private val NEW_MARKDOWN = "**bold** _italic_ `code`"
+    private val NEW_MARKDOWN = "**bold** _italic_\n\n`code`"
 
     private val MOBILEDOC_BEFORE_KOENIG = makeMobiledoc("""[
         [ "card-markdown", { "cardName": "card-markdown", "markdown": "$MARKDOWN" } ]
@@ -39,6 +39,16 @@ class GhostApiUtilsTest {
         [ "markdown", { "markdown": "$MARKDOWN" } ],
         [ "code", { "code": "int x = 5" } ]
     ]""")
+    private val MOBILEDOC_KOENIG_NON_CARD_SECTIONS = """{
+        "version": "0.3.1",
+        "atoms": [],
+        "cards": [["markdown", { "markdown": "$MARKDOWN"}]],
+        "markups": [],
+        "sections":[
+            [10,0],
+            [1,"p",[[0,[],0,"New card"]]]
+        ]
+    }"""
 
 
 
@@ -63,6 +73,11 @@ class GhostApiUtilsTest {
         assertThat(hasOnlyMarkdownCard(MOBILEDOC_KOENIG_MIXED_MARKDOWN), Is(false))
     }
 
+    @Test
+    fun hasOnlyMarkdownCard_koenigNonCardSections() {
+        assertThat(hasOnlyMarkdownCard(MOBILEDOC_KOENIG_NON_CARD_SECTIONS), Is(false))
+    }
+
 
 
     // mobiledocToMarkdown
@@ -82,8 +97,13 @@ class GhostApiUtilsTest {
     }
 
     @Test(expected = KoenigPostException::class)
-    fun mobiledocToMarkdown_canParseMixedMarkdown() {
+    fun mobiledocToMarkdown_cannotParseMixedMarkdown() {
         mobiledocToMarkdown(MOBILEDOC_KOENIG_MIXED_MARKDOWN)
+    }
+
+    @Test(expected = KoenigPostException::class)
+    fun mobiledocToMarkdown_cannotParseNonCardSections() {
+        mobiledocToMarkdown(MOBILEDOC_KOENIG_NON_CARD_SECTIONS)
     }
 
 

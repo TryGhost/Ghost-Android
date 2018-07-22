@@ -68,10 +68,19 @@ object GhostApiUtils {
             val firstCardJson = cardsJson.get(0).asJsonArray
             val firstCardName = firstCardJson.get(0).asString
             val firstCardContent = firstCardJson.get(1).asJsonObject
+
+            val sectionsJson = mobiledocJson.get("sections").asJsonArray
+            val firstSectionJson = sectionsJson.get(0).asJsonArray
+
             (cardsJson.size() == 1
                     // the markdown card was named "card-markdown" before Koenig came along
                     && (firstCardName == "markdown" || firstCardName == "card-markdown")
-                    && (firstCardContent.has("markdown")))
+                    && firstCardContent.has("markdown")
+                    // https://github.com/bustle/mobiledoc-kit/blob/master/MOBILEDOC.md#sections
+                    // sections: [[10, 0]] i.e., a single card (id for any card = 10) at index 0
+                    && sectionsJson.size() == 1
+                    && firstSectionJson.get(0).asInt == 10
+                    && firstSectionJson.get(1).asInt == 0)
         } catch (e: RuntimeException) {
             false
         }
