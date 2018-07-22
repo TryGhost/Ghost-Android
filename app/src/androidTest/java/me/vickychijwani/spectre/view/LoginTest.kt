@@ -93,4 +93,18 @@ class LoginTest {
         }
     }
 
+    @Test
+    fun logout() {
+        startLogin {
+            blogAddress(TEST_BLOG)
+        }.connectToBlog {
+            email(TEST_USER)
+            password(TEST_PWD)
+        }.login {
+            isLoggedIn()
+        }.logout {
+            isLoggedOut()
+        }
+    }
+
 }
