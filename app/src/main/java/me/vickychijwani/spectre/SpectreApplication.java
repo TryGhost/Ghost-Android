@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import com.tsengvn.typekit.Typekit;
 
 import java.io.File;
-import java.io.IOException;
 
 import io.fabric.sdk.android.Fabric;
 import io.reactivex.plugins.RxJavaPlugins;
@@ -161,9 +160,7 @@ public class SpectreApplication extends Application {
         if (errorResponse != null) {
             try {
                 String responseString = errorResponse.errorBody().string();
-                // replace %; with %%; to mitigate Crashlytics issue 51:
-                // UnknownFormatConversionException: Conversion = ';'
-                Log.e(TAG, responseString.replace("%;", "%%;"));
+                Log.e(TAG, responseString);
             } catch (Exception e) {
                 Log.e(TAG, "[onApiErrorEvent] Error while parsing response error body!");
             }

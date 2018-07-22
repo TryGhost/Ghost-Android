@@ -5,10 +5,10 @@ import com.crashlytics.android.Crashlytics;
 final class ReleaseLogger extends Logger {
 
     @Override
-    public void log(int priority, String tag, String message, Object... args) {
+    public void log(int priority, String tag, String message) {
         // log only INFO, WARN, ERROR and ASSERT levels
         if (priority >= android.util.Log.INFO) {
-            Crashlytics.log(priority, tag, String.format(message, args));
+            Crashlytics.log(priority, tag, message);
         }
     }
 

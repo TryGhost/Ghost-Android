@@ -3,8 +3,8 @@ package me.vickychijwani.spectre.util.log;
 final class DebugLogger extends Logger {
 
     @Override
-    public void log(int priority, String tag, String message, Object... args) {
-        android.util.Log.println(priority, tag, String.format(message, args));
+    public void log(int priority, String tag, String message) {
+        android.util.Log.println(priority, tag, message);
     }
 
     @Override

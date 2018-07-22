@@ -6,8 +6,8 @@ package me.vickychijwani.spectre.util.log;
 final class JvmLogger extends Logger {
 
     @Override
-    public void log(int priority, String tag, String message, Object... args) {
-        System.out.println(String.format(message, args));
+    public void log(int priority, String tag, String message) {
+        System.out.println(message);
     }
 
     @Override
