@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="prompt_blog_url">Địa chỉ blog</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mật khẩu</string>
+    <string name="action_sign_in">Đăng nhập</string>
+
+    <string name="error_invalid_email">Địa chỉ email này không tồn tại</string>
+    <string name="error_field_required">Mục này cần phải có</string>
+
+    <string name="no_such_blog">Không có quản trị ghost tại %s/ghost</string>
+    <string name="login_unexpected_error">Lỗi bất ngờ trong khi đăng nhập.
+\nLàm ơn thử lại.</string>
+    <string name="login_connection_error">Không thể kết nối tới %s/ghost. 
+\nLàm ơn thử lại.</string>
+    <string name="login_ssl_unsupported">Blog của bạn không hỗ trợ https:// (SSL)</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="credentials_expired">Tự động đăng nhập thất bại, làm ơn đăng nhập lại</string>
+    <string name="unsynced_changes_msg">"Bạn sẽ mất hết các thay đổi chưa đồng bộ nếu bạn đăng xuất bây giờ "</string>
+    <string name="dont_logout">"Đừng đăng xuất "</string>
+
+    <string name="status_published">Đã xuất bản %s</string>
+    <string name="status_draft">Bản nháp</string>
+    <string name="status_scheduled">Đã lên lịch - %s</string>
+    <string name="status_offline_changes">Đã lưu trên thiết bị, đang chờ kết nối trực tuyến…</string>
+    <string name="status_published_auto_saved">"Các thay đổi đã được lưu lại tự động, nhưng chưa được xuất bản "</string>
+    <string name="status_marked_for_deletion">Đã được đánh dấu để xoá, đang chờ kết nối trực tuyến…</string>
+    </resources>

@@ -62,11 +62,11 @@
     <string name="save_scenario_auto_save_draft">Kladd lagret</string>
     <string name="save_scenario_explicitly_save_draft">Kladd lagret</string>
 
-    <string name="post_title_hint">Gi ditt innlegg en tittel…</string>
+    <string name="post_title_hint">Innleggstittel</string>
     <string name="post_image_hint">Legg et bilde til innlegget</string>
-    <string name="post_tags_hint">Legg til noen etiketter…</string>
+    <string name="post_tags_hint">Etiketter</string>
     <string name="post_tags_format_hint">Bruk kommainndeling for etiketter</string>
-    <string name="post_body_hint">Skriv noe her…</string>
+    <string name="post_body_hint">Begynn å skrive historien din…</string>
     <string name="post_image_load_error">Feil ved innlasting av innleggsbilde</string>
     <string name="post_feature_hint">Framhev dette innlegget</string>
 

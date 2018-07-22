@@ -14,7 +14,7 @@
     <string name="login_connection_error">不能連接到 %s/ghost ，請再試一次。</string>
     <string name="login_ssl_unsupported">您的博客不支持 HTTPS (SSL) 連接</string>
     <string name="logout">登出</string>
-    <string name="credentials_expired">自動登錄失敗， 請重新登錄。</string>
+    <string name="credentials_expired">自動登錄失敗， 請重新登錄</string>
     <string name="unsynced_changes_msg">如果您現在登出，您會失去所有未同步的變更</string>
     <string name="dont_logout">不要登出</string>
 
@@ -63,11 +63,11 @@
     <string name="save_scenario_explicitly_save_draft">草稿被保存</string>
 
     <string name="status_scheduled">已發布 - %s</string>
-    <string name="post_title_hint">文章標題…</string>
+    <string name="post_title_hint">文章標題</string>
     <string name="post_image_hint">添加文章圖片</string>
-    <string name="post_tags_hint">添加一些標籤…</string>
+    <string name="post_tags_hint">標籤</string>
     <string name="post_tags_format_hint">使用, 分離標籤</string>
-    <string name="post_body_hint">寫一些東西…</string>
+    <string name="post_body_hint">開始寫你的故事…</string>
     <string name="post_image_load_error">加載文章圖片出錯</string>
     <string name="post_excerpt_hint">摘抄</string>
     <string name="post_feature_hint">標記為特別文章</string>
