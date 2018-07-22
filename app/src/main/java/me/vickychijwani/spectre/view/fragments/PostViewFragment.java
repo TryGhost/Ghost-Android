@@ -20,7 +20,7 @@ public class PostViewFragment extends BaseFragment
         implements WebViewFragment.OnWebViewCreatedListener {
 
     private Post mPost;
-    private int mMarkdownHashCode;
+    private int mContentHashCode;
     private WebViewFragment mWebViewFragment;
 
     public static PostViewFragment newInstance(@NonNull Post post) {
@@ -87,10 +87,10 @@ public class PostViewFragment extends BaseFragment
 
     public void updatePreview() {
         mWebViewFragment.evaluateJavascript("updateTitle()");
-        int markdownHashCode = mPost.getMarkdown().hashCode();
-        if (markdownHashCode != mMarkdownHashCode) {
+        int contentHashCode = mPost.getMobiledoc().hashCode();
+        if (contentHashCode != mContentHashCode) {
             mWebViewFragment.evaluateJavascript("preview()");
-            mMarkdownHashCode = markdownHashCode;
+            mContentHashCode = contentHashCode;
         }
     }
 

@@ -89,7 +89,7 @@ public class PostUtils {
             return true;
         if (! original.getSlug().equals(current.getSlug()))
             return true;
-        if (! original.getMarkdown().equals(current.getMarkdown()))
+        if (! original.getMobiledoc().equals(current.getMobiledoc()))
             return true;
         if (! TextUtils.equals(original.getFeatureImage(), current.getFeatureImage()))
             return true;

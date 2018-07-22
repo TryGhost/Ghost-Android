@@ -17,6 +17,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 import io.realm.annotations.Required;
 import me.vickychijwani.spectre.model.GsonExclude;
+import me.vickychijwani.spectre.network.GhostApiUtils;
 import me.vickychijwani.spectre.util.DateTimeUtils;
 
 @RealmClass
@@ -52,9 +53,6 @@ public class Post implements RealmModel, Parcelable {
 
     @Required @Status
     private String status = DRAFT;
-
-    @Required
-    private String markdown = "";
 
     private String mobiledoc = "";
 
@@ -103,7 +101,6 @@ public class Post implements RealmModel, Parcelable {
         this.setTitle(post.getTitle());
         this.setSlug(post.getSlug());
         this.setStatus(post.getStatus());
-        this.setMarkdown(post.getMarkdown());
         this.setMobiledoc(post.getMobiledoc());
         this.setHtml(post.getHtml());
 
@@ -158,8 +155,6 @@ public class Post implements RealmModel, Parcelable {
             return false;
         if (getStatus() != null ? !getStatus().equals(post.getStatus()) : post.getStatus() != null)
             return false;
-        if (getMarkdown() != null ? !getMarkdown().equals(post.getMarkdown()) : post.getMarkdown() != null)
-            return false;
         if (getMobiledoc() != null ? !getMobiledoc().equals(post.getMobiledoc()) : post.getMobiledoc() != null)
             return false;
         if (getHtml() != null ? !getHtml().equals(post.getHtml()) : post.getHtml() != null)
@@ -210,7 +205,6 @@ public class Post implements RealmModel, Parcelable {
         dest.writeString(this.title);
         dest.writeString(this.slug);
         dest.writeString(this.status);
-        dest.writeString(this.markdown);
         dest.writeString(this.mobiledoc);
         dest.writeString(this.html);
         dest.writeList(this.tags);
@@ -239,7 +233,6 @@ public class Post implements RealmModel, Parcelable {
         this.slug = in.readString();
         //noinspection WrongConstant
         this.status = in.readString();
-        this.markdown = in.readString();
         this.mobiledoc = in.readString();
         this.html = in.readString();
         this.tags = new RealmList<>();
@@ -331,11 +324,11 @@ public class Post implements RealmModel, Parcelable {
     }
 
     public String getMarkdown() {
-        return markdown;
+        return GhostApiUtils.INSTANCE.mobiledocToMarkdown(getMobiledoc());
     }
 
-    public void setMarkdown(String markdown) {
-        this.markdown = markdown;
+    public void setMarkdown(@NonNull String markdown) {
+        setMobiledoc(GhostApiUtils.INSTANCE.insertMarkdownIntoMobiledoc(markdown, getMobiledoc()));
     }
 
     public String getMobiledoc() {

@@ -118,7 +118,7 @@ public class NetworkService implements
         getBus().register(this);
         if (AccountManager.hasActiveBlog()) {
             BlogMetadata activeBlog = AccountManager.getActiveBlog();
-            GhostApiService api = GhostApiUtils.getRetrofit(activeBlog.getBlogUrl(), httpClient)
+            GhostApiService api = GhostApiUtils.INSTANCE.getRetrofit(activeBlog.getBlogUrl(), httpClient)
                     .create(GhostApiService.class);
             setApiService(activeBlog.getBlogUrl(), api);
 
@@ -402,22 +402,22 @@ public class NetworkService implements
                                     PendingAction.EDIT
                             })
                             .findAll();
-                    for (int i = postList.posts.size() - 1; i >= 0; --i) {
+                    for (int i = postList.getPosts().size() - 1; i >= 0; --i) {
                         for (int j = 0; j < localOnlyEdits.size(); ++j) {
-                            if (postList.posts.get(i).getId().equals(localOnlyEdits.get(j).getId())) {
-                                postList.posts.remove(i);
+                            if (postList.getPosts().get(i).getId().equals(localOnlyEdits.get(j).getId())) {
+                                postList.getPosts().remove(i);
                             }
                         }
                     }
 
                     // make sure drafts have a publishedAt of FAR_FUTURE so they're sorted to the top
-                    Observable.fromIterable(postList.posts)
+                    Observable.fromIterable(postList.getPosts())
                             .filter(post -> post.getPublishedAt() == null)
                             .forEach(post -> post.setPublishedAt(DateTimeUtils.FAR_FUTURE));
 
                     // now create / update received posts
                     // TODO use Realm#insertOrUpdate() for faster insertion here: https://realm.io/news/realm-java-1.1.0/
-                    createOrUpdateModel(postList.posts);
+                    createOrUpdateModel(postList.getPosts());
                     getBus().post(new PostsLoadedEvent(getPostsSorted(), POSTS_FETCH_LIMIT));
 
                     refreshSucceeded(event);
@@ -451,6 +451,7 @@ public class NetworkService implements
     public void onCreatePostEvent(final CreatePostEvent event) {
         Log.i(TAG, "[onCreatePostEvent] creating new post");
         Post newPost = new Post();
+        newPost.setMobiledoc(GhostApiUtils.INSTANCE.initializeMobiledoc());
         newPost.addPendingAction(PendingAction.CREATE);
         newPost.setId(getTempUniqueId(Post.class));
         createOrUpdateModel(newPost);                    // save the local post to db
@@ -600,10 +601,13 @@ public class NetworkService implements
                     if (response.isSuccessful()) {
                         PostList postList = response.body();
                         AnalyticsService.logNewDraftUploaded();
-                        Post updatedPost = copyPosts(createOrUpdateModel(postList.posts)).get(0);
+                        Post updatedPost = copyPosts(createOrUpdateModel(postList.getPosts())).get(0);
                         Log.i(TAG, "[onSyncPostsEvent] created post %s", updatedPost.getId());
                         postUploadQueue.removeFirstOccurrence(localPost);
                         postsToDelete.add(localPost);
+                        // new posts do not have the mobiledoc field set, so retain
+                        // those values from the local copy
+                        updatedPost.setMobiledoc(localPost.getMobiledoc());
                         // FIXME this is a new post! how do subscribers know which post changed?
                         getBus().post(new PostReplacedEvent(updatedPost));
                         if (postUploadQueue.isEmpty()) syncFinishedCB.call();
@@ -632,13 +636,12 @@ public class NetworkService implements
                 public void onResponse(@NonNull Call<PostList> call, @NonNull Response<PostList> response) {
                     if (response.isSuccessful()) {
                         PostList postList = response.body();
-                        Post syncedPost = postList.posts.get(0);
+                        Post syncedPost = postList.getPosts().get(0);
                         Post realmPost = mRealm.where(Post.class)
                                 .equalTo("id", editedPost.getId())
                                 .findFirst();
-                        // saved posts do not have the markdown/mobiledoc fields set, so retain
+                        // saved posts do not have the mobiledoc field set, so retain
                         // those values from a pre-save copy
-                        syncedPost.setMarkdown(realmPost.getMarkdown());
                         syncedPost.setMobiledoc(realmPost.getMobiledoc());
                         if (!realmPost.getId().equals(syncedPost.getId())) {
                             Log.wtf("Trying to update a post with a different id! " +
@@ -647,7 +650,7 @@ public class NetworkService implements
                         }
                         Log.i(TAG, "[onSyncPostsEvent] updated post %s",
                                 syncedPost.getId());
-                        createOrUpdateModel(postList.posts);
+                        createOrUpdateModel(postList.getPosts());
                         postUploadQueue.removeFirstOccurrence(editedPost);
                         getBus().post(new PostSyncedEvent(syncedPost));
                         if (postUploadQueue.isEmpty()) syncFinishedCB.call();
@@ -676,8 +679,8 @@ public class NetworkService implements
                         PostList postList = response.body();
                         Post serverPost = null;
                         boolean hasConflict = false;
-                        if (!postList.posts.isEmpty()) {
-                            serverPost = postList.posts.get(0);
+                        if (!postList.getPosts().isEmpty()) {
+                            serverPost = postList.getPosts().get(0);
                             hasConflict = (serverPost.getUpdatedAt() != null
                                     && !serverPost.getUpdatedAt().equals(localPost.getUpdatedAt()));
                         }

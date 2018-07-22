@@ -62,6 +62,7 @@ import me.vickychijwani.spectre.event.RefreshDataEvent;
 import me.vickychijwani.spectre.event.UserLoadedEvent;
 import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Setting;
+import me.vickychijwani.spectre.network.GhostApiUtils;
 import me.vickychijwani.spectre.util.DeviceUtils;
 import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.util.log.Log;
@@ -141,6 +142,11 @@ public class PostListActivity extends BaseActivity {
             int pos = mPostList.getChildLayoutPosition(v);
             if (pos == RecyclerView.NO_POSITION) return;
             Post post = (Post) mPostAdapter.getItem(pos);
+            if (! GhostApiUtils.INSTANCE.hasOnlyMarkdownCard(post.getMobiledoc())) {
+                Snackbar.make(mPostList, R.string.koenig_post_error,
+                        Snackbar.LENGTH_SHORT).show();
+                return;
+            }
             if (post.isMarkedForDeletion()) {
                 Snackbar.make(mPostList, R.string.status_marked_for_deletion_open_error,
                         Snackbar.LENGTH_SHORT).show();

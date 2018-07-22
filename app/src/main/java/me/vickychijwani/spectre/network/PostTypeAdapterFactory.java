@@ -38,15 +38,8 @@ class PostTypeAdapterFactory implements TypeAdapterFactory {
                 // Empty posts imported from Ghost 0.11.x have mobiledoc == null, which is incorrect
                 // but we do need to handle it. Drafts created in Ghost 1.0 on the other hand, do
                 // have mobiledoc set to a valid, empty mobiledoc document.
-                if (post.getMobiledoc() != null && !post.getMobiledoc().isEmpty()) {
-                    // Post JSON example:
-                    // {
-                    //   "mobiledoc": "{\"version\": \"0.3.1\", ... }",
-                    //   ...
-                    // }
-                    post.setMarkdown(GhostApiUtils.mobiledocToMarkdown(post.getMobiledoc()));
-                } else {
-                    post.setMarkdown("");
+                if (post.getMobiledoc() == null || post.getMobiledoc().isEmpty()) {
+                    post.setMobiledoc(GhostApiUtils.INSTANCE.initializeMobiledoc());
                 }
                 return post;
             }

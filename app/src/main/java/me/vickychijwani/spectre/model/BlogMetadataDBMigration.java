@@ -20,7 +20,7 @@ public class BlogMetadataDBMigration implements RealmMigration {
     @Override
     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
         RealmSchema schema = realm.getSchema();
-        Log.i(TAG, "MIGRATING DATABASE from v%d to v%d", oldVersion, newVersion);
+        Log.i(TAG, "MIGRATING METADATA DB from v%d to v%d", oldVersion, newVersion);
 
         // NOTE: schema versions 0, 1, 2 and 3 are not possible because this app was released AFTER
         // we hit schema version 4. The old migration code is kept around for reference.

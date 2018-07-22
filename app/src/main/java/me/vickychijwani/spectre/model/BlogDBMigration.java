@@ -12,7 +12,7 @@ public class BlogDBMigration implements RealmMigration {
     @Override
     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
         RealmSchema schema = realm.getSchema();
-        Log.i(TAG, "MIGRATING DATABASE from v%d to v%d", oldVersion, newVersion);
+        Log.i(TAG, "MIGRATING BLOG DATA DB from v%d to v%d", oldVersion, newVersion);
 
         // why < 2? because I forgot to assign a schema version until I wrote this migration, so the
         // oldVersion here will be whatever default is assigned by Realm
@@ -22,6 +22,14 @@ public class BlogDBMigration implements RealmMigration {
                 schema.get("Post").addField("customExcerpt", String.class);
             }
             oldVersion = 2;
+        }
+
+        if (oldVersion == 2) {
+            if (schema.get("Post").hasField("markdown")) {
+                Log.i(TAG, "REMOVING MARKDOWN FIELD FROM POST TABLE");
+                schema.get("Post").removeField("markdown");
+            }
+            ++oldVersion;
         }
     }
 

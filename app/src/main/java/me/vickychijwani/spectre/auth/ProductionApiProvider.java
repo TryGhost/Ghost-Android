@@ -13,7 +13,7 @@ public class ProductionApiProvider implements ApiProvider {
     private final Retrofit mRetrofit;
 
     public ProductionApiProvider(@NonNull OkHttpClient httpClient, @NonNull String blogUrl) {
-        mRetrofit = GhostApiUtils.getRetrofit(blogUrl, httpClient);
+        mRetrofit = GhostApiUtils.INSTANCE.getRetrofit(blogUrl, httpClient);
     }
 
     @Override

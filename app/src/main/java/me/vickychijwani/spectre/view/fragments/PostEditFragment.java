@@ -567,7 +567,6 @@ public class PostEditFragment extends BaseFragment implements
                              @Nullable @Post.Status String newStatus) {
         mPost.setTitleFromPostEditor(mPostTitleEditView.getText().toString());
         mPost.setMarkdown(mPostEditView.getText().toString());
-        mPost.setMobiledoc(GhostApiUtils.markdownToMobiledoc(mPost.getMarkdown()));
         mPost.setHtml(null);   // omit stale HTML from request body
         mPost.setTags(mPostSettingsManager.getTags());
         mPost.setCustomExcerpt(mPostSettingsManager.getCustomExcerpt());

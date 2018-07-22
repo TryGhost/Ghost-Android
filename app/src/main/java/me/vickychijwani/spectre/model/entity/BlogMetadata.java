@@ -82,7 +82,7 @@ public class BlogMetadata implements RealmModel {
     // NOTE: this function should not be invoked too frequently - preferably only when opening the
     // app, switching blogs, or logging out
     public RealmConfiguration getDataRealmConfig() {
-        final int DB_SCHEMA_VERSION = 2;
+        final int DB_SCHEMA_VERSION = 3;
         AnalyticsService.logDbSchemaVersion(String.valueOf(DB_SCHEMA_VERSION));
         String encodedBlogUrl = Base64.encodeToString(blogUrl.getBytes(), Base64.URL_SAFE | Base64.NO_WRAP);
         return new RealmConfiguration.Builder()

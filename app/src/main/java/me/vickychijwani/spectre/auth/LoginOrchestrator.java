@@ -196,7 +196,7 @@ public class LoginOrchestrator implements
                 AnalyticsService.logGhostV0Error();
                 forEachListener(Listener::onGhostV0Error);
             } else if (url.pathSegments().contains("authentication")) {
-                ApiErrorList apiErrors = GhostApiUtils.parseApiErrors(
+                ApiErrorList apiErrors = GhostApiUtils.INSTANCE.parseApiErrors(
                         mApiProvider.getRetrofit(), httpEx);
                 if (apiErrors != null && !apiErrors.errors.isEmpty()) {
                     ApiError apiError = apiErrors.errors.get(0);
