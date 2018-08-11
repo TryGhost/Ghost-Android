@@ -17,9 +17,9 @@ const val TEST_PWD = "randomtestpwd"
 fun GhostApiService.deleteDefaultPosts() {
     this.doWithAuthToken { token ->
         val posts = execute(this.getPosts(token.authHeader, "", null, 100)).body()!!
-        // A default Ghost install has 7 posts initially. If there are more than this, or the blog
+        // A default Ghost install has 8 posts initially. If there are more than this, or the blog
         // address is not localhost, abort. This is to avoid messing up a production blog by mistake.
-        val MAX_EXPECTED_POSTS = 7
+        val MAX_EXPECTED_POSTS = 8
         if (posts.posts.size > MAX_EXPECTED_POSTS || TEST_BLOG_WITH_PROTOCOL != "http://10.0.2.2:2368") {
             throw IllegalStateException("Aborting! Expected max $MAX_EXPECTED_POSTS posts, " +
                     "found ${posts.posts.size}")
