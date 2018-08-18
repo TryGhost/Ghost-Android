@@ -320,6 +320,8 @@ public class NetworkService implements
                     SettingsList settingsList = response.body();
                     storeEtag(response.headers(), ETag.TYPE_BLOG_SETTINGS);
                     createOrUpdateModel(settingsList.settings);
+                    // TODO this is dead code; permalink setting was removed in Ghost 2.0
+                    // see https://github.com/TryGhost/Ghost/pull/9768/files
                     savePermalinkFormat(settingsList.settings);
                     getBus().post(new BlogSettingsLoadedEvent(settingsList.settings));
                     refreshSucceeded(event);
