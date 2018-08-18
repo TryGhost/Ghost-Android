@@ -70,7 +70,21 @@ object GhostApiUtils {
             val firstCardContent = firstCardJson.get(1).asJsonObject
 
             val sectionsJson = mobiledocJson.get("sections").asJsonArray
-            val firstSectionJson = sectionsJson.get(0).asJsonArray
+
+            // ignore empty sections, only check non-empty sections
+            val nonEmptySections = mutableListOf<JsonElement>()
+            for (i in 0..(sectionsJson.size()-1)) {
+                val section = sectionsJson.get(i).asJsonArray
+                // empty sections are of the form [1, "p", []] - the "1" indicates it's a "markup" section
+                // https://github.com/bustle/mobiledoc-kit/blob/master/MOBILEDOC.md#sections
+                val isSectionEmpty = section.size() == 3 && section.get(0).asInt == 1
+                        && section.get(2).asJsonArray.size() == 0
+                if (!isSectionEmpty) {
+                    nonEmptySections.add(section)
+                }
+            }
+
+            val firstNonEmptySectionJson = nonEmptySections[0].asJsonArray
 
             (cardsJson.size() == 1
                     // the markdown card was named "card-markdown" before Koenig came along
@@ -78,9 +92,9 @@ object GhostApiUtils {
                     && firstCardContent.has("markdown")
                     // https://github.com/bustle/mobiledoc-kit/blob/master/MOBILEDOC.md#sections
                     // sections: [[10, 0]] i.e., a single card (id for any card = 10) at index 0
-                    && sectionsJson.size() == 1
-                    && firstSectionJson.get(0).asInt == 10
-                    && firstSectionJson.get(1).asInt == 0)
+                    && nonEmptySections.size == 1
+                    && firstNonEmptySectionJson.get(0).asInt == 10
+                    && firstNonEmptySectionJson.get(1).asInt == 0)
         } catch (e: RuntimeException) {
             false
         }
