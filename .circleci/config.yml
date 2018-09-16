@@ -9,7 +9,7 @@ jobs:
     # https://circleci.com/docs/2.0/configuration-reference/#docker--machine-executor
     docker:
       - image: circleci/android:api-${TARGET_SDK_VERSION}-alpha
-      - image: ghost:1-alpine   # test against latest 1.x version of Ghost
+      - image: ghost:2-alpine   # test against latest 2.x version of Ghost
 
     steps:
       # https://circleci.com/docs/2.0/configuration-reference/#checkout
