@@ -61,6 +61,7 @@ import me.vickychijwani.spectre.util.AppUtils;
 import me.vickychijwani.spectre.util.EditTextSelectionState;
 import me.vickychijwani.spectre.util.EditTextUtils;
 import me.vickychijwani.spectre.util.KeyboardUtils;
+import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.util.PostUtils;
 import me.vickychijwani.spectre.util.functions.Action1;
 import me.vickychijwani.spectre.util.log.Log;
@@ -411,6 +412,10 @@ public class PostEditFragment extends BaseFragment implements
     @SuppressLint("InlinedApi") // suppressed because PermissionsDispatcher handles API levels for us
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     public void onInsertImageUploadClicked(Action1<String> uploadDoneAction) {
+        if (! NetworkUtils.isConnected(getActivity())) {
+            Toast.makeText(getActivity(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
+            return;
+        }
         mImageUploadDoneAction = uploadDoneAction;
         Intent imagePickIntent = new Intent(Intent.ACTION_GET_CONTENT);
         imagePickIntent.addCategory(Intent.CATEGORY_OPENABLE);
