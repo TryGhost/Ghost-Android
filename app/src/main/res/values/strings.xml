@@ -74,7 +74,7 @@
     <string name="post_feature_hint">Feature this post</string>
     <string name="post_page_hint">Turn this post into a page</string>
 
-    <string name="koenig_post_error">The app can only open posts containing a single Markdown card and nothing else.</string>
+    <string name="koenig_post_error">The app can only open posts containing a single Markdown card</string>
 
     <!-- image insert / upload -->
     <string name="insert_image">Insert Image</string>
