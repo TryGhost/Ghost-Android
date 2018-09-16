@@ -107,14 +107,10 @@ public class NetworkUtils {
     }
 
     public static String makeAbsoluteUrl(@NonNull String baseUrl, @NonNull String relativePath) {
-        // handling for protocol-relative URLs
-        // can't remember which scenario actually produces these URLs except maybe the Markdown preview
-        if (relativePath.startsWith("//")) {
-            relativePath = "http:" + relativePath;
-        }
-
         // maybe relativePath is already absolute
-        if (relativePath.startsWith("http://") || relativePath.startsWith("https://")) {
+        if (relativePath.startsWith("http://") || relativePath.startsWith("https://")
+                // protocol-relative URLs (can't remember which scenario actually produces these)
+                || relativePath.startsWith("//")) {
             return relativePath;
         }
 
@@ -122,7 +118,7 @@ public class NetworkUtils {
         boolean relHasSlash = relativePath.startsWith("/");
         if (baseHasSlash && relHasSlash) {
             return baseUrl + relativePath.substring(1);
-        } else if ((!baseHasSlash && relHasSlash) || (baseHasSlash && !relHasSlash)) {
+        } else if (baseHasSlash ^ relHasSlash) {
             return baseUrl + relativePath;
         } else {
             return baseUrl + "/" + relativePath;
