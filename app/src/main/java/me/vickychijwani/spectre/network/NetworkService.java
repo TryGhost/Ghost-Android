@@ -318,12 +318,18 @@ public class NetworkService implements
             public void onResponse(@NonNull Call<SettingsList> call, @NonNull Response<SettingsList> response) {
                 if (response.isSuccessful()) {
                     SettingsList settingsList = response.body();
-                    storeEtag(response.headers(), ETag.TYPE_BLOG_SETTINGS);
-                    createOrUpdateModel(settingsList.settings);
-                    // TODO this is dead code; permalink setting was removed in Ghost 2.0
-                    // see https://github.com/TryGhost/Ghost/pull/9768/files
-                    savePermalinkFormat(settingsList.settings);
-                    getBus().post(new BlogSettingsLoadedEvent(settingsList.settings));
+                    // TODO workaround for Crashlytics issue #102; settings is not so crucial for us
+                    // https://fabric.io/ghost9/android/apps/org.ghost.android/issues/5c506265f8b88c2963ec2874
+                    if (settingsList.settings != null) {
+                        storeEtag(response.headers(), ETag.TYPE_BLOG_SETTINGS);
+                        createOrUpdateModel(settingsList.settings);
+                        // TODO this is dead code; permalink setting was removed in Ghost 2.0
+                        // see https://github.com/TryGhost/Ghost/pull/9768/files
+                        savePermalinkFormat(settingsList.settings);
+                        getBus().post(new BlogSettingsLoadedEvent(settingsList.settings));
+                    } else {
+                        AnalyticsService.logNullSettingsWarning();
+                    }
                     refreshSucceeded(event);
                 } else {
                     // fallback to cached data
