@@ -64,11 +64,13 @@ import me.vickychijwani.spectre.model.entity.Post;
 import me.vickychijwani.spectre.model.entity.Setting;
 import me.vickychijwani.spectre.network.GhostApiUtils;
 import me.vickychijwani.spectre.util.DeviceUtils;
-import me.vickychijwani.spectre.util.NetworkUtils;
 import me.vickychijwani.spectre.util.log.Log;
 import me.vickychijwani.spectre.view.image.BorderedCircleTransformation;
 import me.vickychijwani.spectre.view.widget.SpaceItemDecoration;
 import retrofit2.Response;
+
+import static me.vickychijwani.spectre.util.NetworkUtils.isConnectionError;
+import static me.vickychijwani.spectre.util.NetworkUtils.makePicassoUrl;
 
 public class PostListActivity extends BaseActivity {
 
@@ -287,7 +289,7 @@ public class PostListActivity extends BaseActivity {
 
         Throwable error = event.apiFailure.error;
         Response response = event.apiFailure.response;
-        if (error != null && NetworkUtils.isConnectionError(error)) {
+        if (error != null && isConnectionError(error)) {
             Toast.makeText(this, R.string.network_timeout, Toast.LENGTH_LONG).show();
         } else {
             Log.e(TAG, "Generic error message triggered during refresh");
@@ -312,14 +314,14 @@ public class PostListActivity extends BaseActivity {
                 return;
             }
             String blogUrl = AccountManager.getActiveBlogUrl();
-            String imageUrl = NetworkUtils.makeAbsoluteUrl(blogUrl, event.user.getProfileImage());
+            String imageUrl = makePicassoUrl(blogUrl, event.user.getProfileImage());
             getPicasso()
                     .load(imageUrl)
                     .transform(new BorderedCircleTransformation())
                     .fit()
                     .into(mUserImageView);
         } else {
-            // Crashlytics issue #77
+            // As of Ghost v2.13.1 (possibly earlier), profile image is null if not set
             Log.w(TAG, "user image is null!");
         }
     }

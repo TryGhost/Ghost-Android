@@ -106,6 +106,24 @@ public class NetworkUtils {
         return error instanceof SSLHandshakeException;
     }
 
+    // Picasso cannot handle protocol-relative URLs
+    public static String makePicassoUrl(@NonNull String baseUrl,
+                                        @NonNull String relativeOrProtocolRelativeUrl) {
+        String maybeProtocolRelativeUrl = makeAbsoluteUrl(baseUrl, relativeOrProtocolRelativeUrl);
+        String protocol = baseUrl.startsWith("https") ? "https" : "http";
+        return resolveProtocolRelativeUrl(protocol, maybeProtocolRelativeUrl);
+    }
+
+    private static String resolveProtocolRelativeUrl(@NonNull String protocol,
+                                                     @NonNull String protocolRelativeUrl) {
+        if (! protocolRelativeUrl.startsWith("//")) {
+            // URL is not protocol-relative, return it as-is
+            return protocolRelativeUrl;
+        }
+
+        return protocol + ":" + protocolRelativeUrl;
+    }
+
     public static String makeAbsoluteUrl(@NonNull String baseUrl, @NonNull String relativePath) {
         // maybe relativePath is already absolute
         if (relativePath.startsWith("http://") || relativePath.startsWith("https://")

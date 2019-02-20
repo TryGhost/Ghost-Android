@@ -66,6 +66,8 @@ import me.vickychijwani.spectre.view.fragments.PostEditFragment;
 import me.vickychijwani.spectre.view.fragments.PostViewFragment;
 import me.vickychijwani.spectre.view.widget.ChipsEditText;
 
+import static me.vickychijwani.spectre.util.NetworkUtils.makePicassoUrl;
+
 public class PostViewActivity extends BaseActivity implements
         ViewPager.OnPageChangeListener,
         PostViewFragmentPagerAdapter.OnFragmentsInitializedListener,
@@ -428,7 +430,7 @@ public class PostViewActivity extends BaseActivity implements
         if (!TextUtils.isEmpty(imageUrl)) {
             mPostImageLayoutManager.setViewState(PostImageLayoutManager.ViewState.PROGRESS_BAR);
             String blogUrl = AccountManager.getActiveBlogUrl();
-            imageUrl = NetworkUtils.makeAbsoluteUrl(blogUrl, imageUrl);
+            imageUrl = makePicassoUrl(blogUrl, imageUrl);
             getPicasso()
                     .load(imageUrl)
                     .fit().centerCrop()
