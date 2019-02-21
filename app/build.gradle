@@ -23,9 +23,9 @@ android {
         applicationId 'org.ghost.android'
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 1_02_02_00      // 2 digits each for major, minor, patch, build number
+        versionCode 1_02_03_00      // 2 digits each for major, minor, patch, build number
                                     // example: 2.0.0-beta1 => 2_00_00_00, 2.0.0 => 2_00_00_01
-        versionName '1.2.2'
+        versionName '1.2.3'
 
         // enable support for vector drawables on API < 21
         vectorDrawables.useSupportLibrary = true
