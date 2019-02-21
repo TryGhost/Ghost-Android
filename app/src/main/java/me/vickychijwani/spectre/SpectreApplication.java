@@ -33,6 +33,8 @@ import me.vickychijwani.spectre.util.log.Log;
 import okhttp3.OkHttpClient;
 import retrofit2.Response;
 
+import static me.vickychijwani.spectre.model.DBConfiguration.METADATA_DB_SCHEMA_VERSION;
+
 public class SpectreApplication extends Application {
 
     private static final String TAG = "SpectreApplication";
@@ -77,7 +79,6 @@ public class SpectreApplication extends Application {
     }
 
     private void setupMetadataRealm() {
-        final int METADATA_DB_SCHEMA_VERSION = 4;
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .modules(new BlogMetadataModule())

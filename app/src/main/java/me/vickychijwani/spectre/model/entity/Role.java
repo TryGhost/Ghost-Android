@@ -14,7 +14,6 @@ public class Role implements RealmModel {
     @Required
     private String name;
 
-    @Required
     private String description;
 
     // accessors

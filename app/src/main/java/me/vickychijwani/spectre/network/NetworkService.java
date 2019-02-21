@@ -969,7 +969,7 @@ public class NetworkService implements
 
     private void savePermalinkFormat(List<Setting> settings) {
         for (Setting setting : settings) {
-            if ("permalinks".equals(setting.getKey())) {
+            if ("permalinks".equals(setting.getKey()) && setting.getValue() != null) {
                 BlogMetadata activeBlog = AccountManager.getActiveBlog();
                 activeBlog.setPermalinkFormat(setting.getValue());
                 AccountManager.addOrUpdateBlog(activeBlog);

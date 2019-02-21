@@ -31,6 +31,22 @@ public class BlogDBMigration implements RealmMigration {
             }
             ++oldVersion;
         }
+
+        if (oldVersion == 3) {
+            // Issue #38: crash caused by null values received in API responses
+            // Ghost v2.13 included a migration (that was later reverted) that replaced "" in
+            // nullable fields with `null`. So we should base our nullability decisions on the
+            // actual Ghost schema rather than making assumptions about what can or cannot be null.
+            // See https://github.com/TryGhost/Ghost/blob/master/core/server/data/schema/schema.js
+            schema.get("Role")
+                    .setNullable("description", true);
+            schema.get("Setting")
+                    .setNullable("value", true);
+            schema.get("ConfigurationParam")
+                    .setNullable("value", true);
+
+            ++oldVersion;
+        }
     }
 
     // override equals and hashCode to prevent this error in e2e tests:
