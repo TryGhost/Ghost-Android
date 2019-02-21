@@ -15,6 +15,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileSdkVersion 26
@@ -152,6 +153,7 @@ dependencies {
         transitive = true
     }
     implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-perf:16.2.3'
     implementation "com.github.hotchemi:permissionsdispatcher:$rootProject.ext.permissionsDispatcherVersion"
     kapt "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.ext.permissionsDispatcherVersion"
     implementation "com.github.slugify:slugify:2.1.9"
