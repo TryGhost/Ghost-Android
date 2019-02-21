@@ -99,13 +99,6 @@ public class AnalyticsService {
                 .putCustomAttribute("version", dbSchemaVersion));
     }
 
-    // analytics for Crashlytics issue #102
-    // https://fabric.io/ghost9/android/apps/org.ghost.android/issues/5c506265f8b88c2963ec2874
-    public static void logNullSettingsWarning() {
-        Log.w(TAG, "WORKAROUND TRIGGERED FOR BLOG SETTINGS = null; LOGGING CUSTOM ANALYTICS EVENT");
-        Answers.getInstance().logCustom(new CustomEvent("NULL SETTINGS"));
-    }
-
 
     // post actions
     public static void logNewDraftUploaded() {
