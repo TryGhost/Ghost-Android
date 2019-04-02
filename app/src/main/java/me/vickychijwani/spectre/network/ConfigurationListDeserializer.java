@@ -46,13 +46,12 @@ import me.vickychijwani.spectre.util.log.Log;
     }
 
     private ConfigurationParam makeConfigParam(String key, JsonElement value) {
-        if (value.isJsonNull()) {
-            throw new NullPointerException("value for key '" + key + "' is null!");
-        }
         ConfigurationParam param = new ConfigurationParam();
         param.setKey(key);
         String valueStr;
-        if (value.isJsonPrimitive() && value.getAsJsonPrimitive().isString()) {
+        if (value.isJsonNull()) {
+            valueStr = "";
+        } else if (value.isJsonPrimitive() && value.getAsJsonPrimitive().isString()) {
             // toString would return the string with quotes around it which we don't want
             valueStr = value.getAsString();
         } else {
