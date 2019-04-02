@@ -8,15 +8,7 @@ import me.vickychijwani.spectre.network.entity.*
 import me.vickychijwani.spectre.testing.*
 import me.vickychijwani.spectre.util.NetworkUtils
 import okhttp3.logging.HttpLoggingInterceptor
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.empty
-import org.hamcrest.Matchers.hasItem
-import org.hamcrest.Matchers.hasProperty
-import org.hamcrest.Matchers.hasSize
-import org.hamcrest.Matchers.instanceOf
-import org.hamcrest.Matchers.isEmptyOrNullString
-import org.hamcrest.Matchers.not
-import org.hamcrest.Matchers.notNullValue
+import org.hamcrest.Matchers.*
 import org.junit.*
 import org.junit.Assert.assertThat
 import org.junit.Assert.fail
@@ -192,7 +184,7 @@ class GhostApiTest {
                 assertThat(createdPost.slug, Is(Slugify().slugify(expectedPost.title)))
                 assertThat(createdPost.status, Is(expectedPost.status))
                 assertThat(createdPost.mobiledoc, Is(expectedPost.mobiledoc))
-                assertThat(createdPost.html, Is("<p>${expectedPost.markdown}</p>\n"))
+                assertThat(createdPost.html, containsString("<p>${expectedPost.markdown}</p>\n"))
                 assertThat(createdPost.tags, Is(expectedPost.tags))
                 assertThat(createdPost.customExcerpt, Is(expectedPost.customExcerpt))
                 assertThat(createdPost.isFeatured, Is(expectedPost.isFeatured))
