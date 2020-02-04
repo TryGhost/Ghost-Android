@@ -30,8 +30,8 @@
     <string name="publish">發佈</string>
     <string name="update_post">更改文章</string>
     <string name="unpublish">未發佈</string>
-    <string name="alert_publish">要發佈草稿?</string>
-    <string name="alert_unpublish">取消發佈?</string>
+    <string name="alert_publish">要發佈草稿？</string>
+    <string name="alert_unpublish">取消發佈？</string>
     <string name="delete_draft">刪除草稿</string>
     <string name="alert_delete_draft_title">刪除此草稿？</string>
     <string name="alert_delete_draft_msg">此操作不能撤銷！</string>
