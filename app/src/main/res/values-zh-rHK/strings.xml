@@ -47,7 +47,7 @@
     <string name="discard">放棄</string>
     <string name="view_homepage">返回主頁</string>
     <string name="view_post_on_blog">在部落格中打開</string>
-    <string name="post_settings">文章設置</string>
+    <string name="post_settings">文章設定</string>
 
     <string name="save_post_progress">正在儲存文章…</string>
     <string name="save_post_failed">不能儲存文章</string>
