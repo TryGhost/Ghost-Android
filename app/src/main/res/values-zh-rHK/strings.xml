@@ -112,7 +112,7 @@
     <string name="accept">接受</string>
     <string name="draft">草稿</string>
     <string name="published">已發布</string>
-    <string name="scheduled">已列入計劃</string>
+    <string name="scheduled">已排程</string>
     <string name="next">下一個</string>
 
 </resources>
