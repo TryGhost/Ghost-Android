@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
 
-    <string name="prompt_blog_url">部落格地址</string>
+    <string name="prompt_blog_url">部落格網址</string>
     <string name="prompt_email">電郵地址</string>
     <string name="prompt_password">密碼</string>
     <string name="action_sign_in">登入</string>
 
     <string name="error_invalid_email">這是個無效的電郵地址</string>
-    <string name="error_field_required">這是必填字段</string>
+    <string name="error_field_required">這個必須填寫</string>
 
     <string name="no_such_blog">在 %s/ghost 上沒有管理頁面</string>
     <string name="login_unexpected_error">在登入過程中出現了未知錯誤，請再試一次。</string>
@@ -66,10 +66,10 @@
     <string name="post_title_hint">文章標題</string>
     <string name="post_image_hint">添加文章圖片</string>
     <string name="post_tags_hint">標籤</string>
-    <string name="post_tags_format_hint">使用，分隔標籤</string>
+    <string name="post_tags_format_hint">使用半形逗號 , 分隔標籤</string>
     <string name="post_body_hint">開始寫你的故事…</string>
-    <string name="post_image_load_error">加載文章圖片出錯</string>
-    <string name="post_excerpt_hint">摘抄</string>
+    <string name="post_image_load_error">載入文章圖片出錯</string>
+    <string name="post_excerpt_hint">節錄</string>
     <string name="post_feature_hint">標記為特別文章</string>
     <string name="post_page_hint">發佈為靜態頁面</string>
 
@@ -86,7 +86,7 @@
     <string name="conflict_choice_use_device_copy">上傳本地副本</string>
     <string name="conflict_choice_use_server_copy">下載伺服器副本</string>
     <string name="conflict_last_update_at">最後更新於 %s</string>
-    <string name="conflict_post_preview_title">以下版本回被保留:</string>
+    <string name="conflict_post_preview_title">以下版本回被保留：</string>
     <string name="conflict_post_preview_status">文章狀態：<b>%s</b></string>
 
     <string name="about_action">關於…</string>
