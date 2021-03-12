@@ -20,6 +20,10 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
       - run:
+          name: Setup Firebase configuration (google-services.json)
+          command: echo $GOOGLE_SERVICES_JSON_BASE64 | base64 -di > app/google-services.json
+
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
 

@@ -46,9 +46,6 @@ public class SpectreApplication extends Application {
     protected OkHttpClient mOkHttpClient = null;
     protected Picasso mPicasso = null;
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private AnalyticsService mAnalyticsService = null;
-
     // FIXME hacks
     private LoginOrchestrator.HACKListener mHACKListener;
 
@@ -61,6 +58,7 @@ public class SpectreApplication extends Application {
         Log.i(TAG, "APP LAUNCHED");
 
         BusProvider.getBus().register(this);
+        AnalyticsService.start(this, BusProvider.getBus());
         sInstance = this;
 
         RxJavaPlugins.setErrorHandler(this::uncaughtRxException);
@@ -73,9 +71,6 @@ public class SpectreApplication extends Application {
         NetworkService networkService = new NetworkService();
         mHACKListener = networkService;
         networkService.start(mOkHttpClient);
-
-        mAnalyticsService = new AnalyticsService(BusProvider.getBus());
-        mAnalyticsService.start();
     }
 
     private void setupMetadataRealm() {
